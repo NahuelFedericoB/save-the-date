@@ -72,7 +72,7 @@
   }
   .timeline-line {
     @apply absolute 
-    left-1/2 
+    left-16 
     md:left-0 
     md:top-1/2 
     w-[1px] 
@@ -92,16 +92,20 @@
     flex-col 
     md:flex-row 
     justify-between 
-    items-center 
-    gap-12 
+    items-start 
+    md:items-center 
+    gap-16 
     md:gap-0;
   }
   .event-item {
     @apply flex 
     flex-col 
-    items-center 
+    items-start 
+    md:items-center 
     w-full 
-    md:w-1/4;
+    md:w-1/4 
+    pl-16 
+    md:pl-0;
   }
   .desktop-label {
     @apply hidden 
@@ -139,7 +143,9 @@
     border-2 
     border-zinc-400 
     shadow-sm 
-    relative;
+    relative 
+    -translate-x-1/2 
+    md:translate-x-0;
   }
   .mobile-label {
     @apply md:hidden 
@@ -147,7 +153,7 @@
     left-8 
     top-1/2 
     -translate-y-1/2 
-    w-48 
+    w-64 
     text-left;
   }
   .mobile-time {

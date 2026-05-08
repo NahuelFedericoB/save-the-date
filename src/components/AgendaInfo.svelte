@@ -27,7 +27,11 @@
             <span class="title-text">{evento.titulo}</span>
           </div>
           <div class="timeline-dot">
-            <div class="mobile-label">
+            <div
+              class="mobile-label"
+              class:mobile-right={i % 2 === 0}
+              class:mobile-left={i % 2 !== 0}
+            >
               <span class="mobile-time">{evento.hora}</span>
               <span class="mobile-title">{evento.titulo}</span>
             </div>
@@ -72,7 +76,7 @@
   }
   .timeline-line {
     @apply absolute 
-    left-16 
+    left-1/2 
     md:left-0 
     md:top-1/2 
     w-[1px] 
@@ -92,20 +96,16 @@
     flex-col 
     md:flex-row 
     justify-between 
-    items-start 
-    md:items-center 
-    gap-16 
+    items-center 
+    gap-12 
     md:gap-0;
   }
   .event-item {
     @apply flex 
     flex-col 
-    items-start 
-    md:items-center 
+    items-center 
     w-full 
-    md:w-1/4 
-    pl-16 
-    md:pl-0;
+    md:w-1/4;
   }
   .desktop-label {
     @apply hidden 
@@ -143,18 +143,22 @@
     border-2 
     border-zinc-400 
     shadow-sm 
-    relative 
-    -translate-x-1/2 
-    md:translate-x-0;
+    relative;
   }
   .mobile-label {
     @apply md:hidden 
     absolute 
-    left-8 
     top-1/2 
     -translate-y-1/2 
-    w-64 
+    w-36;
+  }
+  .mobile-right {
+    @apply left-6 
     text-left;
+  }
+  .mobile-left {
+    @apply right-6 
+    text-right;
   }
   .mobile-time {
     @apply font-serif 

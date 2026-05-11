@@ -4,26 +4,43 @@
   let isMuted = true;
   let iframeRef;
   let hasInteracted = false;
+  let isIframeReady = false;
 
   const youtubeUrl =
     "https://www.youtube.com/embed/XEjLoHdbVeE?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=XEjLoHdbVeE";
 
-  function startParty() {
-    if (!hasInteracted && window.scrollY > 10 && iframeRef) {
-      iframeRef.contentWindow.postMessage(
-        '{"event":"command","func":"unMute","args":""}',
-        "*",
-      );
-      iframeRef.contentWindow.postMessage(
-        '{"event":"command","func":"playVideo","args":""}',
-        "*",
-      );
-      isMuted = false;
-      hasInteracted = true;
 
-      window.removeEventListener("scroll", startParty);
-      window.removeEventListener("touchstart", startParty);
-      window.removeEventListener("click", startParty);
+  function sendCommand(func, args = "") {
+    if (iframeRef && iframeRef.contentWindow) {
+      iframeRef.contentWindow.postMessage(
+        JSON.stringify({ event: "command", func, args }),
+        "*"
+      );
+    }
+  }
+
+  function startParty() {
+    if (!hasInteracted && isIframeReady && (window.scrollY > 10 || event?.type !== 'scroll')) {
+      executePlay();
+    }
+  }
+
+  function executePlay() {
+    sendCommand("unMute");
+    sendCommand("playVideo");
+    isMuted = false;
+    hasInteracted = true;
+
+    ["scroll", "touchstart", "click"].forEach(ev => 
+      window.removeEventListener(ev, startParty)
+    );
+  }
+
+  function handleIframeLoad() {
+    isIframeReady = true;
+
+    if (window.scrollY > 10) {
+      startParty();
     }
   }
 
@@ -41,47 +58,38 @@
 
   function toggleMute(event) {
     event.stopPropagation();
-
     if (isMuted) {
-      iframeRef.contentWindow.postMessage(
-        '{"event":"command","func":"unMute","args":""}',
-        "*",
-      );
-      iframeRef.contentWindow.postMessage(
-        '{"event":"command","func":"playVideo","args":""}',
-        "*",
-      );
+      sendCommand("unMute");
+      sendCommand("playVideo");
     } else {
-      iframeRef.contentWindow.postMessage(
-        '{"event":"command","func":"mute","args":""}',
-        "*",
-      );
+      sendCommand("mute");
     }
-
     isMuted = !isMuted;
     hasInteracted = true;
-
-    window.removeEventListener("scroll", startParty);
-    window.removeEventListener("touchstart", startParty);
-    window.removeEventListener("click", startParty);
   }
 </script>
 
 <div class="music-wrapper">
   <iframe
     bind:this={iframeRef}
+    on:load={handleIframeLoad} 
     class="hidden-player"
     src={youtubeUrl}
     allow="autoplay"
     title="Audio de fondo"
-  ></iframe><button
+  ></iframe>
+
+  <button
     class="music-btn"
     on:click={toggleMute}
     aria-label="Control de volumen"
-    >{#if isMuted}<i class="fa-solid fa-volume-xmark"></i>{:else}<i
-        class="fa-solid fa-volume-high"
-      ></i>{/if}</button
   >
+    {#if isMuted}
+      <i class="fa-solid fa-volume-xmark"></i>
+    {:else}
+      <i class="fa-solid fa-volume-high"></i>
+    {/if}
+  </button>
 </div>
 
 <style>

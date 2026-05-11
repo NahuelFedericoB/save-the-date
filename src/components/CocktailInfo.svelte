@@ -52,7 +52,7 @@
             >
           </div>
           <p class="info-text">
-            Rooftop La Maquinita<br />Av. Caseros 1750, Don Bosco
+            Rooftop La Maquinita
           </p>
         </div>
       </div>

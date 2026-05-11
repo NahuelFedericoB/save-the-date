@@ -1,16 +1,15 @@
 <script>
   import { onMount } from "svelte";
 
-  let isMuted = false;
+  let isMuted = true;
   let iframeRef;
   let hasInteracted = false;
 
   const youtubeUrl =
-    "https://www.youtube.com/embed/XEjLoHdbVeE?enablejsapi=1&autoplay=1&mute=0&loop=1&playlist=XEjLoHdbVeE";
+    "https://www.youtube.com/embed/XEjLoHdbVeE?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=XEjLoHdbVeE";
 
   function startParty() {
-    // Verificamos que sea un scroll down real (más de 20px) o un click/touch
-    if (!hasInteracted && window.scrollY > 20 && iframeRef) {
+    if (!hasInteracted && window.scrollY > 10 && iframeRef) {
       iframeRef.contentWindow.postMessage(
         '{"event":"command","func":"unMute","args":""}',
         "*",
@@ -22,7 +21,6 @@
       isMuted = false;
       hasInteracted = true;
 
-      // Limpiamos la basura: ya arrancó, no necesitamos escuchar más esto
       window.removeEventListener("scroll", startParty);
       window.removeEventListener("touchstart", startParty);
       window.removeEventListener("click", startParty);
@@ -30,7 +28,6 @@
   }
 
   onMount(() => {
-    // Escuchamos el scroll, pero mantenemos los otros de backup por las políticas de Chrome
     window.addEventListener("scroll", startParty);
     window.addEventListener("touchstart", startParty);
     window.addEventListener("click", startParty);
@@ -64,7 +61,6 @@
     isMuted = !isMuted;
     hasInteracted = true;
 
-    // Si el usuario tocó el botón antes de scrollear, cancelamos el auto-play del scroll
     window.removeEventListener("scroll", startParty);
     window.removeEventListener("touchstart", startParty);
     window.removeEventListener("click", startParty);

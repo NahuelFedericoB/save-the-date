@@ -1,12 +1,12 @@
 <script>
   import { onMount } from "svelte";
 
-  let isMuted = true;
+  let isMuted = false;
   let iframeRef;
   let hasInteracted = false;
 
   const youtubeUrl =
-    "https://www.youtube.com/embed/XEjLoHdbVeE?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=XEjLoHdbVeE";
+    "https://www.youtube.com/embed/XEjLoHdbVeE?enablejsapi=1&autoplay=1&mute=0&loop=1&playlist=XEjLoHdbVeE";
 
   function startParty() {
     // Verificamos que sea un scroll down real (más de 20px) o un click/touch

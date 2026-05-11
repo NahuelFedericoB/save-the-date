@@ -10,18 +10,14 @@
   class:is-visible={reveal.visible}
 >
   <div class="message-container">
-    <div class="divider-container">
-      <div class="divider-line"></div>
-    </div>
+    <div class="divider-container"><div class="divider-line"></div></div>
     <h2 class="invitation-title">
       Este es un día muy especial <br class="desktop-only" /> para nosotros
     </h2>
     <p class="invitation-text">
       ¡Y que mejor que compartirlo con ustedes! <br />
     </p>
-    <div class="divider-container">
-      <div class="divider-line"></div>
-    </div>
+    <div class="divider-container"><div class="divider-line"></div></div>
   </div>
 </section>
 
@@ -34,7 +30,7 @@
     ease-in-out 
     opacity-0 
     translate-y-10 
-    transition-[opacity,transform]
+    transition-[opacity,transform] 
     will-change-transform;
   }
 
@@ -44,28 +40,59 @@
   }
 
   .message-container {
-    @apply max-w-2xl 
-    mx-auto;
+    @apply relative 
+    max-w-6xl 
+    mx-auto 
+    p-8 
+    md:p-12;
+  }
+
+  .message-container::before {
+    content: "";
+    @apply absolute 
+    top-0 
+    right-0 
+    h-16 
+    w-16 
+    border-t-[3px] 
+    border-r-[3px] 
+    border-aegean 
+    md:h-24 
+    md:w-24;
+  }
+
+  .message-container::after {
+    content: "";
+    @apply absolute 
+    bottom-0 
+    left-0 
+    h-16 
+    w-16 
+    border-b-[3px] 
+    border-l-[3px] 
+    border-aegean 
+    md:h-24 
+    md:w-24;
   }
 
   .divider-container {
     @apply flex 
     justify-center 
-    mt-10
-    mb-10;
+    mt-6 
+    mb-6;
   }
 
   .divider-line {
-    @apply h-[1px] 
+    @apply h-[2px] 
     w-12 
-    bg-zinc-300;
+    bg-bougainvillea;
   }
 
   .invitation-title {
     @apply font-serif 
     text-3xl 
     md:text-5xl 
-    text-zinc-800 
+    text-aegean 
     leading-tight 
     mb-8;
   }
@@ -74,9 +101,9 @@
     @apply font-sans 
     text-lg 
     md:text-xl 
-    text-zinc-500 
+    text-aegean/80 
     tracking-wide 
-    font-light 
+    font-medium 
     italic;
   }
 

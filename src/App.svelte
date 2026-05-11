@@ -8,11 +8,12 @@
   import AssistanceForm from "./components/AssistanceForm.svelte";
   import InvitationMessage from "./components/InvitationMessage.svelte";
   import Bridge from "./components/Bridge.svelte";
+  import MusicPlayer from "./components/MusicPlayer.svelte";
 </script>
 
 <main>
   <InvitationCover />
-  <div class="content-container">
+  <div>
     <InvitationMessage />
     <Countdown />
     <Bridge />
@@ -25,36 +26,40 @@
   <footer>
     <h2 class="footer-title">¡Los esperamos!</h2>
   </footer>
+  <MusicPlayer />
 </main>
 
 <style>
   main {
     @apply min-h-screen 
     bg-[#FAFAFA] 
-    pb-2 
     font-sans 
     text-zinc-800;
   }
 
-  .content-container {
-    @apply mx-auto 
-    my-24 
-    max-w-6xl 
-    space-y-24 
-    px-4;
-  }
-
   footer {
-    @apply border-t 
-    border-zinc-100 
-    bg-white py-16 
+    @apply w-full 
+    bg-aegean 
+    py-20 
+    md:py-24
+    px-6 
+    flex 
+    flex-col 
+    items-center 
+    justify-center 
     text-center;
   }
 
   .footer-title {
     @apply font-serif 
-    text-5xl 
-    tracking-tight 
-    text-zinc-900;
+    text-2xl 
+    md:text-4xl 
+    text-white 
+    uppercase
+    font-bold
+    tracking-[0.3em] 
+    leading-tight;
+    /* Mantenemos la sombra sutil para el contraste */
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
   }
 </style>

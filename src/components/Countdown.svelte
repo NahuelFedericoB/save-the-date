@@ -28,81 +28,127 @@
 </script>
 
 <section class="countdown-container">
-  <h2 class="title">Faltan</h2>
-  <div class="timer-grid">
-    <div class="unit-box">
-      <span>{days}</span>
-      <span class="label">Días</span>
-    </div>
-    <span class="separator">:</span>
-    <div class="unit-box">
-      <span>{hours}</span>
-      <span class="label">Hs</span>
-    </div>
-    <span class="separator">:</span>
-    <div class="unit-box">
-      <span>{minutes}</span>
-      <span class="label">Min</span>
-    </div>
-    <span class="separator">:</span>
-    <div class="unit-box">
-      <span>{seconds}</span>
-      <span class="label">Seg</span>
+  <div class="overlay">
+    <h2 class="title">Faltan</h2>
+    <div class="timer-grid">
+      <div class="unit-box">
+        <span class="number">{days}</span><span class="label">Días</span>
+      </div>
+      <span class="separator">:</span>
+      <div class="unit-box">
+        <span class="number">{hours}</span><span class="label">Hs</span>
+      </div>
+      <span class="separator">:</span>
+      <div class="unit-box">
+        <span class="number">{minutes}</span><span class="label">Min</span>
+      </div>
+      <span class="separator">:</span>
+      <div class="unit-box">
+        <span class="number">{seconds}</span><span class="label">Seg</span>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
   .countdown-container {
-    @apply py-14 
+    @apply relative 
     mx-4 
     md:mx-auto 
     max-w-6xl 
-    bg-[#FDFBF7] 
-    text-center 
+    overflow-hidden 
     rounded-[2rem] 
-    border-2 
-    border-white 
+    border-[3px] 
+    border-bougainvillea 
     shadow-2xl 
-    shadow-zinc-200/50 
-    my-12;
+    shadow-bougainvillea/20 
+    my-12 
+    bg-cover 
+    bg-center 
+    bg-no-repeat;
+    background-image: url("/mykonos.jpg");
+  }
+
+  .countdown-container::before {
+    content: "";
+    @apply absolute 
+    inset-0 
+    bg-gradient-to-b 
+    from-black/60 
+    via-black/30 
+    to-black/70 
+    z-0;
+  }
+
+  .overlay {
+    @apply relative 
+    z-10 
+    py-12 
+    px-2 
+    md:py-24 
+    text-center;
   }
 
   .title {
-    @apply text-2xl 
+    @apply text-lg 
+    md:text-2xl 
     font-serif 
-    mb-10 
-    text-zinc-800;
+    mb-8 
+    text-white 
+    font-bold 
+    uppercase 
+    tracking-[0.4em];
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
   }
 
   .timer-grid {
     @apply flex 
     justify-center 
-    gap-4 
+    items-start 
+    gap-2 
     md:gap-8 
-    text-4xl 
-    md:text-6xl 
-    font-serif 
-    text-zinc-900;
+    font-serif;
+  }
+
+  .number {
+    @apply text-3xl 
+    md:text-8xl 
+    text-white 
+    font-bold 
+    leading-none;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
   }
 
   .unit-box {
     @apply flex 
     flex-col 
-    items-center;
+    items-center 
+    w-auto;
   }
 
   .label {
-    @apply text-xs 
-    tracking-widest 
+    @apply text-[10px] 
+    md:text-xs 
+    tracking-[0.2em] 
     uppercase 
     mt-4 
-    text-zinc-500 
-    font-sans;
+    px-3 
+    py-1 
+    rounded-full 
+    bg-aegean/90 
+    text-white 
+    font-sans 
+    font-bold;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
   }
 
   .separator {
-    @apply text-zinc-300 
-    font-light;
+    @apply text-2xl 
+    md:text-6xl 
+    text-white 
+    font-bold 
+    pt-1 
+    md:pt-4;
+    filter: drop-shadow(0 0 5px theme("colors.bougainvillea"));
   }
 </style>

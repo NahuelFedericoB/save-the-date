@@ -1,24 +1,38 @@
 <section class="hero-container">
-  <p class="subtitle animate-fade-in">Nuestra Boda</p>
-  <h1 class="main-title">Nahu & Joy</h1>
-  <p class="date-info">
-    28 de Noviembre <span class="divider">•</span> 2026
-  </p>
-  <div class="decorator-container">
-    <div class="line"></div>
+  <div class="content-z">
+    <p class="subtitle animate-fade-in">Save the Date</p>
+    <h1 class="main-title">Nahu & Joy</h1>
+    <p class="honey-text">Honey, Honey... ¡Nos casamos!</p>
+    <p class="date-info">28 de Noviembre <span class="divider">•</span> 2026</p>
+    <div class="decorator-container"><div class="line"></div></div>
   </div>
 </section>
 
 <style>
   .hero-container {
-    @apply flex 
+    @apply relative 
+    flex 
+    w-full 
     min-h-screen 
     flex-col 
     items-center 
     justify-center 
     overflow-hidden 
-    bg-white p-6 
+    bg-white 
+    bg-cover 
+    md:bg-[length:100%_100%] 
+    bg-center 
+    bg-no-repeat 
+    p-6 
     text-center;
+    background-image: url("/flowerBackground.jpg");
+  }
+
+  .content-z {
+    @apply z-10 
+    flex 
+    flex-col 
+    items-center;
   }
 
   .subtitle {
@@ -27,17 +41,27 @@
     text-xs 
     uppercase 
     tracking-[0.5em] 
-    text-zinc-400 
+    text-bougainvillea 
+    font-bold 
     md:text-sm;
   }
 
   .main-title {
-    @apply mb-6 
+    @apply mb-4 
     font-serif 
     text-6xl 
     tracking-tight 
-    text-zinc-900 
+    text-aegean 
     md:text-8xl;
+  }
+
+  .honey-text {
+    @apply mb-6 
+    font-sans 
+    text-lg 
+    font-medium 
+    text-bougainvillea 
+    md:text-xl;
   }
 
   .date-info {
@@ -45,13 +69,14 @@
     font-sans 
     text-lg 
     tracking-wide 
-    text-zinc-500 
+    text-aegean/80 
+    font-medium 
     md:text-xl;
   }
 
   .divider {
     @apply mx-2 
-    text-zinc-300;
+    text-bougainvillea;
   }
 
   .decorator-container {
@@ -61,7 +86,9 @@
 
   .line {
     @apply h-[2px] 
-    w-16 bg-zinc-200 md:w-24;
+    w-16 
+    bg-aegean 
+    md:w-24;
   }
 
   @keyframes fadeIn {

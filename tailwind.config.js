@@ -1,12 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{svelte,js,ts,jsx,tsx}"],
+  content: ["./src/**/*.{html,js,svelte,ts}"],
   theme: {
     extend: {
+      colors: {
+        aegean: "#005BAB",
+        bougainvillea: "#E10098",
+        sand: "#F5F5DC",
+      },
       fontFamily: {
-        // Pone a Playfair como la fuente serif principal
-        serif: ['"Playfair Display"', "serif"],
-        // Pone a Montserrat como la fuente sans principal
+        serif: ["Playfair Display", "serif"],
         sans: ["Montserrat", "sans-serif"],
       },
     },

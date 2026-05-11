@@ -12,26 +12,50 @@
   <div class="grid-container">
     <div class="content-wrapper">
       <h2 class="cocktail-title">Cocktail</h2>
-      <div class="time-container">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
-          class="clock-icon"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-          />
-        </svg>
-        <p class="time-text">A continuación de la ceremonia</p>
+      <div class="info-group">
+        <div class="info-row">
+          <div class="icon-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2.5"
+              stroke="currentColor"
+              class="w-4 h-4"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              /></svg
+            >
+          </div>
+          <p class="info-text">A continuación de la ceremonia</p>
+        </div>
+        <div class="info-row">
+          <div class="icon-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2.5"
+              stroke="currentColor"
+              class="w-4 h-4"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+              /><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+              /></svg
+            >
+          </div>
+          <p class="info-text">
+            Rooftop La Maquinita<br />Av. Caseros 1750, Don Bosco
+          </p>
+        </div>
       </div>
-      <p class="address-text">
-        Rooftop La Maquinita <br /> Av. Caseros 1750, B1876 Don Bosco
-      </p>
       <div class="map-wrapper">
         <iframe
           title="Mapa Fiesta"
@@ -56,20 +80,23 @@
 
 <style>
   .cocktail-card {
-    @apply py-16 
+    @apply py-10 
     px-6 
     md:px-12 
+    mx-4 
+    md:mx-auto 
+    max-w-6xl 
     bg-white 
-    rounded-[2rem] 
-    border-2 
-    border-white 
-    shadow-2xl 
-    shadow-zinc-200/50 
+    rounded-[2.5rem] 
+    border-[2px] 
+    border-aegean 
+    shadow-[0_20px_60px_rgba(230,240,249,1)] 
+    my-16 
     duration-700 
     ease-in-out 
     opacity-0 
-    translate-y-24 
-    transition-[opacity,transform]
+    translate-y-12 
+    transition-[opacity,transform] 
     will-change-transform;
   }
 
@@ -81,69 +108,80 @@
   .grid-container {
     @apply grid 
     md:grid-cols-2 
-    gap-12 
-    items-center;
+    gap-10 
+    items-start;
   }
 
   .content-wrapper {
-    @apply text-center 
-    md:text-left;
+    @apply flex 
+    flex-col 
+    gap-6 
+    text-left;
   }
 
   .cocktail-title {
-    @apply text-4xl 
+    @apply text-3xl 
+    md:text-4xl 
     font-serif 
-    text-zinc-900 
-    mb-4;
+    text-aegean 
+    font-bold;
   }
 
-  .time-container {
+  .info-group {
+    @apply flex 
+    flex-col 
+    gap-4;
+  }
+
+  .info-row {
     @apply flex 
     items-center 
+    gap-4;
+  }
+
+  .icon-circle {
+    @apply flex 
+    h-8 
+    w-8 
+    shrink-0 
+    items-center 
     justify-center 
-    md:justify-start 
-    gap-2 
-    mb-2 
-    text-zinc-800;
+    rounded-full 
+    bg-bougainvillea 
+    text-white;
   }
 
-  .clock-icon {
-    @apply w-5 
-    h-5;
-  }
-
-  .time-text {
-    @apply text-xl 
-    font-medium;
-  }
-
-  .address-text {
-    @apply text-zinc-500 
-    mb-8 
-    text-lg;
+  .info-text {
+    @apply text-lg 
+    text-zinc-600 
+    font-medium 
+    leading-tight;
   }
 
   .map-wrapper {
     @apply w-full 
-    h-64 
+    h-[200px] 
+    md:h-[250px] 
+    rounded-[1.5rem] 
     overflow-hidden 
-    rounded-xl 
-    shadow-md 
     border 
-    border-zinc-100;
+    border-zinc-100 
+    shadow-inner;
   }
 
   .image-wrapper {
-    @apply w-full;
+    @apply w-full 
+    static 
+    md:sticky 
+    md:top-0;
   }
 
   .venue-image {
     @apply w-full 
-    h-[500px] 
+    h-[300px] 
+    md:h-[420px] 
     object-cover 
-    rounded-2xl 
-    shadow-lg 
-    border 
-    border-zinc-100;
+    rounded-[2rem] 
+    shadow-sm;
   }
 </style>

@@ -3,17 +3,14 @@ export function useReveal() {
   let element = $state(null);
 
   $effect(() => {
-    if (!element || visible) return;
+    if (!element) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          visible = true;
-          observer.disconnect();
-        }
+        visible = entry.isIntersecting;
       },
       {
-        threshold: 0.15,
+        threshold: 0.05,
         rootMargin: "0px 0px -50px 0px",
       },
     );

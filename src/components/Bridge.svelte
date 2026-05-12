@@ -40,8 +40,9 @@
     @apply font-serif 
     text-5xl 
     md:text-6xl 
-    text-zinc-900 
+    text-aegean 
     mb-6 
+    font-bold
     tracking-tight;
   }
 
@@ -53,14 +54,16 @@
   }
 
   .line {
-    @apply h-[1px] 
-    w-8 
-    bg-zinc-300;
+    @apply h-[2px] 
+    w-10
+    md:w-16 
+    bg-bougainvillea;
   }
 
   .subtitle-text {
     @apply font-sans 
-    text-zinc-500 
+    text-aegean 
+    font-bold
     tracking-widest 
     uppercase 
     text-sm;

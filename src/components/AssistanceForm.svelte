@@ -34,14 +34,20 @@
 
     formState = "loading";
     errorMessage = "";
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwjpjBSlb3pZVtTDLJr8VsZf-4od71rKeOkauEZfbUD3WX1-pfQVcKB2cPNHiJPGSKS/exec";
+    const scriptURL =
+      "https://script.google.com/macros/s/AKfycbwjpjBSlb3pZVtTDLJr8VsZf-4od71rKeOkauEZfbUD3WX1-pfQVcKB2cPNHiJPGSKS/exec";
 
     try {
       await fetch(scriptURL, {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "text/plain" },
-        body: JSON.stringify({ name, lastName, mail, attendance: attendance ? "Sí" : "No" }),
+        body: JSON.stringify({
+          name,
+          lastName,
+          mail,
+          attendance: attendance ? "Sí" : "No",
+        }),
       });
       formState = "success";
     } catch (error) {
@@ -52,7 +58,122 @@
   }
 </script>
 
-<section bind:this={reveal.element} class="rsvp-full-width" class:is-visible={reveal.visible}><div class="top-dotted-line"></div><div class="rsvp-content-limit"><div class="header-container"><h2 class="rsvp-title">Confirmar Asistencia</h2><p class="rsvp-subtitle">Nos ayudás un montón a tener todo mejor organizado.</p></div>{#if formState === "success"}<div class="success-container"><div class="success-icon-wrapper"><svg class="success-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg></div><h3 class="success-title">¡Gracias, {name}!</h3><p class="success-text">{attendance ? "Qué lindo que nos acompañes en este día." : "Qué mal que no puedas venir, gracias por avisar."}</p></div>{:else}<form onsubmit={(e) => { e.preventDefault(); handleSubmit(); }} class="form-container"><div class="input-group"><label class="input-label">Nombre y Apellido</label><div class="grid-container"><input type="text" value={name} oninput={handleInputName} required placeholder="Ej: Donna Sheridan" class="text-input" disabled={formState === "loading"} /><input type="text" value={lastName} oninput={handleInputLastName} required placeholder="Apellido" class="text-input" disabled={formState === "loading"} /></div></div><div class="input-group"><label class="input-label">Correo Electrónico</label><input type="email" bind:value={mail} required placeholder="tu@email.com" class="text-input" disabled={formState === "loading"} /></div><div class="toggle-container"><span class="toggle-label-text">¿Confirmás tu asistencia?</span><button type="button" onclick={() => (attendance = !attendance)} class="toggle-switch" class:active={attendance} disabled={formState === "loading"}><div class="toggle-knob" class:knob-active={attendance}></div></button></div>{#if formState === "error"}<div class="error-message">{errorMessage}</div>{/if}<button type="submit" disabled={formState === "loading"} class="submit-button">{formState === "loading" ? "Guardando..." : "Enviar Confirmación"}</button></form>{/if}</div></section>
+<section
+  bind:this={reveal.element}
+  class="rsvp-full-width"
+  class:is-visible={reveal.visible}
+>
+  <div class="top-dotted-line"></div>
+  <div class="rsvp-content-limit">
+    <div class="header-container">
+      <h2 class="rsvp-title">Confirmar Asistencia</h2>
+      <p class="rsvp-subtitle">
+        Nos ayudás un montón a tener todo mejor organizado.
+      </p>
+    </div>
+    {#if formState === "success"}
+      <div class="success-container">
+        <div class="success-icon-wrapper">
+          <svg
+            class="success-icon"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            /></svg
+          >
+        </div>
+        <h3 class="success-title">¡Gracias, {name}!</h3>
+        <p class="success-text">
+          {attendance
+            ? "Qué lindo que nos acompañes en este día."
+            : "Qué mal que no puedas venir, gracias por avisar."}
+        </p>
+      </div>
+    {:else}
+      <form
+        onsubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+        class="form-container"
+      >
+        <div class="grid-container">
+          <div class="input-group">
+            <label class="input-label">Nombre</label>
+            <input
+              type="text"
+              value={name}
+              oninput={handleInputName}
+              required
+              placeholder="Tu nombre"
+              class="text-input"
+              disabled={formState === "loading"}
+            />
+          </div>
+          <div class="input-group">
+            <label class="input-label">Apellido</label>
+            <input
+              type="text"
+              value={lastName}
+              oninput={handleInputLastName}
+              required
+              placeholder="Tu apellido"
+              class="text-input"
+              disabled={formState === "loading"}
+            />
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <label class="input-label">Correo Electrónico</label>
+          <input
+            type="email"
+            bind:value={mail}
+            required
+            placeholder="tu@email.com"
+            class="text-input"
+            disabled={formState === "loading"}
+          />
+        </div>
+        <div class="toggle-container">
+          <span class="toggle-label-text">¿Confirmás tu asistencia?</span>
+          <button
+            type="button"
+            onclick={() => (attendance = !attendance)}
+            class="toggle-switch"
+            class:active={attendance}
+            disabled={formState === "loading"}
+          >
+            <div
+              class="toggle-knob"
+              class:knob-active={attendance}
+            ></div>
+          </button>
+        </div>
+        {#if formState === "error"}
+          <div class="error-message">
+            {errorMessage}
+          </div>
+        {/if}
+        <button
+          type="submit"
+          disabled={formState === "loading"}
+          class="submit-button"
+        >
+          {formState === "loading"
+            ? "Guardando..."
+            : "Enviar Confirmación"}
+        </button>
+      </form>
+    {/if}
+  </div>
+  <div class="bottom-dotted-line"></div>
+</section>
 
 <style>
   .rsvp-full-width {
@@ -71,21 +192,33 @@
     translate-y-0;
   }
 
-  .top-dotted-line {
+  /* Clases combinadas para ambas líneas punteadas */
+  .top-dotted-line, .bottom-dotted-line {
     @apply w-full 
-    h-[4px] 
-    mb-16;
-    background-image: linear-gradient(to right, #CFD8DC 50%, rgba(255,255,255,0) 0%);
-    background-position: top;
+    h-[4px];
+    background-image: linear-gradient(
+      to right,
+      #cfd8dc 50%,
+      rgba(255, 255, 255, 0) 0%
+    );
     background-size: 15px 4px;
     background-repeat: repeat-x;
+  }
+
+  .top-dotted-line {
+    @apply mb-16;
+    background-position: top;
+  }
+
+  .bottom-dotted-line {
+    @apply mt-16;
+    background-position: bottom;
   }
 
   .rsvp-content-limit {
     @apply max-w-3xl 
     mx-auto 
-    px-6 
-    pb-20;
+    px-6;
   }
 
   .header-container {

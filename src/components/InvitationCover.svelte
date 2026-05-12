@@ -1,11 +1,17 @@
-<section class="hero-container">
-  <div class="content-z">
-    <p class="subtitle animate-fade-in">Save the Date</p>
-    <h1 class="main-title">Nahu & Joy</h1>
-    <p class="honey-text">Honey, Honey... ¡Nos casamos!</p>
-    <p class="date-info">28 de Noviembre <span class="divider">•</span> 2026</p>
-    <div class="decorator-container"><div class="line"></div></div>
-  </div>
+<script>
+  import { useReveal } from "../lib/utils/reveal.svelte.js";
+
+  const reveal = useReveal();
+</script>
+
+<section bind:this={reveal.element} class="hero-container">
+  <p class="subtitle content-z" class:is-visible={reveal.visible}>
+    Save the Date
+  </p>
+  <h1 class="main-title">Nahu & Joy</h1>
+  <p class="honey-text">Honey, Honey... ¡Nos casamos!</p>
+  <p class="date-info">28 de Noviembre <span class="divider">•</span> 2026</p>
+  <div class="decorator-container"><div class="line"></div></div>
 </section>
 
 <style>
@@ -32,7 +38,18 @@
     @apply z-10 
     flex 
     flex-col 
-    items-center;
+    items-center
+    duration-[1500ms]
+    ease-out
+    opacity-0 
+    -translate-y-4
+    transition-[opacity,transform] 
+    will-change-transform;
+  }
+
+  .is-visible {
+    @apply opacity-100 
+    translate-y-0;
   }
 
   .subtitle {
@@ -89,20 +106,5 @@
     w-16 
     bg-aegean 
     md:w-24;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in {
-    animation: fadeIn 1.5s ease-out;
   }
 </style>

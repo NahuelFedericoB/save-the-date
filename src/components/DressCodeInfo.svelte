@@ -2,21 +2,6 @@
   import { useReveal } from "../lib/utils/reveal.svelte.js";
 
   const reveal = useReveal();
-
-  const dresscodeOptions = [
-    {
-      title: "Hombres",
-      description:
-        "Traje completo o ambo. Corbata o moño a elección. ¡Bien facheros!",
-      iconPath: `<path d="M6.5 8L11 12L6.5 16V8Z" fill="#D4AF37" stroke="#D4AF37" stroke-width="1.5" stroke-linejoin="round"/><path d="M17.5 8L13 12L17.5 16V8Z" fill="#D4AF37" stroke="#D4AF37" stroke-width="1.5" stroke-linejoin="round"/><rect x="10" y="10.5" width="4" height="3" rx="1" fill="#D4AF37" />`,
-    },
-    {
-      title: "Mujeres",
-      description:
-        "Vestido largo o de cocktail. ¡Los colores vivos son más que bienvenidos!",
-      iconPath: `<path d="M9 4L7.5 8.5L5 11L8.5 20H15.5L19 11L16.5 8.5L15 4H9Z" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 11.5H15.5" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round"/>`,
-    },
-  ];
 </script>
 
 <section
@@ -24,42 +9,50 @@
   class="dresscode-section"
   class:is-visible={reveal.visible}
 >
-  <div class="header-container">
-    <h2 class="dresscode-title">Dresscode</h2>
-    <p class="dresscode-subtitle">Elegante</p>
-  </div>
-  <div class="cards-grid">
-    {#each dresscodeOptions as option}
-      <div class="gender-card">
-        <div class="icon-wrapper">
-          <svg
-            class="icon-svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">{@html option.iconPath}</svg
-          >
-        </div>
-        <h3 class="gender-title">
-          {option.title}
-        </h3>
-        <p class="gender-description">
-          {option.description}
-        </p>
-      </div>
-    {/each}
+  <img
+    src="/vibrant-pink-right.png"
+    alt="Flores decorativas"
+    class="flower-top-right"
+  />
+  <img
+    src="/vibrant-pink-right.png"
+    alt="Flores decorativas"
+    class="flower-bottom-left"
+  />
+  <div class="content-wrapper">
+    <div class="header-container">
+      <h2 class="dresscode-title">Dresscode</h2>
+      <p class="dresscode-subtitle">MAMMA MIA!</p>
+    </div>
+    <div class="text-container">
+      <p class="dresscode-text">
+        Como bien se dieron cuenta la paleta de colores está presente en toda la
+        tarjeta, si quieren pueden unirse o traer su propio estilo, 
+        <span class="highlight-text">¡sean libres!</span>
+      </p>
+    </div>
   </div>
 </section>
 
 <style>
   .dresscode-section {
-    @apply py-20 
+    @apply relative 
+    max-w-6xl 
+    mx-4 
+    md:mx-auto 
+    py-16 
+    md:py-32 
     px-6 
-    bg-white 
-    rounded-[2rem] 
-    border-2 
-    border-white 
+    md:px-20
+    border-[3px] 
+    border-dotted 
+    border-bougainvillea 
+    rounded-[3rem] 
     shadow-2xl 
-    shadow-zinc-200/50 
+    shadow-bougainvillea/20 
+    bg-white/40 
+    backdrop-blur-sm
+    overflow-hidden 
     duration-1000 
     ease-in-out 
     opacity-0 
@@ -67,74 +60,96 @@
     transition-[opacity,transform] 
     will-change-transform;
   }
+
   .is-visible {
     @apply opacity-100 
     translate-y-0;
   }
-  .header-container {
-    @apply text-center 
-    mb-16;
+
+  .flower-top-right {
+    @apply absolute 
+    top-0 
+    right-0 
+    w-32 
+    md:w-80 
+    -translate-y-2
+    md:-translate-y-4 
+    translate-x-2
+    md:translate-x-6 
+    opacity-95 
+    pointer-events-none;
   }
-  .dresscode-title {
-    @apply font-serif 
-    text-4xl 
-    text-zinc-900 
-    mb-4 
-    tracking-tight;
+
+  .flower-bottom-left {
+    @apply absolute 
+    bottom-0 
+    left-0 
+    w-32 
+    md:w-80 
+    translate-y-2
+    md:translate-y-4 
+    -translate-x-2
+    md:-translate-x-6 
+    rotate-180 
+    opacity-95 
+    pointer-events-none;
   }
-  .dresscode-subtitle {
-    @apply font-sans 
-    text-xl 
-    uppercase 
-    tracking-[0.3em] 
-    text-zinc-400 
-    font-light;
-  }
-  .cards-grid {
-    @apply grid 
-    md:grid-cols-2 
-    gap-10 
-    max-w-4xl 
-    mx-auto;
-  }
-  .gender-card {
-    @apply bg-[#FDFBF7] 
-    p-10 
-    rounded-[1.5rem] 
-    border 
-    border-white 
-    shadow-sm 
+
+  .content-wrapper {
+    @apply relative 
+    z-10 
     flex 
     flex-col 
     items-center 
-    text-center;
+    text-center
+    py-8 
+    md:py-0;
   }
-  .icon-wrapper {
-    @apply w-16 
-    h-16 
-    bg-white 
-    rounded-full 
-    flex 
-    items-center 
-    justify-center 
-    mb-6 
-    shadow-sm 
-    border 
-    border-zinc-100;
+
+  .header-container {
+    @apply mb-8
+    md:mb-10;
   }
-  .icon-svg {
-    @apply w-8 
-    h-8;
-  }
-  .gender-title {
+
+  .dresscode-title {
     @apply font-serif 
-    text-2xl 
-    text-zinc-800 
-    mb-4;
+    text-4xl 
+    md:text-5xl 
+    text-bougainvillea 
+    mb-2
+    md:mb-4 
+    font-bold
+    tracking-tight;
   }
-  .gender-description {
+
+  .dresscode-subtitle {
     @apply font-sans 
-    text-zinc-500 
+    text-xl
+    md:text-3xl
+    uppercase 
+    tracking-[0.2em] 
+    text-aegean 
+    font-black;
+  }
+
+  .text-container {
+    @apply max-w-xl 
+    mx-auto
+    px-2;
+  }
+  .dresscode-text {
+    @apply font-sans 
+    text-base 
+    md:text-xl 
+    text-aegean/90
     leading-relaxed;
+  }
+  .highlight-text {
+    @apply font-serif 
+    font-bold 
+    italic 
+    text-bougainvillea 
+    text-lg
+    md:text-2xl;
   }
 </style>

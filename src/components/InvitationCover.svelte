@@ -5,13 +5,13 @@
 </script>
 
 <section bind:this={reveal.element} class="hero-container">
-  <p class="subtitle content-z" class:is-visible={reveal.visible}>
-    Save the Date
-  </p>
-  <h1 class="main-title">Nahu & Joy</h1>
-  <p class="honey-text">Honey, Honey... ¡Nos casamos!</p>
-  <p class="date-info">28 de Noviembre <span class="divider">•</span> 2026</p>
-  <div class="decorator-container"><div class="line"></div></div>
+  <div class="content-z" class:is-visible={reveal.visible}>
+    <p class="subtitle">Save the Date</p>
+    <h1 class="main-title">Nahu & Joy</h1>
+    <p class="honey-text">Honey, Honey... ¡Nos casamos!</p>
+    <p class="date-info">28 de Noviembre <span class="divider">•</span> 2026</p>
+    <div class="decorator-container"><div class="line"></div></div>
+  </div>
 </section>
 
 <style>
@@ -39,17 +39,17 @@
     flex 
     flex-col 
     items-center
-    duration-[1500ms]
-    ease-out
+    duration-[1500ms] 
+    ease-out /* Podés probar 'ease-[cubic-bezier(0.25,1,0.5,1)]' si querés que desacelere más lindo al final */
     opacity-0 
-    -translate-y-4
+    scale-75 /* Arranca al 75% de su tamaño (más atrás) */
     transition-[opacity,transform] 
     will-change-transform;
   }
 
   .is-visible {
     @apply opacity-100 
-    translate-y-0;
+    scale-100; /* Crece hasta el 100% (se viene hacia la cámara) */
   }
 
   .subtitle {

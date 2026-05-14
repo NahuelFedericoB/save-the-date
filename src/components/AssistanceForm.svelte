@@ -60,131 +60,149 @@
 
 <section
   bind:this={reveal.element}
-  class="rsvp-full-width"
+  class="rsvp-section"
   class:is-visible={reveal.visible}
 >
-  <div class="top-dotted-line"></div>
-  <div class="rsvp-content-limit">
-    <div class="header-container">
-      <h2 class="rsvp-title">Confirmar Asistencia</h2>
-      <p class="rsvp-subtitle">
-        Nos ayudás un montón a tener todo mejor organizado.
-      </p>
-    </div>
-    {#if formState === "success"}
-      <div class="success-container">
-        <div class="success-icon-wrapper">
-          <svg
-            class="success-icon"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            ><path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M5 13l4 4L19 7"
-            /></svg
-          >
+  <div class="rsvp-wrapper">
+    <div class="decorator-box">
+      <div class="corner top-left"></div>
+      <div class="corner bottom-right"></div>
+      <div class="header-container">
+        <h2 class="rsvp-title">Confirmar Asistencia</h2>
+        <div class="subtitle-wrapper">
+          <span class="mini-line"></span>
+          <p class="rsvp-subtitle">Tu presencia es nuestro mejor regalo</p>
+          <span class="mini-line"></span>
         </div>
-        <h3 class="success-title">¡Gracias, {name}!</h3>
-        <p class="success-text">
-          {attendance
-            ? "Qué lindo que nos acompañes en este día."
-            : "Qué mal que no puedas venir, gracias por avisar."}
-        </p>
       </div>
-    {:else}
-      <form
-        onsubmit={(e) => {
-          e.preventDefault();
-          handleSubmit();
-        }}
-        class="form-container"
-      >
-        <div class="grid-container">
-          <div class="input-group">
-            <label class="input-label">Nombre</label>
-            <input
-              type="text"
-              value={name}
-              oninput={handleInputName}
-              required
-              placeholder="Tu nombre"
-              class="text-input"
-              disabled={formState === "loading"}
-            />
+      {#if formState === "success"}
+        <div class="success-container">
+          <div class="success-icon-wrapper">
+            <svg
+              class="success-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
           </div>
-          <div class="input-group">
-            <label class="input-label">Apellido</label>
-            <input
-              type="text"
-              value={lastName}
-              oninput={handleInputLastName}
-              required
-              placeholder="Tu apellido"
-              class="text-input"
-              disabled={formState === "loading"}
-            />
-          </div>
+          <h3 class="success-title">¡Gracias, {name}!</h3>
+          <p class="success-text">
+            {attendance
+              ? "Qué lindo que nos acompañes en este día."
+              : "Qué pena que no puedas venir, gracias por avisar."}
+          </p>
         </div>
-        
-        <div class="input-group">
-          <label class="input-label">Correo Electrónico</label>
-          <input
-            type="email"
-            bind:value={mail}
-            required
-            placeholder="tu@email.com"
-            class="text-input"
-            disabled={formState === "loading"}
-          />
-        </div>
-        <div class="toggle-container">
-          <span class="toggle-label-text">¿Confirmás tu asistencia?</span>
-          <button
-            type="button"
-            onclick={() => (attendance = !attendance)}
-            class="toggle-switch"
-            class:active={attendance}
-            disabled={formState === "loading"}
-          >
-            <div
-              class="toggle-knob"
-              class:knob-active={attendance}
-            ></div>
-          </button>
-        </div>
-        {#if formState === "error"}
-          <div class="error-message">
-            {errorMessage}
-          </div>
-        {/if}
-        <button
-          type="submit"
-          disabled={formState === "loading"}
-          class="submit-button"
+      {:else}
+        <form
+          onsubmit={(e) => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+          class="form-container"
         >
-          {formState === "loading"
-            ? "Guardando..."
-            : "Enviar Confirmación"}
-        </button>
-      </form>
-    {/if}
+          <div class="grid-container">
+            <div class="input-group">
+              <label class="input-label">Nombre</label>
+              <input
+                type="text"
+                value={name}
+                oninput={handleInputName}
+                required
+                placeholder="Tu nombre"
+                class="text-input"
+                disabled={formState === "loading"}
+              />
+            </div>
+            <div class="input-group">
+              <label class="input-label">Apellido</label>
+              <input
+                type="text"
+                value={lastName}
+                oninput={handleInputLastName}
+                required
+                placeholder="Tu apellido"
+                class="text-input"
+                disabled={formState === "loading"}
+              />
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label">Correo Electrónico</label>
+            <input
+              type="email"
+              bind:value={mail}
+              required
+              placeholder="tu@email.com"
+              class="text-input"
+              disabled={formState === "loading"}
+            />
+          </div>
+          <div class="attendance-group">
+            <label class="input-label text-center w-full mb-3 block"
+              >¿Vas a venir?</label
+            >
+            <div class="attendance-selector">
+              <button
+                type="button"
+                class="attendance-btn {attendance ? 'active-yes' : 'inactive'}"
+                onclick={() => (attendance = true)}
+                disabled={formState === "loading"}
+              >
+                Sí voy
+              </button>
+              <button
+                type="button"
+                class="attendance-btn {!attendance ? 'active-no' : 'inactive'}"
+                onclick={() => (attendance = false)}
+                disabled={formState === "loading"}
+              >
+                No puedo asistir
+              </button>
+            </div>
+          </div>
+          {#if formState === "error"}
+            <div class="error-message">
+              {errorMessage}
+            </div>
+          {/if}
+          <button
+            type="submit"
+            disabled={formState === "loading"}
+            class="submit-button"
+          >
+            {formState === "loading" ? "Enviando..." : "Confirmar"}
+          </button>
+        </form>
+      {/if}
+    </div>
   </div>
-  <div class="bottom-dotted-line"></div>
 </section>
 
 <style>
-  .rsvp-full-width {
-    @apply w-full 
-    bg-white 
-    pt-0 
-    pb-0 
+  .rsvp-section {
+    @apply relative 
+    w-full 
+    bg-[#fdfbf8] 
+    py-24 
+    md:py-32 
+    px-6 
+    flex 
+    justify-center 
+    items-center
     duration-1000 
+    ease-in-out 
     opacity-0 
-    translate-y-4 
-    transition-all;
+    translate-y-10 
+    transition-[opacity,transform] 
+    will-change-transform;
   }
 
   .is-visible {
@@ -192,198 +210,243 @@
     translate-y-0;
   }
 
-  /* Clases combinadas para ambas líneas punteadas */
-  .top-dotted-line, .bottom-dotted-line {
+  .rsvp-wrapper {
     @apply w-full 
-    h-[4px];
-    background-image: linear-gradient(
-      to right,
-      #cfd8dc 50%,
-      rgba(255, 255, 255, 0) 0%
-    );
-    background-size: 15px 4px;
-    background-repeat: repeat-x;
+    max-w-3xl 
+    mx-auto;
   }
 
-  .top-dotted-line {
-    @apply mb-16;
-    background-position: top;
+  .decorator-box {
+    @apply relative 
+    bg-white
+    shadow-[0_20px_50px_rgba(0,0,0,0.03)]
+    border border-zinc-100
+    p-8 
+    md:p-16;
   }
 
-  .bottom-dotted-line {
-    @apply mt-16;
-    background-position: bottom;
+  /* --- ESQUINAS EDITORIALES --- */
+  .corner {
+    @apply absolute 
+    w-12 
+    md:w-16 
+    h-12 
+    md:h-16;
   }
 
-  .rsvp-content-limit {
-    @apply max-w-3xl 
-    mx-auto 
-    px-6;
+  .top-left {
+    @apply top-0 
+    left-0 
+    border-t-[2px] 
+    border-l-[2px] 
+    border-bougainvillea;
   }
 
+  .bottom-right {
+    @apply bottom-0 
+    right-0 
+    border-b-[2px] 
+    border-r-[2px] 
+    border-aegean;
+  }
   .header-container {
-    @apply text-center 
+    @apply flex 
+    flex-col 
+    items-center 
+    text-center 
     mb-12;
   }
-
   .rsvp-title {
     @apply font-serif 
-    text-4xl 
-    md:text-5xl 
+    text-[2.5rem] 
+    md:text-[3.5rem] 
+    leading-none 
+    tracking-tight 
     text-aegean 
-    font-bold 
-    mb-4;
+    mb-6;
+  }
+  .subtitle-wrapper {
+    @apply flex 
+    items-center 
+    justify-center 
+    gap-4;
+  }
+  .mini-line {
+    @apply h-[1px] 
+    w-6 
+    md:w-10 
+    bg-bougainvillea/50;
   }
 
   .rsvp-subtitle {
     @apply font-sans 
-    text-zinc-500 
-    italic 
-    text-lg;
+    text-[10px] 
+    md:text-xs 
+    font-bold 
+    uppercase 
+    tracking-[0.25em] 
+    text-aegean;
   }
-
   .form-container {
-    @apply space-y-8;
+    @apply flex 
+    flex-col 
+    gap-6;
   }
 
   .grid-container {
     @apply grid 
     md:grid-cols-2 
-    gap-4;
+    gap-6;
   }
 
   .input-group {
     @apply flex 
     flex-col 
-    gap-3;
+    gap-2;
   }
 
   .input-label {
-    @apply text-xs 
-    font-black 
+    @apply font-sans 
+    text-[10px] 
+    font-bold 
     uppercase 
-    tracking-widest 
-    text-aegean;
+    tracking-[0.2em] 
+    text-aegean/80 
+    ml-1;
   }
 
   .text-input {
     @apply w-full 
-    bg-white 
-    p-4 
-    rounded-xl 
+    bg-zinc-50/50 
+    px-5 
+    py-3.5 
+    rounded-lg 
     border 
     border-zinc-200 
-    text-zinc-700 
+    font-sans
+    text-[0.95rem]
+    text-zinc-800 
     placeholder:text-zinc-400 
     outline-none 
-    focus:ring-2 
-    focus:ring-aegean/10 
-    focus:border-aegean/30 
-    transition-all;
+    focus:bg-white
+    focus:ring-1 
+    focus:ring-aegean 
+    focus:border-aegean 
+    transition-all
+    duration-300;
   }
 
-  .toggle-container {
+  .attendance-group {
+    @apply mt-4 
+    mb-2;
+  }
+
+  .attendance-selector {
     @apply flex 
-    items-center 
-    justify-between 
-    py-4;
+    flex-col 
+    md:flex-row 
+    gap-3;
   }
 
-  .toggle-label-text {
-    @apply text-aegean 
+  .attendance-btn {
+    @apply flex-1 
+    py-3.5 
+    rounded-lg 
+    font-sans 
+    text-xs 
     font-bold 
-    text-sm 
     uppercase 
-    tracking-widest;
+    tracking-[0.15em] 
+    border 
+    transition-all 
+    duration-300;
   }
 
-  .toggle-switch {
-    @apply relative 
-    w-12 
-    h-6 
-    bg-zinc-200 
-    rounded-full 
-    transition-colors;
+  .active-yes {
+    @apply bg-bougainvillea 
+    text-white 
+    border-bougainvillea 
+    shadow-md 
+    shadow-bougainvillea/20;
   }
 
-  .toggle-switch.active {
-    @apply bg-aegean;
+  .active-no {
+    @apply bg-aegean 
+    text-white 
+    border-aegean 
+    shadow-md 
+    shadow-aegean/20;
   }
 
-  .toggle-knob {
-    @apply absolute 
-    top-1 
-    left-1 
-    w-4 
-    h-4 
-    bg-white 
-    rounded-full 
-    transition-transform;
+  .inactive {
+    @apply bg-transparent 
+    text-zinc-400 
+    border-zinc-200 
+    hover:border-zinc-300 
+    hover:text-zinc-600;
   }
 
-  .knob-active {
-    @apply translate-x-6;
+  .error-message {
+    @apply text-bougainvillea 
+    text-xs 
+    font-bold 
+    uppercase
+    tracking-widest
+    text-center 
+    bg-bougainvillea/5 
+    p-4 
+    rounded-lg;
   }
 
   .submit-button {
     @apply w-full 
-    bg-bougainvillea 
+    mt-4
+    bg-aegean 
     text-white 
-    py-6 
-    rounded-2xl 
-    font-serif 
-    text-2xl 
-    font-semibold 
+    py-4 
+    rounded-lg 
+    font-sans 
+    text-xs 
+    md:text-sm 
+    font-bold 
+    uppercase 
+    tracking-[0.2em] 
     shadow-lg 
-    shadow-bougainvillea/20 
-    hover:brightness-110 
+    shadow-aegean/20 
+    hover:bg-aegean/90 
     transition-all 
     active:scale-[0.98];
   }
-
   .success-container {
     @apply flex 
     flex-col 
     items-center 
-    text-center;
+    text-center
+    py-10;
   }
 
   .success-icon-wrapper {
-    @apply w-16 
-    h-16 
-    bg-green-50 
-    text-green-500 
-    rounded-full 
-    flex 
-    items-center 
-    justify-center 
-    mb-6;
+    @apply mb-6 
+    text-aegean;
   }
 
   .success-icon {
-    @apply w-8 
-    h-8;
+    @apply w-16 
+    h-16;
   }
 
   .success-title {
     @apply font-serif 
     text-3xl 
+    md:text-4xl 
     text-aegean 
-    mb-2;
+    mb-3;
   }
 
   .success-text {
-    @apply text-zinc-500 
-    text-lg;
-  }
-
-  .error-message {
-    @apply text-red-500 
-    text-sm 
-    font-bold 
-    text-center 
-    bg-red-50 
-    p-4 
-    rounded-xl;
+    @apply font-sans
+    text-zinc-500 
+    text-base
+    md:text-lg;
   }
 </style>

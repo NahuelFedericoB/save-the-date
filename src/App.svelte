@@ -7,7 +7,6 @@
   import DressCodeInfo from "./components/DressCodeInfo.svelte";
   import AssistanceForm from "./components/AssistanceForm.svelte";
   import InvitationMessage from "./components/InvitationMessage.svelte";
-  import Bridge from "./components/Bridge.svelte";
   import MusicPlayer from "./components/MusicPlayer.svelte";
 </script>
 
@@ -16,7 +15,6 @@
   <div>
     <InvitationMessage />
     <Countdown />
-    <Bridge />
     <ChurchInfo />
     <CocktailInfo />
     <DressCodeInfo />

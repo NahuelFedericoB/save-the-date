@@ -1,93 +1,89 @@
 <script>
   import { onMount } from "svelte";
 
-  let isMuted = true;
-  let iframeRef;
-  let hasInteracted = false;
-  let isIframeReady = false;
+  // Usamos $state para que la UI reaccione al cambio de mute/play
+  let isMuted = $state(true);
+  let audioRef = $state(null);
+  let hasInteracted = $state(false);
 
-  const youtubeUrl =
-    "https://www.youtube.com/embed/XEjLoHdbVeE?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=XEjLoHdbVeE";
+  const audioUrl = "/ABBA - Gimme! Gimme! Gimme! (A Man After Midnight).mp3";
 
+  function startParty(event) {
+    if (hasInteracted) return;
 
-  function sendCommand(func, args = "") {
-    if (iframeRef && iframeRef.contentWindow) {
-      iframeRef.contentWindow.postMessage(
-        JSON.stringify({ event: "command", func, args }),
-        "*"
-      );
-    }
-  }
+    if (event.type === 'scroll') {
+      if (window.scrollY > 5) {
+        executePlay();
+      }
+    } else {
 
-  function startParty() {
-    if (!hasInteracted && isIframeReady && (window.scrollY > 10 || event?.type !== 'scroll')) {
       executePlay();
     }
   }
 
   function executePlay() {
-    sendCommand("unMute");
-    sendCommand("playVideo");
-    isMuted = false;
-    hasInteracted = true;
+    if (!audioRef || hasInteracted) return;
 
-    ["scroll", "touchstart", "click"].forEach(ev => 
-      window.removeEventListener(ev, startParty)
-    );
+    audioRef.muted = false;
+    audioRef.play().then(() => {
+      isMuted = false;
+      hasInteracted = true;
+      cleanEvents();
+    }).catch(error => {
+      console.log("Autoplay pendiente de interacción directa:", error);
+    });
   }
 
-  function handleIframeLoad() {
-    isIframeReady = true;
-
-    if (window.scrollY > 10) {
-      startParty();
-    }
+  function cleanEvents() {
+    window.removeEventListener("scroll", startParty);
+    window.removeEventListener("click", startParty);
+    window.removeEventListener("touchstart", startParty);
   }
 
   onMount(() => {
-    window.addEventListener("scroll", startParty);
-    window.addEventListener("touchstart", startParty);
+    window.addEventListener("scroll", startParty, { passive: true });
     window.addEventListener("click", startParty);
+    window.addEventListener("touchstart", startParty, { passive: true });
 
-    return () => {
-      window.removeEventListener("scroll", startParty);
-      window.removeEventListener("touchstart", startParty);
-      window.removeEventListener("click", startParty);
-    };
+    return () => cleanEvents();
   });
 
   function toggleMute(event) {
     event.stopPropagation();
+    if (!audioRef) return;
+
     if (isMuted) {
-      sendCommand("unMute");
-      sendCommand("playVideo");
+      audioRef.muted = false;
+      audioRef.play();
     } else {
-      sendCommand("mute");
+      audioRef.pause();
     }
+    
     isMuted = !isMuted;
     hasInteracted = true;
+    cleanEvents();
   }
 </script>
 
 <div class="music-wrapper">
-  <iframe
-    bind:this={iframeRef}
-    on:load={handleIframeLoad} 
-    class="hidden-player"
-    src={youtubeUrl}
-    allow="autoplay"
-    title="Audio de fondo"
-  ></iframe>
+  <audio
+    bind:this={audioRef}
+    src={audioUrl}
+    loop
+    muted
+    class="hidden"
+  ></audio>
 
   <button
     class="music-btn"
-    on:click={toggleMute}
-    aria-label="Control de volumen"
+    class:is-playing={!isMuted}
+    onclick={toggleMute}
+    aria-label="Control de música"
   >
     {#if isMuted}
       <i class="fa-solid fa-volume-xmark"></i>
     {:else}
-      <i class="fa-solid fa-volume-high"></i>
+      <i class="fa-solid fa-music"></i>
     {/if}
   </button>
 </div>
@@ -98,14 +94,6 @@
     bottom-6 
     right-6 
     z-50;
-  }
-
-  .hidden-player {
-    @apply absolute 
-    h-0 
-    w-0 
-    opacity-0 
-    pointer-events-none;
   }
 
   .music-btn {
@@ -121,7 +109,23 @@
     shadow-lg 
     shadow-bougainvillea/40 
     transition-all 
+    duration-300
     hover:scale-110 
     active:scale-95;
+  }
+  .is-playing {
+    animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      box-shadow: 0 0 0 0 rgba(230, 48, 119, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 15px rgba(230, 48, 119, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(230, 48, 119, 0);
+    }
   }
 </style>

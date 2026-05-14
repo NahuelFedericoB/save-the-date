@@ -5,106 +5,157 @@
 </script>
 
 <section bind:this={reveal.element} class="hero-container">
+  <div class="hero-overlay"></div>
   <div class="content-z" class:is-visible={reveal.visible}>
-    <p class="subtitle">Save the Date</p>
-    <h1 class="main-title">Nahu & Joy</h1>
-    <p class="honey-text">Honey, Honey... ¡Nos casamos!</p>
-    <p class="date-info">28 de Noviembre <span class="divider">•</span> 2026</p>
-    <div class="decorator-container"><div class="line"></div></div>
+     <p class="honey-text">
+      Honey, Honey... ¡Nos casamos!
+    </p>
+    <h1 class="main-title">
+      <span class="name-primary">Nahu</span>
+      <span class="ampersand">&</span>
+      <span class="name-secondary">Joy</span>
+    </h1>
+   <p class="subtitle">Save the Date</p>
+    <p class="date-info">
+      28 de Noviembre
+      <span class="divider">•</span>
+      2026
+    </p>
+    <div class="decorator-container">
+      <div class="line"></div>
+    </div>
   </div>
 </section>
 
 <style>
   .hero-container {
-    @apply relative 
-    flex 
-    w-full 
-    min-h-screen 
-    flex-col 
-    items-center 
-    justify-center 
-    overflow-hidden 
-    bg-white 
-    bg-cover 
-    md:bg-[length:100%_100%] 
-    bg-center 
-    bg-no-repeat 
-    p-6 
+    @apply relative
+    flex
+    min-h-screen
+    w-full
+    items-center
+    justify-center
+    overflow-hidden
+    bg-[#f7f3ef]
+    bg-cover
+    bg-center
+    bg-no-repeat
+    px-6
+    py-24
     text-center;
-    background-image: url("/flowerBackground.jpg");
+    background-image: url("/herobackground.png");
+  }
+
+  .hero-overlay {
+    @apply absolute inset-0;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.72) 0%,
+        rgba(255, 255, 255, 0.18) 100%
+      );
   }
 
   .content-z {
-    @apply z-10 
-    flex 
-    flex-col 
+    @apply relative
+    z-10
+    flex
+    flex-col
     items-center
-    duration-[1500ms] 
-    ease-out /* Podés probar 'ease-[cubic-bezier(0.25,1,0.5,1)]' si querés que desacelere más lindo al final */
-    opacity-0 
-    scale-75 /* Arranca al 75% de su tamaño (más atrás) */
-    transition-[opacity,transform] 
+    opacity-0
+    scale-[0.92]
+    transition-all
+    duration-[1800ms]
+    ease-[cubic-bezier(0.16,1,0.3,1)]
     will-change-transform;
   }
 
   .is-visible {
-    @apply opacity-100 
-    scale-100; /* Crece hasta el 100% (se viene hacia la cámara) */
+    @apply opacity-100
+    scale-100;
   }
 
   .subtitle {
-    @apply mb-6 
-    font-sans 
-    text-xs 
-    uppercase 
-    tracking-[0.5em] 
-    text-bougainvillea 
-    font-bold 
-    md:text-sm;
+    @apply mb-4
+    font-sans
+    text-[20px]
+    font-semibold
+    uppercase
+    tracking-[0.45em]
+    text-bougainvillea
+    mt-12
+    md:text-[20px];
   }
 
   .main-title {
-    @apply mb-4 
-    font-serif 
-    text-6xl 
-    tracking-tight 
-    text-aegean 
-    md:text-8xl;
+    @apply flex
+    flex-col
+    items-center
+    leading-[0.88]
+    tracking-[-0.05em]
+    text-aegean;
+  }
+
+  .name-primary {
+    @apply font-serif
+    text-[5.5rem]
+    md:text-[9rem]
+    lg:text-[11rem];
+  }
+
+  .ampersand {
+    @apply -my-3
+    font-serif
+    text-[4.5rem]
+    leading-none
+    text-bougainvillea
+    md:text-[7rem]
+    lg:text-[8rem];
+  }
+
+  .name-secondary {
+    @apply -mt-2
+    font-serif
+    text-[5.5rem]
+    md:text-[9rem]
+    lg:text-[11rem];
   }
 
   .honey-text {
-    @apply mb-6 
-    font-sans 
-    text-lg 
-    font-medium 
-    text-bougainvillea 
+    @apply mt-8
+    mb-8
+    max-w-xl
+    font-sans
+    text-lg
+    font-medium
+    text-bougainvillea
     md:text-xl;
   }
 
   .date-info {
-    @apply mb-10 
-    font-sans 
-    text-lg 
-    tracking-wide 
-    text-aegean/80 
-    font-medium 
+    @apply mb-12
+    font-sans
+    text-[22px]
+    font-medium
+    tracking-[0.12em]
+    text-aegean/80
     md:text-xl;
   }
 
   .divider {
-    @apply mx-2 
+    @apply mx-3
     text-bougainvillea;
   }
 
   .decorator-container {
-    @apply flex 
-    justify-center;
+    @apply flex justify-center;
   }
 
   .line {
-    @apply h-[2px] 
-    w-16 
-    bg-aegean 
+    @apply h-[2px]
+    w-16
+    rounded-full
+    bg-aegean/80
     md:w-24;
   }
 </style>

@@ -9,27 +9,19 @@
   class="dresscode-section"
   class:is-visible={reveal.visible}
 >
-  <img
-    src="/vibrant-pink-right.png"
-    alt="Flores decorativas"
-    class="flower-top-right"
-  />
-  <img
-    src="/vibrant-pink-right.png"
-    alt="Flores decorativas"
-    class="flower-bottom-left"
-  />
   <div class="content-wrapper">
-    <div class="header-container">
-      <h2 class="dresscode-title">Dresscode</h2>
-      <p class="dresscode-subtitle">MAMMA MIA!</p>
-    </div>
-    <div class="text-container">
-      <p class="dresscode-text">
-        Como bien se dieron cuenta la paleta de colores está presente en toda la
-        tarjeta, si quieren pueden unirse o traer su propio estilo, 
-        <span class="highlight-text">¡sean libres!</span>
+    <div class="decorator-box">
+      <div class="corner top-left"></div>
+      <h2 class="section-title">Dresscode</h2>
+      <div class="subtitle-wrapper">
+        <span class="mini-line"></span>
+        <p class="section-subtitle">Elegante / Elegante Sport</p>
+        <span class="mini-line"></span>
+      </div>
+      <p class="description">
+        Queremos que te sientas increíble para celebrar y disfrutar con nosotros esta noche.
       </p>
+      <div class="corner bottom-right"></div>
     </div>
   </div>
 </section>
@@ -37,26 +29,18 @@
 <style>
   .dresscode-section {
     @apply relative 
-    max-w-6xl 
-    mx-4 
-    md:mx-auto 
-    py-16 
+    w-full 
+    bg-white
+    py-24 
     md:py-32 
     px-6 
-    md:px-20
-    border-[3px] 
-    border-dotted 
-    border-bougainvillea 
-    rounded-[3rem] 
-    shadow-2xl 
-    shadow-bougainvillea/20 
-    bg-white/40 
-    backdrop-blur-sm
-    overflow-hidden 
+    flex 
+    justify-center 
+    items-center
     duration-1000 
     ease-in-out 
     opacity-0 
-    translate-y-20 
+    translate-y-10 
     transition-[opacity,transform] 
     will-change-transform;
   }
@@ -66,90 +50,89 @@
     translate-y-0;
   }
 
-  .flower-top-right {
-    @apply absolute 
-    top-0 
-    right-0 
-    w-32 
-    md:w-80 
-    -translate-y-2
-    md:-translate-y-4 
-    translate-x-2
-    md:translate-x-6 
-    opacity-95 
-    pointer-events-none;
-  }
-
-  .flower-bottom-left {
-    @apply absolute 
-    bottom-0 
-    left-0 
-    w-32 
-    md:w-80 
-    translate-y-2
-    md:translate-y-4 
-    -translate-x-2
-    md:-translate-x-6 
-    rotate-180 
-    opacity-95 
-    pointer-events-none;
-  }
-
   .content-wrapper {
+    @apply w-full 
+    max-w-4xl 
+    mx-auto 
+    flex 
+    justify-center;
+  }
+
+  .decorator-box {
     @apply relative 
-    z-10 
     flex 
     flex-col 
     items-center 
-    text-center
-    py-8 
-    md:py-0;
+    text-center 
+    p-10 
+    md:p-16;
   }
 
-  .header-container {
-    @apply mb-8
-    md:mb-10;
+  .corner {
+    @apply absolute 
+    w-12 
+    md:w-20 
+    h-12 
+    md:h-20;
   }
 
-  .dresscode-title {
+  .top-left {
+    @apply top-0 
+    left-0 
+    border-t-[2px] 
+    border-l-[2px] 
+    border-bougainvillea;
+  }
+
+  .bottom-right {
+    @apply bottom-0 
+    right-0 
+    border-b-[2px] 
+    border-r-[2px] 
+    border-aegean;
+  }
+  .section-title {
     @apply font-serif 
-    text-4xl 
-    md:text-5xl 
-    text-bougainvillea 
-    mb-2
-    md:mb-4 
-    font-bold
-    tracking-tight;
-  }
-
-  .dresscode-subtitle {
-    @apply font-sans 
-    text-xl
-    md:text-3xl
-    uppercase 
-    tracking-[0.2em] 
+    text-5xl 
+    md:text-[4.5rem] 
+    leading-none 
+    tracking-tight 
     text-aegean 
-    font-black;
+    mb-8;
   }
 
-  .text-container {
-    @apply max-w-xl 
-    mx-auto
-    px-2;
+  .subtitle-wrapper {
+    @apply flex 
+    items-center 
+    justify-center 
+    gap-4 
+    mb-6;
   }
-  .dresscode-text {
+
+  .mini-line {
+    @apply h-[2px] 
+    w-8 
+    md:w-12 
+    bg-bougainvillea;
+  }
+
+  .section-subtitle {
+    @apply font-sans 
+    text-sm 
+    md:text-base 
+    font-bold 
+    uppercase 
+    tracking-[0.25em] 
+    text-bougainvillea;
+  }
+
+  .description {
     @apply font-sans 
     text-base 
-    md:text-xl 
-    text-aegean/90
-    leading-relaxed;
-  }
-  .highlight-text {
-    @apply font-serif 
-    font-bold 
-    italic 
-    text-bougainvillea 
-    text-lg
-    md:text-2xl;
+    md:text-lg 
+    text-aegean/70 
+    max-w-md 
+    mx-auto 
+    italic;
   }
 </style>

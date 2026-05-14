@@ -30,25 +30,45 @@
             alt="Iglesia Loreto"
             class="church-image"
           />
-        </div> 
+        </div>
         <div class="card-content">
-          <h3 class="card-title">Ceremonia Religiosa</h3>          
+          <h3 class="card-title">Ceremonia Religiosa</h3>
           <div class="info-list">
             <div class="info-item">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon-svg">
-                <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 000-1.5h-3.75V6z" clip-rule="evenodd" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="icon-svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 000-1.5h-3.75V6z"
+                  clip-rule="evenodd"
+                />
               </svg>
               <span>16:00 hs</span>
-            </div>           
+            </div>
             <div class="info-item">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon-svg">
-                <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="icon-svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z"
+                  clip-rule="evenodd"
+                />
               </svg>
               <span>Nuestra Señora del Loreto, Sarandí</span>
             </div>
           </div>
           <div class="map-wrapper">
-            <div class="map-overlay pointer-events-none absolute inset-0 z-10"></div>
+            <div
+              class="map-overlay pointer-events-none absolute inset-0 z-10"
+            ></div>
             <iframe
               title="Mapa Iglesia"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.3364955761355!2d-58.3444004!3d-34.6714004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a3331a1a1a1a1a%3A0x1a1a1a1a1a1a1a1a!2sAv.%20Bartolom%C3%A9%20Mitre%203779%2C%20Sarand%C3%AD!5e0!3m2!1ses!2sar!4v1610000000000!5m2!1ses!2sar"
@@ -57,20 +77,7 @@
               style="border:0;"
               allowfullscreen={true}
               loading="lazy"
-              class="absolute inset-0 z-0 opacity-50 grayscale"
-            ></iframe>           
-            <a
-              href="https://maps.google.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="maps-button"
-            >
-              Ver en Maps
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 shrink-0">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H18m0 0v4.5M18 6 10.5 13.5" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 13.5v4.125c0 .621-.504 1.125-1.125 1.125H6.375A1.125 1.125 0 0 1 5.25 17.625V10.125C5.25 9.504 5.754 9 6.375 9H10.5" />
-              </svg>
-            </a>
+            ></iframe>
           </div>
         </div>
       </div>
@@ -115,12 +122,12 @@
     bg-cover 
     bg-left 
     bg-no-repeat;
-    
+
     background-image: url("/venue-flowers.png");
-    
+
     /* 1. Mezcla los colores: el blanco de la imagen se vuelve transparente */
-    mix-blend-mode: multiply; 
-    
+    mix-blend-mode: multiply;
+
     /* 2. Máscara de gradiente: Difumina el borde derecho hacia la nada */
     -webkit-mask-image: linear-gradient(to right, black 40%, transparent 100%);
     mask-image: linear-gradient(to right, black 40%, transparent 100%);
@@ -248,7 +255,7 @@
   .card-content {
     @apply pt-8 
     pb-2 
-    px-0; 
+    px-0;
   }
 
   .card-title {
@@ -276,7 +283,7 @@
     text-[0.95rem] 
     leading-snug
     text-zinc-600
-    md:flex-1; 
+    md:flex-1;
   }
 
   .icon-svg {

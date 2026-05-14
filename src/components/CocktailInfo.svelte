@@ -23,17 +23,28 @@
         </div>
         <div class="card-content">
           <h3 class="card-title">Fiesta</h3>
-          
+
           <div class="info-list">
             <div class="info-item">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon-svg">
-                <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="icon-svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z"
+                  clip-rule="evenodd"
+                />
               </svg>
               <span>Rooftop La Maquinita</span>
             </div>
           </div>
           <div class="map-wrapper">
-            <div class="map-overlay pointer-events-none absolute inset-0 z-10"></div>
+            <div
+              class="map-overlay pointer-events-none absolute inset-0 z-10"
+            ></div>
             <iframe
               title="Mapa Fiesta"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3279.123456789!2d-58.300000!3d-34.700000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sAv.%20Caseros%201750%2C%20Don%20Bosco!5e0!3m2!1ses!2sar!4v1610000000000!5m2!1ses!2sar"
@@ -42,28 +53,14 @@
               style="border:0;"
               allowfullscreen={true}
               loading="lazy"
-              class="absolute inset-0 z-0 opacity-50 grayscale"
             ></iframe>
-            
-            <a
-              href="https://maps.google.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="maps-button"
-            >
-              Ver en Maps
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5 shrink-0">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H18m0 0v4.5M18 6 10.5 13.5" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 13.5v4.125c0 .621-.504 1.125-1.125 1.125H6.375A1.125 1.125 0 0 1 5.25 17.625V10.125C5.25 9.504 5.754 9 6.375 9H10.5" />
-              </svg>
-            </a>
           </div>
         </div>
       </div>
     </div>
     <div class="title-side order-1 lg:order-2">
       <div class="title-decorator-box">
-        <div class="corner top-right"></div>   
+        <div class="corner top-right"></div>
         <h2 class="section-title">
           A continuación<br />
           de la<br />
@@ -76,7 +73,6 @@
         <div class="corner bottom-left"></div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -117,7 +113,7 @@
     bg-no-repeat
     scale-x-[-1];
     background-image: url("/mesa.jpg");
-    mix-blend-mode: multiply; 
+    mix-blend-mode: multiply;
     -webkit-mask-image: linear-gradient(to right, black 40%, transparent 100%);
     mask-image: linear-gradient(to right, black 40%, transparent 100%);
   }
@@ -244,7 +240,7 @@
   .card-content {
     @apply pt-8 
     pb-2 
-    px-0; 
+    px-0;
   }
 
   .card-title {
@@ -272,7 +268,7 @@
     text-[0.95rem] 
     leading-snug
     text-zinc-600
-    md:flex-1; 
+    md:flex-1;
   }
 
   .icon-svg {

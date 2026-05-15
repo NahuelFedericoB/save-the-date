@@ -36,14 +36,10 @@
             </h3>
           </div>
           <div class="info-list">
-            <div class="info-item">
-              <span class="info-key">Lugar</span>
-              <span class="info-value"> Rooftop La Maquinita </span>
-            </div>
             <div class="info-divider"></div>
             <div class="info-item">
               <span class="info-key">Dirección</span>
-              <span class="info-value"> Av. Caseros 1750 · Don Bosco </span>
+              <span class="info-value">Av. Caseros 1750 · Don Bosco</span>
             </div>
           </div>
           <a
@@ -85,9 +81,7 @@
 
 <style>
   .venue-section {
-    @apply relative
-  isolate
-  overflow-hidden;
+    @apply relative isolate overflow-hidden;
     background: linear-gradient(to bottom, #fcfaf7 0%, #f8f5f2 100%);
     padding-top: 8rem;
     padding-bottom: 8rem;
@@ -95,9 +89,7 @@
     padding-right: 1.75rem;
     opacity: 0;
     transform: translateY(42px) scale(0.99);
-    transition:
-      opacity 1800ms cubic-bezier(0.16, 1, 0.3, 1),
-      transform 1800ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 1800ms cubic-bezier(0.16, 1, 0.3, 1), transform 1800ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .is-visible {
@@ -120,39 +112,19 @@
     opacity: 0.04;
     mix-blend-mode: multiply;
     background-image:
-      radial-gradient(
-        circle at 20% 20%,
-        rgba(0, 0, 0, 0.06) 0.4px,
-        transparent 0.5px
-      ),
-      radial-gradient(
-        circle at 75% 45%,
-        rgba(0, 0, 0, 0.05) 0.5px,
-        transparent 0.6px
-      );
+      radial-gradient(circle at 20% 20%, rgba(0,0,0,0.06) 0.4px, transparent 0.5px),
+      radial-gradient(circle at 75% 45%, rgba(0,0,0,0.05) 0.5px, transparent 0.6px);
     background-size: 180px 180px;
   }
 
   .ambient-light {
     @apply absolute inset-0 z-[2];
     pointer-events: none;
-    background: radial-gradient(
-      circle at center,
-      rgba(255, 255, 255, 0.34) 0%,
-      rgba(255, 255, 255, 0.08) 40%,
-      transparent 75%
-    );
+    background: radial-gradient(circle at center, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.08) 40%, transparent 75%);
   }
 
   .background-flower-right {
-    @apply absolute
-    right-0
-    top-0
-    z-[3]
-    h-full
-    pointer-events-none
-    bg-right
-    bg-no-repeat;
+    @apply absolute right-0 top-0 z-[3] h-full pointer-events-none bg-right bg-no-repeat;
     width: 360px;
     background-image: url("/mesa.jpg");
     background-size: cover;
@@ -169,13 +141,7 @@
   }
 
   .venue-grid {
-    @apply relative
-    z-10
-    mx-auto
-    grid
-    max-w-7xl
-    grid-cols-1
-    items-center;
+    @apply relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center;
     gap: 5rem;
   }
 
@@ -187,15 +153,11 @@
   }
 
   .title-side {
-    @apply flex
-    justify-center
-    lg:justify-end;
+    @apply flex justify-center lg:justify-end;
   }
 
   .title-decorator-box {
-    @apply relative
-    flex
-    flex-col;
+    @apply relative flex flex-col;
     padding-top: 3rem;
     padding-bottom: 3rem;
     padding-left: 2rem;
@@ -245,7 +207,6 @@
     line-height: 0.95;
     letter-spacing: -0.055em;
     color: #111111;
-    text-rendering: geometricPrecision;
   }
 
   .subtitle-wrapper {
@@ -261,33 +222,24 @@
   }
 
   .card-wrapper {
-    @apply flex
-    w-full
-    justify-center
-    lg:justify-start;
+    @apply flex w-full justify-center lg:justify-start;
   }
 
   .venue-card {
     @apply relative overflow-hidden;
     width: 100%;
     max-width: 640px;
-    background: rgba(255, 255, 255, 0.62);
-    border: 1px solid rgba(255, 255, 255, 0.72);
+    background: rgba(255,255,255,0.62);
+    border: 1px solid rgba(255,255,255,0.72);
     backdrop-filter: blur(18px);
-    box-shadow:
-      0 45px 120px rgba(0, 0, 0, 0.08),
-      0 15px 40px rgba(0, 0, 0, 0.05);
-    transition:
-      transform 1000ms cubic-bezier(0.16, 1, 0.3, 1),
-      box-shadow 1000ms cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 45px 120px rgba(0,0,0,0.08), 0 15px 40px rgba(0,0,0,0.05);
+    transition: transform 1000ms cubic-bezier(0.16,1,0.3,1), box-shadow 1000ms cubic-bezier(0.16,1,0.3,1);
     isolation: isolate;
   }
 
   .venue-card:hover {
     transform: translateY(-4px);
-    box-shadow:
-      0 60px 140px rgba(0, 0, 0, 0.1),
-      0 20px 55px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 60px 140px rgba(0,0,0,0.1), 0 20px 55px rgba(0,0,0,0.06);
   }
 
   .image-wrapper {
@@ -297,7 +249,7 @@
 
   .venue-image {
     @apply h-full w-full object-cover;
-    transition: transform 1800ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 1800ms cubic-bezier(0.16,1,0.3,1);
     filter: saturate(0.94) contrast(1.02) brightness(0.98);
   }
 
@@ -307,12 +259,7 @@
 
   .image-overlay {
     @apply absolute inset-0;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.04) 45%,
-      transparent 72%
-    );
+    background: linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0.04) 45%, transparent 72%);
   }
 
   .floating-label {
@@ -324,7 +271,7 @@
     font-weight: 600;
     letter-spacing: 0.38em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(255,255,255,0.92);
   }
 
   .card-content {
@@ -359,10 +306,7 @@
   }
 
   .info-item {
-    @apply flex
-    items-start
-    justify-between
-    gap-6;
+    @apply flex items-start justify-between gap-6;
   }
 
   .info-key {
@@ -371,14 +315,14 @@
     font-weight: 600;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: rgba(0, 0, 0, 0.42);
+    color: rgba(0,0,0,0.42);
   }
 
   .info-value {
     font-family: "Inter", sans-serif;
     font-size: 0.92rem;
     line-height: 1.8;
-    color: rgba(0, 0, 0, 0.74);
+    color: rgba(0,0,0,0.74);
     text-align: right;
   }
 
@@ -387,32 +331,22 @@
     height: 1px;
     margin-top: 1.3rem;
     margin-bottom: 1.3rem;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.08), transparent);
+    background: linear-gradient(90deg, rgba(0,0,0,0.08), transparent);
   }
 
   .map-card {
-    @apply relative
-    flex
-    items-center
-    justify-between
-    overflow-hidden;
+    @apply relative flex items-center justify-between overflow-hidden;
     min-height: 140px;
     padding: 2rem;
     text-decoration: none;
-    background: linear-gradient(
-      135deg,
-      rgba(245, 242, 238, 0.96),
-      rgba(255, 255, 255, 0.84)
-    );
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    transition:
-      transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
-      border-color 900ms cubic-bezier(0.16, 1, 0.3, 1);
+    background: linear-gradient(135deg, rgba(245,242,238,0.96), rgba(255,255,255,0.84));
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: transform 900ms cubic-bezier(0.16,1,0.3,1), border-color 900ms cubic-bezier(0.16,1,0.3,1);
   }
 
   .map-card:hover {
     transform: translateY(-2px);
-    border-color: rgba(193, 21, 123, 0.18);
+    border-color: rgba(193,21,123,0.18);
   }
 
   .map-background {
@@ -425,12 +359,7 @@
   }
 
   .map-content {
-    @apply relative 
-    z-10 
-    flex 
-    w-full 
-    items-center 
-    justify-between;
+    @apply relative z-10 flex w-full items-center justify-between;
   }
 
   .map-title {
@@ -444,7 +373,7 @@
   .map-arrow {
     font-size: 2rem;
     color: #c1157b;
-    transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 700ms cubic-bezier(0.16,1,0.3,1);
   }
 
   .map-card:hover .map-arrow {
@@ -456,22 +385,27 @@
       padding-top: 7rem;
       padding-bottom: 7rem;
     }
+
     .section-title {
       font-size: 4.1rem;
     }
+
     .image-wrapper {
       height: 280px;
     }
+
     .card-content {
       padding-top: 2.2rem;
       padding-bottom: 2.2rem;
       padding-left: 1.5rem;
       padding-right: 1.5rem;
     }
+
     .map-card {
       min-height: 120px;
       padding: 1.6rem;
     }
+
     .map-title {
       font-size: 1.8rem;
     }

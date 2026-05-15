@@ -48,13 +48,13 @@
           </div>
           <div class="info-list">
             <div class="info-item">
-              <span class="info-key">Hora</span>
-              <span class="info-value"> 16:00 hs </span>
+              <span class="info-key">Horario</span>
+              <span class="info-value">16:00 hs</span>
             </div>
             <div class="info-divider"></div>
             <div class="info-item">
-              <span class="info-key">Ubicación</span>
-              <span class="info-value"> Av. Bartolomé Mitre 3779 </span>
+              <span class="info-key">Dirección</span>
+              <span class="info-value">Av. Bartolomé Mitre 3779</span>
             </div>
           </div>
           <a
@@ -79,9 +79,7 @@
 
 <style>
   .venue-section {
-    @apply relative
-  isolate
-  overflow-hidden;
+    @apply relative isolate overflow-hidden;
     background: linear-gradient(to bottom, #fcfaf7 0%, #f8f5f2 100%);
     padding-top: 8rem;
     padding-bottom: 8rem;
@@ -111,16 +109,8 @@
     opacity: 0.04;
     mix-blend-mode: multiply;
     background-image:
-      radial-gradient(
-        circle at 25% 20%,
-        rgba(0, 0, 0, 0.07) 0.4px,
-        transparent 0.5px
-      ),
-      radial-gradient(
-        circle at 75% 35%,
-        rgba(0, 0, 0, 0.05) 0.5px,
-        transparent 0.6px
-      );
+      radial-gradient(circle at 25% 20%, rgba(0,0,0,0.07) 0.4px, transparent 0.5px),
+      radial-gradient(circle at 75% 35%, rgba(0,0,0,0.05) 0.5px, transparent 0.6px);
     background-size: 180px 180px;
   }
   .ambient-light {
@@ -128,20 +118,13 @@
     pointer-events: none;
     background: radial-gradient(
       circle at center,
-      rgba(255, 255, 255, 0.38) 0%,
-      rgba(255, 255, 255, 0.08) 40%,
+      rgba(255,255,255,0.38) 0%,
+      rgba(255,255,255,0.08) 40%,
       transparent 75%
     );
   }
   .background-flower {
-    @apply absolute
-    left-0
-    top-0
-    z-[3]
-    h-full
-    pointer-events-none
-    bg-left
-    bg-no-repeat;
+    @apply absolute left-0 top-0 z-[3] h-full pointer-events-none bg-left bg-no-repeat;
     width: 320px;
     background-image: url("/venue-flowers.png");
     background-size: contain;
@@ -156,13 +139,7 @@
     }
   }
   .venue-grid {
-    @apply relative
-    z-10
-    mx-auto
-    grid
-    max-w-7xl
-    grid-cols-1
-    items-center;
+    @apply relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center;
     gap: 5rem;
   }
   @media (min-width: 1100px) {
@@ -172,14 +149,10 @@
     }
   }
   .title-side {
-    @apply flex
-    justify-center
-    lg:justify-start;
+    @apply flex justify-center lg:justify-start;
   }
   .title-decorator-box {
-    @apply relative
-    flex
-    flex-col;
+    @apply relative flex flex-col;
     padding-top: 3rem;
     padding-bottom: 3rem;
     padding-left: 2rem;
@@ -232,13 +205,10 @@
     background: linear-gradient(90deg, rgba(193, 21, 123, 0.95), transparent);
   }
   .card-wrapper {
-    @apply flex
-    w-full
-    justify-center;
+    @apply flex w-full justify-center;
   }
   .venue-card {
-    @apply relative
-    overflow-hidden;
+    @apply relative overflow-hidden;
     width: 100%;
     max-width: 640px;
     background: rgba(255, 255, 255, 0.62);
@@ -319,10 +289,15 @@
     margin-bottom: 3rem;
   }
   .info-item {
-    @apply flex
-    items-start
-    justify-between
-    gap-6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .info-key,
+  .info-value {
+    display: flex;
+    align-items: center;
+    margin: 0;
   }
   .info-key {
     font-family: "Inter", sans-serif;
@@ -331,11 +306,12 @@
     letter-spacing: 0.28em;
     text-transform: uppercase;
     color: rgba(0, 0, 0, 0.42);
+    line-height: 1;
   }
   .info-value {
     font-family: "Inter", sans-serif;
     font-size: 0.92rem;
-    line-height: 1.8;
+    line-height: 1.4;
     color: rgba(0, 0, 0, 0.74);
     text-align: right;
   }
@@ -347,19 +323,11 @@
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.08), transparent);
   }
   .map-card {
-    @apply relative
-    flex
-    items-center
-    justify-between
-    overflow-hidden;
+    @apply relative flex items-center justify-between overflow-hidden;
     min-height: 140px;
     padding: 2rem;
     text-decoration: none;
-    background: linear-gradient(
-      135deg,
-      rgba(245, 242, 238, 0.96),
-      rgba(255, 255, 255, 0.84)
-    );
+    background: linear-gradient(135deg, rgba(245, 242, 238, 0.96), rgba(255, 255, 255, 0.84));
     border: 1px solid rgba(0, 0, 0, 0.05);
     transition:
       transform 900ms cubic-bezier(0.16, 1, 0.3, 1),

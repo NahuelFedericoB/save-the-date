@@ -306,7 +306,7 @@
   }
 
   .info-item {
-    @apply flex items-start justify-between gap-6;
+    @apply flex items-center justify-between gap-6;
   }
 
   .info-key {

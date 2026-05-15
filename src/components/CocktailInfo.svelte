@@ -23,7 +23,6 @@
         </div>
         <div class="card-content">
           <h3 class="card-title">Fiesta</h3>
-
           <div class="info-list">
             <div class="info-item">
               <svg
@@ -78,243 +77,329 @@
 
 <style>
   .venue-section {
-    @apply relative 
-    w-full 
-    overflow-hidden 
-    bg-[#fdfbf8] 
-    py-20 
-    md:py-32 
-    px-6 
+    @apply relative
+    w-full
+    overflow-hidden
+    bg-[#fdfbf8]
+    py-24
+    md:py-28
+    px-6
     md:px-12
-    duration-1000 
-    ease-in-out 
-    opacity-0 
-    translate-y-10 
-    transition-[opacity,transform] 
+    duration-1000
+    ease-in-out
+    opacity-0
+    translate-y-10
+    transition-[opacity,transform]
     will-change-transform;
   }
 
   .is-visible {
-    @apply opacity-100 
+    @apply opacity-100
     translate-y-0;
   }
 
   .background-flower-right {
-    @apply absolute 
-    right-0 
-    top-0 
-    w-[300px] 
-    md:w-[600px] 
-    h-full 
-    opacity-85 
-    pointer-events-none 
-    bg-cover 
-    bg-left
+    @apply absolute
+    right-0
+    top-0
+    h-full
+    w-[260px]
+    md:w-[520px]
+    pointer-events-none
+    bg-cover
+    bg-right
     bg-no-repeat
     scale-x-[-1];
+
     background-image: url("/mesa.jpg");
+    opacity: 0.58;
     mix-blend-mode: multiply;
-    -webkit-mask-image: linear-gradient(to right, black 40%, transparent 100%);
-    mask-image: linear-gradient(to right, black 40%, transparent 100%);
+
+    -webkit-mask-image: linear-gradient(to right, black 30%, transparent 100%);
+
+    mask-image: linear-gradient(to right, black 30%, transparent 100%);
   }
 
   .venue-grid {
-    @apply relative 
-    z-10 
-    mx-auto 
-    max-w-6xl 
+    @apply relative
+    z-10
+    mx-auto
+    max-w-6xl
     grid
     grid-cols-1
     lg:grid-cols-2
-    items-center 
-    gap-12 
+    items-center
+    gap-14
     lg:gap-20;
   }
 
   .title-side {
-    @apply flex 
-    justify-center 
+    @apply flex
+    justify-center
     lg:justify-end;
   }
 
   .title-decorator-box {
-    @apply relative 
-    flex 
-    flex-col 
-    items-center 
-    text-center 
-    lg:items-start 
+    @apply relative
+    flex
+    flex-col
+    items-center
+    text-center
+    lg:items-start
     lg:text-left
-    p-8 
-    md:p-12;
+    px-8
+    py-10
+    md:px-12
+    md:py-14;
   }
   .corner {
-    @apply absolute 
-    w-16 
-    md:w-24 
-    h-16 
+    @apply absolute
+    w-16
+    h-16
+    md:w-24
     md:h-24;
   }
 
   .top-right {
-    @apply top-0 
-    right-0 
-    border-t-[2px] 
-    border-r-[2px] 
-    border-bougainvillea;
+    @apply top-0
+    right-0
+    border-t-[2px]
+    border-r-[2px];
+
+    border-color: #e10095;
   }
 
   .bottom-left {
-    @apply bottom-0 
-    left-0 
-    border-b-[2px] 
-    border-l-[2px] 
-    border-aegean;
+    @apply bottom-0
+    left-0
+    border-b-[2px]
+    border-l-[2px];
+
+    border-color: rgba(20, 86, 170, 0.92);
   }
 
   .section-title {
-    @apply font-serif 
-    text-[3.5rem] 
-    md:text-[4.5rem] 
-    lg:text-[4rem] 
-    leading-[1.05] 
-    tracking-tight 
-    text-aegean;
+    @apply font-serif
+    text-[3.5rem]
+    md:text-[4.6rem]
+    lg:text-[4.2rem]
+    leading-[1.02];
+
+    letter-spacing: -0.035em;
+    color: #111111;
   }
 
   .subtitle-wrapper {
-    @apply mt-8 
-    flex 
-    items-center 
+    @apply mt-8
+    flex
+    items-center
     gap-4;
   }
 
   .mini-line {
-    @apply h-[2px] 
-    w-8 
-    bg-bougainvillea;
+    @apply h-[2px]
+    w-8;
+
+    background: #e10095;
   }
 
   .section-subtitle {
-    @apply font-sans 
-    text-xs 
-    font-bold 
-    uppercase 
-    tracking-[0.3em] 
-    text-aegean;
+    @apply font-sans
+    text-xs
+    font-bold
+    uppercase
+    tracking-[0.3em];
+
+    color: rgba(17, 17, 17, 0.72);
   }
 
   .card-wrapper {
-    @apply flex 
-    justify-center 
-    lg:justify-start 
+    @apply flex
+    justify-center
+    lg:justify-start
     w-full;
   }
 
   .venue-card {
-    @apply w-full 
-    max-w-[550px] 
-    bg-white 
-    rounded-xl
-    shadow-[0_20px_50px_rgba(0,0,0,0.05)]
+    @apply relative
+    w-full
+    max-w-[560px]
+    rounded-[30px]
     border
-    border-zinc-100
-    p-4 
-    md:p-6;
+    border-white/70
+    p-4
+    md:p-5;
+
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.92),
+      rgba(255, 255, 255, 0.82)
+    );
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition:
+      transform 600ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 600ms cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow:
+      0 45px 140px rgba(0, 0, 0, 0.1),
+      0 20px 50px rgba(0, 0, 0, 0.06),
+      0 2px 12px rgba(255, 255, 255, 0.72) inset;
+
+    isolation: isolate;
   }
 
+  .venue-card::before {
+    content: "";
+
+    @apply absolute
+    inset-0
+    rounded-[30px]
+    pointer-events-none;
+
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0)
+    );
+    opacity: 0.9;
+  }
+  .venue-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 60px 160px rgba(0, 0, 0, 0.14),
+      0 30px 70px rgba(0, 0, 0, 0.08),
+      0 2px 12px rgba(255, 255, 255, 0.78) inset;
+  }
   .image-wrapper {
-    @apply w-full
-    h-[200px] 
-    md:h-[240px] 
-    rounded-lg
+    @apply relative
+    w-full
+    h-[220px]
+    md:h-[240px]
+    rounded-[24px]
     overflow-hidden;
   }
 
-  .venue-image {
-    @apply w-full 
-    h-full 
-    object-cover;
+  .image-wrapper::after {
+    content: "";
+
+    @apply absolute
+    inset-0;
+
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.12), transparent 40%);
   }
 
+  .venue-image {
+    @apply w-full
+    h-full
+    object-cover;
+
+    transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .venue-card:hover .venue-image {
+    transform: scale(1.04);
+  }
   .card-content {
-    @apply pt-8 
-    pb-2 
-    px-0;
+    @apply pt-8
+    pb-2
+    px-1;
   }
 
   .card-title {
-    @apply mb-6 
-    font-serif 
-    text-3xl 
-    text-aegean;
+    @apply mb-7
+    font-serif
+    text-[2.15rem];
+
+    color: #111111;
   }
 
   .info-list {
-    @apply mb-8 
+    @apply mb-8
     flex
     flex-col
-    md:flex-row
-    md:justify-between
-    gap-5
-    md:gap-8;
+    gap-5;
   }
 
   .info-item {
-    @apply flex 
-    items-start 
-    gap-3 
-    font-sans 
-    text-[0.95rem] 
-    leading-snug
-    text-zinc-600
-    md:flex-1;
+    @apply flex
+    items-start
+    gap-3
+    font-sans
+    text-[0.98rem]
+    leading-relaxed;
+
+    color: rgba(17, 17, 17, 0.72);
   }
 
   .icon-svg {
-    @apply w-6 
-    h-6 
-    text-bougainvillea 
-    shrink-0;
-  }
+    @apply w-5
+    h-5
+    shrink-0
+    mt-[2px];
 
+    color: #e10095;
+  }
   .map-wrapper {
-    @apply relative 
-    h-[160px] 
-    w-full 
-    overflow-hidden 
-    rounded-xl 
-    border 
-    border-zinc-200 
-    bg-zinc-50;
+    @apply relative
+    h-[170px]
+    w-full
+    overflow-hidden
+    rounded-[22px]
+    border;
+
+    border-color: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
   }
 
-  .maps-button {
-    @apply absolute 
-    bottom-4 
-    right-4 
-    z-20 
-    flex 
-    items-center 
-    gap-2 
-    w-max 
-    whitespace-nowrap 
-    rounded-md 
-    border 
-    border-bougainvillea/40 
-    bg-white/95 
-    px-4 
-    py-2.5 
-    font-sans 
-    text-[11px] 
-    font-bold 
-    uppercase 
-    tracking-[0.1em] 
-    text-bougainvillea 
-    shadow-sm
-    transition-all 
-    duration-300 
-    hover:bg-bougainvillea 
-    hover:text-white;
+  .map-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0)
+    );
+  }
+  @media (max-width: 768px) {
+    .venue-section {
+      @apply py-20;
+    }
+
+    .section-title {
+      font-size: 3.6rem;
+    }
+
+    .venue-card {
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.88),
+        rgba(255, 255, 255, 0.74)
+      );
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-color: rgba(255, 255, 255, 0.72);
+      box-shadow:
+        0 35px 90px rgba(0, 0, 0, 0.1),
+        0 15px 35px rgba(0, 0, 0, 0.05),
+        0 2px 10px rgba(255, 255, 255, 0.65) inset;
+      border-radius: 26px;
+    }
+
+    .venue-card::before {
+      border-radius: 26px;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.48),
+        rgba(255, 255, 255, 0)
+      );
+    }
+
+    .image-wrapper {
+      height: 210px;
+      border-radius: 22px;
+    }
+
+    .card-title {
+      font-size: 2rem;
+    }
   }
 </style>

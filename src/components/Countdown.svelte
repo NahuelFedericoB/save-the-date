@@ -67,18 +67,18 @@
     bg-center
     bg-no-repeat;
     background-image: url("/mykonos.jpg");
-    aspect-ratio: 16 / 5;
+    aspect-ratio: 16 / 3.7;
   }
 
   .countdown-overlay {
     @apply absolute inset-0;
+
     background: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.28),
-      rgba(0, 0, 0, 0.18),
-      rgba(0, 0, 0, 0.32)
+      rgba(0, 0, 0, 0.16),
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.18)
     );
-    backdrop-filter: blur(1px);
   }
 
   .content {
@@ -90,6 +90,8 @@
     items-center
     justify-center
     text-center;
+
+    padding-inline: 1rem;
   }
 
   .eyebrow {
@@ -119,25 +121,26 @@
 
   .number {
     @apply font-serif
-    text-[4.5rem]
-    leading-[0.9]
-    tracking-[-0.04em]
+    text-[4.3rem]
+    leading-[0.92]
+    tracking-[-0.045em]
     text-white
-    md:text-[7rem]
-    lg:text-[9rem];
-    text-shadow: 0 6px 30px rgba(0, 0, 0, 0.22);
+    md:text-[5.8rem]
+    lg:text-[7rem];
+
+    text-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
   }
 
   .label {
     @apply mt-4
-  font-sans
-  text-[15px]
-  font-semibold
-  uppercase
-  tracking-[0.38em]
-  text-white
-  opacity-80
-  md:text-lg;
+    font-sans
+    text-[15px]
+    font-semibold
+    uppercase
+    tracking-[0.38em]
+    text-white
+    opacity-80
+    md:text-lg;
   }
 
   .separator {
@@ -149,6 +152,7 @@
     md:pb-8
     md:text-6xl
     lg:text-7xl;
+
     text-shadow: 0 0 18px rgba(255, 0, 140, 0.45);
   }
 

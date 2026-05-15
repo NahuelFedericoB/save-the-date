@@ -22,7 +22,7 @@
     <AssistanceForm />
   </div>
   <footer>
-    <h2 class="footer-title">¡Los esperamos!</h2>
+    <h2 class="footer-title">¡Te esperamos!</h2>
   </footer>
   <MusicPlayer />
 </main>

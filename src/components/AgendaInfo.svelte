@@ -68,7 +68,6 @@
           <p class="event-location">Rooftop La Maquinita<br/>Quilmes</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -106,9 +105,10 @@
     @apply font-serif 
     text-[3.5rem] 
     md:text-[4.5rem] 
-    leading-none 
-    tracking-tight 
-    text-aegean; 
+    leading-none;
+
+    letter-spacing: -0.04em;
+    color: #111111;
   }
 
   .timeline-container {
@@ -116,18 +116,22 @@
     max-w-5xl 
     mx-auto;
   }
-
   .connector-line {
     @apply absolute 
-    bg-bougainvillea/30 
-    z-0;    
-    /* Configuración Mobile: Vertical y en el centro */
+    z-0;
+
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(225,0,149,0.10),
+        rgba(225,0,149,0.35),
+        rgba(225,0,149,0.10)
+      );
     @apply top-8 
     bottom-10 
     left-1/2 
     w-[1px] 
     -translate-x-1/2;
-    /* Configuración Desktop: Horizontal exacta por el centro del ícono */
     @apply md:top-[26px] 
     md:left-[10%] 
     md:right-[10%] 
@@ -144,10 +148,10 @@
     flex-col 
     md:flex-row 
     justify-between 
-    items-center /* Mobile: Todo centrado */
-    md:items-start /* DESKTOP FIX: Alinea todos los contenedores desde arriba para que los íconos no se muevan */
-    gap-12 /* Mobile gap */
-    md:gap-4; /* Desktop gap */
+    items-center 
+    md:items-start
+    gap-12 
+    md:gap-4;
   }
 
   .event-item {
@@ -157,15 +161,17 @@
     text-center 
     w-full 
     md:w-1/3 
-    gap-4;
+    gap-5;
   }
+
   .icon-box {
-    @apply bg-[#fdfbf8] 
-    px-4 
-    py-2 
-    relative 
+    @apply relative 
     z-10 
-    shrink-0;
+    shrink-0
+    px-4 
+    py-2;
+
+    background: #fdfbf8;
   }
 
   .icon-svg {
@@ -173,19 +179,20 @@
     h-8 
     md:w-9 
     md:h-9 
-    text-bougainvillea 
-    stroke-[1.5px];
+    stroke-[1.45px];
+
+    color: #d6008d;
   }
   .event-content {
-    @apply flex 
+    @apply relative 
+    z-10 
+    flex 
     flex-col 
     items-center 
-    w-full
-    /* MOBILE FIX: Fondo sólido con Z-index y padding para "borrar" la línea vertical */
-    bg-[#fdfbf8] 
-    relative 
-    z-10 
+    w-full 
     py-2;
+
+    background: #fdfbf8;
   }
 
   .event-title {
@@ -194,9 +201,10 @@
     md:text-[15px] 
     font-bold 
     uppercase 
-    tracking-[0.25em] 
-    text-aegean 
     mb-1;
+
+    letter-spacing: 0.26em;
+    color: #111111;
   }
 
   .event-time {
@@ -204,36 +212,79 @@
     text-[11px] 
     md:text-xs 
     font-bold 
-    text-zinc-500 
     mb-3;
+
+    letter-spacing: 0.12em;
+
+    color: rgba(17,17,17,0.46);
   }
 
   .event-location {
     @apply font-sans 
     text-[11px] 
     md:text-xs 
-    leading-relaxed 
-    text-zinc-600;
+    leading-relaxed;
+
+    color: rgba(17,17,17,0.68);
   }
+
   .location-btn {
-    @apply mt-4 
-    inline-block 
+    @apply mt-5 
+    inline-flex
+    items-center
+    justify-center
     rounded-full 
-    border-[1.5px] 
-    border-bougainvillea/40 
     px-6 
     py-2.5 
     font-sans 
     text-[10px] 
     font-bold 
     uppercase 
-    tracking-[0.15em] 
-    text-bougainvillea 
+    cursor-pointer
     transition-all 
-    duration-300 
-    hover:bg-bougainvillea 
-    hover:text-white 
-    hover:border-bougainvillea
-    cursor-pointer;
+    duration-500;
+
+    letter-spacing: 0.18em;
+    color: #d6008d;
+    border:
+      1px solid rgba(214,0,141,0.22);
+    background:
+      rgba(255,255,255,0.55);
+    backdrop-filter:
+      blur(10px);
+    box-shadow:
+      0 10px 24px rgba(0,0,0,0.04);
+  }
+
+  .location-btn:hover {
+    transform:
+      translateY(-2px);
+    background:
+      #d6008d;
+    color:
+      white;
+    border-color:
+      #d6008d;
+    box-shadow:
+      0 18px 34px rgba(214,0,141,0.20);
+  }
+
+  @media (max-width: 768px) {
+
+    .section-title {
+      font-size: 3.6rem;
+    }
+
+    .events-wrapper {
+      gap: 3.5rem;
+    }
+
+    .event-item {
+      gap: 1.1rem;
+    }
+
+    .location-btn {
+      margin-top: 1.1rem;
+    }
   }
 </style>

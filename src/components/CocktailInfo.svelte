@@ -2,6 +2,7 @@
   import { useReveal } from "../lib/utils/reveal.svelte.js";
 
   const reveal = useReveal();
+  const mapsUrl = "https://maps.google.com/?q=Av.+Caseros+1750+Don+Bosco";
 </script>
 
 <section
@@ -10,64 +11,71 @@
   class:is-visible={reveal.visible}
   id="fiesta-location"
 >
+  <div class="grain"></div>
+  <div class="ambient-light"></div>
   <div class="background-flower-right"></div>
   <div class="venue-grid">
     <div class="card-wrapper order-2 lg:order-1">
-      <div class="venue-card">
+      <article class="venue-card">
         <div class="image-wrapper">
           <img
             src="https://diariolaciudadavellaneda.com.ar/wp-content/uploads/2026/03/MAQUINITA.quilmes.43-1.jpg"
-            alt="Salón de Fiesta Rooftop La Maquinita"
+            alt="Rooftop La Maquinita"
             class="venue-image"
           />
+          <div class="image-overlay"></div>
+          <div class="floating-label">Don Bosco · Buenos Aires</div>
         </div>
         <div class="card-content">
-          <h3 class="card-title">Fiesta</h3>
+          <div class="content-header">
+            <p class="mini-label">Recepción & Fiesta</p>
+            <h3 class="card-title">
+              Rooftop
+              <br />
+              La Maquinita
+            </h3>
+          </div>
           <div class="info-list">
             <div class="info-item">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="icon-svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              <span>Rooftop La Maquinita</span>
+              <span class="info-key">Lugar</span>
+              <span class="info-value"> Rooftop La Maquinita </span>
+            </div>
+            <div class="info-divider"></div>
+            <div class="info-item">
+              <span class="info-key">Dirección</span>
+              <span class="info-value"> Av. Caseros 1750 · Don Bosco </span>
             </div>
           </div>
-          <div class="map-wrapper">
-            <div
-              class="map-overlay pointer-events-none absolute inset-0 z-10"
-            ></div>
-            <iframe
-              title="Mapa Fiesta"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3279.123456789!2d-58.300000!3d-34.700000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sAv.%20Caseros%201750%2C%20Don%20Bosco!5e0!3m2!1ses!2sar!4v1610000000000!5m2!1ses!2sar"
-              width="100%"
-              height="100%"
-              style="border:0;"
-              allowfullscreen={true}
-              loading="lazy"
-            ></iframe>
-          </div>
+          <a
+            href={mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="map-card"
+          >
+            <div class="map-background"></div>
+            <div class="map-content">
+              <div>
+                <p class="map-title">Cómo llegar</p>
+              </div>
+              <div class="map-arrow">→</div>
+            </div>
+          </a>
         </div>
-      </div>
+      </article>
     </div>
+
     <div class="title-side order-1 lg:order-2">
       <div class="title-decorator-box">
         <div class="corner top-right"></div>
         <h2 class="section-title">
-          A continuación<br />
-          de la<br />
+          A continuación
+          <br />
+          de la
+          <br />
           ceremonia
         </h2>
         <div class="subtitle-wrapper">
           <span class="mini-line"></span>
-          <p class="section-subtitle">Recepción & Fiesta</p>
         </div>
         <div class="corner bottom-left"></div>
       </div>
@@ -78,59 +86,104 @@
 <style>
   .venue-section {
     @apply relative
-    w-full
-    overflow-hidden
-    bg-[#fdfbf8]
-    py-24
-    md:py-28
-    px-6
-    md:px-12
-    duration-1000
-    ease-in-out
-    opacity-0
-    translate-y-10
-    transition-[opacity,transform]
-    will-change-transform;
+  isolate
+  overflow-hidden;
+    background: linear-gradient(to bottom, #fcfaf7 0%, #f8f5f2 100%);
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+    opacity: 0;
+    transform: translateY(42px) scale(0.99);
+    transition:
+      opacity 1800ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 1800ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .is-visible {
-    @apply opacity-100
-    translate-y-0;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  @media (min-width: 768px) {
+    .venue-section {
+      padding-top: 10rem;
+      padding-bottom: 10rem;
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  .grain {
+    @apply absolute inset-0 z-[1];
+    pointer-events: none;
+    opacity: 0.04;
+    mix-blend-mode: multiply;
+    background-image:
+      radial-gradient(
+        circle at 20% 20%,
+        rgba(0, 0, 0, 0.06) 0.4px,
+        transparent 0.5px
+      ),
+      radial-gradient(
+        circle at 75% 45%,
+        rgba(0, 0, 0, 0.05) 0.5px,
+        transparent 0.6px
+      );
+    background-size: 180px 180px;
+  }
+
+  .ambient-light {
+    @apply absolute inset-0 z-[2];
+    pointer-events: none;
+    background: radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.34) 0%,
+      rgba(255, 255, 255, 0.08) 40%,
+      transparent 75%
+    );
   }
 
   .background-flower-right {
     @apply absolute
     right-0
     top-0
+    z-[3]
     h-full
-    w-[260px]
-    md:w-[520px]
     pointer-events-none
-    bg-cover
     bg-right
-    bg-no-repeat
-    scale-x-[-1];
-
+    bg-no-repeat;
+    width: 360px;
     background-image: url("/mesa.jpg");
-    opacity: 0.58;
+    background-size: cover;
+    opacity: 0.14;
     mix-blend-mode: multiply;
+    filter: blur(0.4px) saturate(0.92);
+    mask-image: linear-gradient(to left, black 28%, transparent 100%);
+  }
 
-    -webkit-mask-image: linear-gradient(to right, black 30%, transparent 100%);
-
-    mask-image: linear-gradient(to right, black 30%, transparent 100%);
+  @media (min-width: 768px) {
+    .background-flower-right {
+      width: 620px;
+    }
   }
 
   .venue-grid {
     @apply relative
     z-10
     mx-auto
-    max-w-6xl
     grid
+    max-w-7xl
     grid-cols-1
-    lg:grid-cols-2
-    items-center
-    gap-14
-    lg:gap-20;
+    items-center;
+    gap: 5rem;
+  }
+
+  @media (min-width: 1100px) {
+    .venue-grid {
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 7rem;
+    }
   }
 
   .title-side {
@@ -142,264 +195,285 @@
   .title-decorator-box {
     @apply relative
     flex
-    flex-col
-    items-center
-    text-center
-    lg:items-start
-    lg:text-left
-    px-8
-    py-10
-    md:px-12
-    md:py-14;
+    flex-col;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
+
+  @media (min-width: 768px) {
+    .title-decorator-box {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+
   .corner {
-    @apply absolute
-    w-16
-    h-16
-    md:w-24
-    md:h-24;
+    @apply absolute;
+    width: 68px;
+    height: 68px;
   }
 
   .top-right {
-    @apply top-0
-    right-0
-    border-t-[2px]
-    border-r-[2px];
-
-    border-color: #e10095;
+    top: 0;
+    right: 0;
+    border-top: 1.5px solid rgba(193, 21, 123, 0.92);
+    border-right: 1.5px solid rgba(193, 21, 123, 0.92);
   }
 
   .bottom-left {
-    @apply bottom-0
-    left-0
-    border-b-[2px]
-    border-l-[2px];
+    left: 0;
+    bottom: 0;
+    border-bottom: 1.5px solid rgba(20, 86, 170, 0.92);
+    border-left: 1.5px solid rgba(20, 86, 170, 0.92);
+  }
 
-    border-color: rgba(20, 86, 170, 0.92);
+  @media (min-width: 768px) {
+    .corner {
+      width: 92px;
+      height: 92px;
+    }
   }
 
   .section-title {
-    @apply font-serif
-    text-[3.5rem]
-    md:text-[4.6rem]
-    lg:text-[4.2rem]
-    leading-[1.02];
-
-    letter-spacing: -0.035em;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(3.8rem, 8vw, 5.8rem);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.055em;
     color: #111111;
+    text-rendering: geometricPrecision;
   }
 
   .subtitle-wrapper {
-    @apply mt-8
-    flex
-    items-center
-    gap-4;
+    @apply flex items-center;
+    gap: 1rem;
+    margin-top: 2.6rem;
   }
 
   .mini-line {
-    @apply h-[2px]
-    w-8;
-
-    background: #e10095;
-  }
-
-  .section-subtitle {
-    @apply font-sans
-    text-xs
-    font-bold
-    uppercase
-    tracking-[0.3em];
-
-    color: rgba(17, 17, 17, 0.72);
+    width: 34px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(193, 21, 123, 0.92), transparent);
   }
 
   .card-wrapper {
     @apply flex
+    w-full
     justify-center
-    lg:justify-start
-    w-full;
+    lg:justify-start;
   }
 
   .venue-card {
-    @apply relative
-    w-full
-    max-w-[560px]
-    rounded-[30px]
-    border
-    border-white/70
-    p-4
-    md:p-5;
-
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.92),
-      rgba(255, 255, 255, 0.82)
-    );
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    transition:
-      transform 600ms cubic-bezier(0.16, 1, 0.3, 1),
-      box-shadow 600ms cubic-bezier(0.16, 1, 0.3, 1);
+    @apply relative overflow-hidden;
+    width: 100%;
+    max-width: 640px;
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(18px);
     box-shadow:
-      0 45px 140px rgba(0, 0, 0, 0.1),
-      0 20px 50px rgba(0, 0, 0, 0.06),
-      0 2px 12px rgba(255, 255, 255, 0.72) inset;
-
+      0 45px 120px rgba(0, 0, 0, 0.08),
+      0 15px 40px rgba(0, 0, 0, 0.05);
+    transition:
+      transform 1000ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 1000ms cubic-bezier(0.16, 1, 0.3, 1);
     isolation: isolate;
   }
 
-  .venue-card::before {
-    content: "";
-
-    @apply absolute
-    inset-0
-    rounded-[30px]
-    pointer-events-none;
-
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0)
-    );
-    opacity: 0.9;
-  }
   .venue-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
     box-shadow:
-      0 60px 160px rgba(0, 0, 0, 0.14),
-      0 30px 70px rgba(0, 0, 0, 0.08),
-      0 2px 12px rgba(255, 255, 255, 0.78) inset;
+      0 60px 140px rgba(0, 0, 0, 0.1),
+      0 20px 55px rgba(0, 0, 0, 0.06);
   }
+
   .image-wrapper {
-    @apply relative
-    w-full
-    h-[220px]
-    md:h-[240px]
-    rounded-[24px]
-    overflow-hidden;
-  }
-
-  .image-wrapper::after {
-    content: "";
-
-    @apply absolute
-    inset-0;
-
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.12), transparent 40%);
+    @apply relative overflow-hidden;
+    height: 340px;
   }
 
   .venue-image {
-    @apply w-full
-    h-full
-    object-cover;
-
-    transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+    @apply h-full w-full object-cover;
+    transition: transform 1800ms cubic-bezier(0.16, 1, 0.3, 1);
+    filter: saturate(0.94) contrast(1.02) brightness(0.98);
   }
 
   .venue-card:hover .venue-image {
-    transform: scale(1.04);
+    transform: scale(1.035);
   }
+
+  .image-overlay {
+    @apply absolute inset-0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.04) 45%,
+      transparent 72%
+    );
+  }
+
+  .floating-label {
+    @apply absolute;
+    left: 2rem;
+    bottom: 1.8rem;
+    font-family: "Inter", sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
   .card-content {
-    @apply pt-8
-    pb-2
-    px-1;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .mini-label {
+    font-family: "Inter", sans-serif;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: #c1157b;
+    margin-bottom: 1.4rem;
   }
 
   .card-title {
-    @apply mb-7
-    font-serif
-    text-[2.15rem];
-
-    color: #111111;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2.7rem, 5vw, 4rem);
+    font-weight: 300;
+    line-height: 0.96;
+    letter-spacing: -0.045em;
+    color: #121212;
   }
 
   .info-list {
-    @apply mb-8
-    flex
-    flex-col
-    gap-5;
+    margin-top: 2.8rem;
+    margin-bottom: 3rem;
   }
 
   .info-item {
     @apply flex
     items-start
-    gap-3
-    font-sans
-    text-[0.98rem]
-    leading-relaxed;
-
-    color: rgba(17, 17, 17, 0.72);
+    justify-between
+    gap-6;
   }
 
-  .icon-svg {
-    @apply w-5
-    h-5
-    shrink-0
-    mt-[2px];
-
-    color: #e10095;
+  .info-key {
+    font-family: "Inter", sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.42);
   }
-  .map-wrapper {
+
+  .info-value {
+    font-family: "Inter", sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: rgba(0, 0, 0, 0.74);
+    text-align: right;
+  }
+
+  .info-divider {
+    width: 100%;
+    height: 1px;
+    margin-top: 1.3rem;
+    margin-bottom: 1.3rem;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.08), transparent);
+  }
+
+  .map-card {
     @apply relative
-    h-[170px]
-    w-full
-    overflow-hidden
-    rounded-[22px]
-    border;
-
-    border-color: rgba(0, 0, 0, 0.05);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
-  }
-
-  .map-overlay {
+    flex
+    items-center
+    justify-between
+    overflow-hidden;
+    min-height: 140px;
+    padding: 2rem;
+    text-decoration: none;
     background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.05),
-      rgba(255, 255, 255, 0)
+      135deg,
+      rgba(245, 242, 238, 0.96),
+      rgba(255, 255, 255, 0.84)
     );
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition:
+      transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 900ms cubic-bezier(0.16, 1, 0.3, 1);
   }
+
+  .map-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(193, 21, 123, 0.18);
+  }
+
+  .map-background {
+    @apply absolute inset-0;
+    opacity: 0.06;
+    background-image:
+      radial-gradient(circle at 25% 35%, #c1157b 1px, transparent 1px),
+      radial-gradient(circle at 75% 65%, #1456aa 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+
+  .map-content {
+    @apply relative 
+    z-10 
+    flex 
+    w-full 
+    items-center 
+    justify-between;
+  }
+
+  .map-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    color: #111111;
+  }
+
+  .map-arrow {
+    font-size: 2rem;
+    color: #c1157b;
+    transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .map-card:hover .map-arrow {
+    transform: translateX(6px);
+  }
+
   @media (max-width: 768px) {
     .venue-section {
-      @apply py-20;
+      padding-top: 7rem;
+      padding-bottom: 7rem;
     }
-
     .section-title {
-      font-size: 3.6rem;
+      font-size: 4.1rem;
     }
-
-    .venue-card {
-      background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.88),
-        rgba(255, 255, 255, 0.74)
-      );
-
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-color: rgba(255, 255, 255, 0.72);
-      box-shadow:
-        0 35px 90px rgba(0, 0, 0, 0.1),
-        0 15px 35px rgba(0, 0, 0, 0.05),
-        0 2px 10px rgba(255, 255, 255, 0.65) inset;
-      border-radius: 26px;
-    }
-
-    .venue-card::before {
-      border-radius: 26px;
-      background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.48),
-        rgba(255, 255, 255, 0)
-      );
-    }
-
     .image-wrapper {
-      height: 210px;
-      border-radius: 22px;
+      height: 280px;
     }
-
-    .card-title {
-      font-size: 2rem;
+    .card-content {
+      padding-top: 2.2rem;
+      padding-bottom: 2.2rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    .map-card {
+      min-height: 120px;
+      padding: 1.6rem;
+    }
+    .map-title {
+      font-size: 1.8rem;
     }
   }
 </style>

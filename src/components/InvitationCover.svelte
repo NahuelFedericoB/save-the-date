@@ -5,20 +5,24 @@
 </script>
 
 <section bind:this={reveal.element} class="hero-container">
+  <div class="grain"></div>
   <div class="hero-overlay"></div>
+  <div class="ambient-light"></div>
   <div class="content-z" class:is-visible={reveal.visible}>
-    <p class="honey-text">Honey, Honey... ¡Nos casamos!</p>
+    <p class="intro-text">Honey, Honey... ¡Nos casamos!</p>
     <h1 class="main-title">
       <span class="name-primary">Nahu</span>
       <span class="ampersand">&</span>
       <span class="name-secondary">Joy</span>
     </h1>
-    <p class="subtitle">Save the Date</p>
-    <p class="date-info">
-      28 de Noviembre
-      <span class="divider">•</span>
-      2026
-    </p>
+    <div class="meta-wrapper">
+      <p class="subtitle">Save the Date</p>
+      <div class="date-row">
+        <span>28 de Noviembre</span>
+        <span class="divider"></span>
+        <span>2026</span>
+      </div>
+    </div>
     <div class="decorator-container">
       <div class="line"></div>
     </div>
@@ -34,8 +38,8 @@
     items-center
     justify-center
     overflow-hidden
-    px-6
-    py-24
+    px-7
+    py-32
     text-center;
 
     background-color: #f8f5f2;
@@ -43,26 +47,68 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    isolation: isolate;
   }
 
   @media (min-width: 768px) {
     .hero-container {
       background-image: url("/hero-desktop.png");
-      background-position: center center;
-      padding-top: 7rem;
-      padding-bottom: 7rem;
+      min-height: 100vh;
+      padding-top: 5.5rem;
+      padding-bottom: 5.5rem;
+      padding-left: 3rem;
+      padding-right: 3rem;
+      align-items: center;
     }
   }
 
-  .hero-overlay {
+  .grain {
     @apply absolute inset-0 z-[1];
+
+    opacity: 0.045;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    background-image:
+      radial-gradient(
+        circle at 20% 20%,
+        rgba(0, 0, 0, 0.08) 0.4px,
+        transparent 0.5px
+      ),
+      radial-gradient(
+        circle at 80% 30%,
+        rgba(0, 0, 0, 0.05) 0.5px,
+        transparent 0.6px
+      ),
+      radial-gradient(
+        circle at 40% 80%,
+        rgba(0, 0, 0, 0.05) 0.4px,
+        transparent 0.5px
+      );
+
+    background-size: 170px 170px;
+  }
+  .hero-overlay {
+    @apply absolute inset-0 z-[2];
 
     background: linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0.04) 45%,
-      rgba(255, 255, 255, 0.08) 100%
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0.08) 35%,
+      rgba(255, 255, 255, 0.14) 100%
     );
+  }
+
+  .ambient-light {
+    @apply absolute inset-0 z-[3];
+
+    pointer-events: none;
+    background: radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0.1) 35%,
+      transparent 75%
+    );
+    opacity: 0.9;
   }
 
   .content-z {
@@ -70,131 +116,231 @@
     z-10
     flex
     flex-col
-    items-center
-    opacity-0
-    translate-y-6
-    scale-[0.985]
-    transition-all
-    duration-[1800ms]
-    ease-[cubic-bezier(0.16,1,0.3,1)];
+    items-center;
 
+    opacity: 0;
+    transform: translateY(34px) scale(0.985);
+    transition:
+      opacity 2200ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 2200ms cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform, opacity;
   }
 
   .is-visible {
-    @apply opacity-100
-    translate-y-0
-    scale-100;
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 
-  .honey-text {
-    @apply mb-10 
-    mt-8 
-    max-w-[240px] 
-    font-sans 
-    text-[15px] 
-    font-medium 
-    tracking-[0.04em] 
-    text-[#d91c8f];
-    line-height: 1.55;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+  .intro-text {
+    @apply mb-12
+    max-w-[270px]
+    font-sans;
+
+    font-size: 0.78rem;
+    font-weight: 500;
+    line-height: 1.9;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #c1157b;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: luxuryFade 1800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 500ms;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.25);
   }
+
   @media (min-width: 768px) {
-    .honey-text {
-      max-width: 520px;
-      font-size: 1.05rem;
-      letter-spacing: 0.08em;
-      line-height: 1.7;
+    .intro-text {
+      max-width: 700px;
+      font-size: 0.92rem;
+      letter-spacing: 0.34em;
     }
   }
-
   .main-title {
     @apply flex
     flex-col
-    items-center
-    leading-[0.90]
-    tracking-[-0.065em];
+    items-center;
+
+    line-height: 0.86;
+    user-select: none;
+  }
+
+  .name-primary,
+  .name-secondary {
+    font-family: "Cormorant Garamond", serif;
+
+    font-weight: 300;
+    letter-spacing: -0.06em;
+    color: #121212;
+    text-rendering: geometricPrecision;
+    opacity: 0;
+    filter: blur(12px);
+    animation: luxuryReveal 2400ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .name-primary {
-    @apply font-serif
-    text-[4.6rem]
-    text-[#161616]
-    md:text-[8.7rem]
-    lg:text-[10.8rem];
-  }
-
-  .ampersand {
-    @apply -my-2
-    font-serif
-    text-[3.9rem]
-    leading-none
-    text-[#d6008f]
-    md:text-[6.3rem]
-    lg:text-[7.2rem];
+    font-size: clamp(4.8rem, 13vw, 11rem);
+    animation-delay: 700ms;
   }
 
   .name-secondary {
-    @apply -mt-1
-    font-serif
-    text-[4.6rem]
-    text-[#161616]
-    md:text-[8.7rem]
-    lg:text-[10.8rem];
+    margin-top: -0.25rem;
+    font-size: clamp(4.8rem, 13vw, 11rem);
+    animation-delay: 1100ms;
+  }
+  .ampersand {
+    margin-top: -0.35rem;
+    margin-bottom: -0.15rem;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(3.4rem, 8vw, 7rem);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1;
+    color: #c1157b;
+    opacity: 0;
+    transform: scale(0.92) translateY(10px);
+    animation: ampReveal 1800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 950ms;
+  }
+
+  .meta-wrapper {
+    @apply flex
+    flex-col
+    items-center;
+
+    margin-top: 2.8rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: luxuryFade 2000ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 1400ms;
   }
 
   .subtitle {
-    @apply mt-8
-    mb-5
-    font-sans
-    text-[13px]
-    font-semibold
-    uppercase
-    tracking-[0.42em]
-    text-[#d6008f];
+    @apply font-sans uppercase;
 
-    letter-spacing: 0.42em;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.62em;
+    color: #c1157b;
   }
 
   @media (min-width: 768px) {
     .subtitle {
-      font-size: 0.95rem;
+      font-size: 0.82rem;
     }
   }
-  .date-info {
-    @apply mb-10
-    font-sans
-    text-[16px]
-    font-medium
-    tracking-[0.18em]
-    text-[#2e2e2e]
-    md:text-[19px];
+
+  .date-row {
+    @apply mt-7
+    flex
+    items-center
+    justify-center
+    gap-5
+    font-sans;
+
+    font-size: 0.92rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #232323;
+  }
+
+  @media (min-width: 768px) {
+    .date-row {
+      font-size: 1rem;
+      gap: 1.6rem;
+    }
   }
 
   .divider {
-    @apply mx-2
-    text-[#d6008f];
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: #c1157b;
+    opacity: 0.85;
   }
 
   .decorator-container {
-    @apply flex justify-center;
+    @apply mt-10 flex justify-center;
   }
 
   .line {
-    @apply h-[1.5px]
-    w-14
-    rounded-full
-    bg-[#2e2e2e]/70
-    md:w-20;
+    width: 76px;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(24, 24, 24, 0.78) 50%,
+      transparent 100%
+    );
+    opacity: 0;
+    transform: scaleX(0.4);
+    animation: lineReveal 1800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 1900ms;
   }
   @media (max-width: 380px) {
     .name-primary,
     .name-secondary {
-      font-size: 4.1rem;
+      font-size: 4.2rem;
     }
 
     .ampersand {
-      font-size: 3.3rem;
+      font-size: 3rem;
+    }
+
+    .intro-text {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+    }
+  }
+
+  @keyframes luxuryFade {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes luxuryReveal {
+    from {
+      opacity: 0;
+      filter: blur(14px);
+      transform: translateY(40px) scale(0.985);
+    }
+
+    to {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes ampReveal {
+    from {
+      opacity: 0;
+      transform: translateY(16px) scale(0.88);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes lineReveal {
+    from {
+      opacity: 0;
+      transform: scaleX(0.2);
+    }
+
+    to {
+      opacity: 1;
+      transform: scaleX(1);
     }
   }
 </style>

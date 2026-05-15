@@ -2,6 +2,7 @@
   import { useReveal } from "../lib/utils/reveal.svelte.js";
 
   const reveal = useReveal();
+  const mapsUrl = "https://maps.google.com/?q=Av.+Bartolomé+Mitre+3779+Sarandí";
 </script>
 
 <section
@@ -9,6 +10,8 @@
   class="venue-section"
   class:is-visible={reveal.visible}
 >
+  <div class="grain"></div>
+  <div class="ambient-light"></div>
   <div class="background-flower"></div>
   <div class="venue-grid">
     <div class="title-side">
@@ -19,68 +22,57 @@
           daremos<br />
           el sí?
         </h2>
+        <div class="title-line"></div>
         <div class="corner bottom-right"></div>
       </div>
     </div>
     <div class="card-wrapper">
-      <div class="venue-card">
+      <article class="venue-card">
         <div class="image-wrapper">
           <img
             src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/a5/8b/79/fachada-frontal.jpg?w=1400&h=-1&s=1"
-            alt="Iglesia Loreto"
+            alt="Nuestra Señora del Loreto"
             class="church-image"
           />
+          <div class="image-overlay"></div>
+          <div class="floating-label">Sarandí · Buenos Aires</div>
         </div>
         <div class="card-content">
-          <h3 class="card-title">Ceremonia Religiosa</h3>
+          <div class="content-header">
+            <p class="mini-label">Ceremonia Religiosa</p>
+            <h3 class="card-title">
+              Nuestra Señora
+              <br />
+              del Loreto
+            </h3>
+          </div>
           <div class="info-list">
             <div class="info-item">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="icon-svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 000-1.5h-3.75V6z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              <span>16:00 hs</span>
+              <span class="info-key">Hora</span>
+              <span class="info-value"> 16:00 hs </span>
             </div>
+            <div class="info-divider"></div>
             <div class="info-item">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="icon-svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              <span> Nuestra Señora del Loreto, Sarandí </span>
+              <span class="info-key">Ubicación</span>
+              <span class="info-value"> Av. Bartolomé Mitre 3779 </span>
             </div>
           </div>
-          <div class="map-wrapper">
-            <div
-              class="map-overlay pointer-events-none absolute inset-0 z-10"
-            ></div>
-            <iframe
-              title="Mapa Iglesia"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.3364955761355!2d-58.3444004!3d-34.6714004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a3331a1a1a1a1a%3A0x1a1a1a1a1a1a1a1a!2sAv.%20Bartolom%C3%A9%20Mitre%203779%2C%20Sarand%C3%AD!5e0!3m2!1ses!2sar!4v1610000000000!5m2!1ses!2sar"
-              width="100%"
-              height="100%"
-              style="border:0;"
-              allowfullscreen={true}
-              loading="lazy"
-            ></iframe>
-          </div>
+          <a
+            href={mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="map-card"
+          >
+            <div class="map-background"></div>
+            <div class="map-content">
+              <div>
+                <p class="map-title">Cómo llegar</p>
+              </div>
+              <div class="map-arrow">→</div>
+            </div>
+          </a>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 </section>
@@ -88,284 +80,344 @@
 <style>
   .venue-section {
     @apply relative
-    w-full
-    overflow-hidden
-    bg-[#fdfbf8]
-    py-24
-    md:py-28
-    px-6
-    md:px-12
-    duration-1000
-    ease-in-out
-    opacity-0
-    translate-y-10
-    transition-[opacity,transform]
-    will-change-transform;
+  isolate
+  overflow-hidden;
+    background: linear-gradient(to bottom, #fcfaf7 0%, #f8f5f2 100%);
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+    opacity: 0;
+    transform: translateY(42px) scale(0.99);
+    transition:
+      opacity 1800ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 1800ms cubic-bezier(0.16, 1, 0.3, 1);
   }
-
   .is-visible {
-    @apply opacity-100
-    translate-y-0;
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
-
+  @media (min-width: 768px) {
+    .venue-section {
+      padding-top: 10rem;
+      padding-bottom: 10rem;
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+  .grain {
+    @apply absolute inset-0 z-[1];
+    pointer-events: none;
+    opacity: 0.04;
+    mix-blend-mode: multiply;
+    background-image:
+      radial-gradient(
+        circle at 25% 20%,
+        rgba(0, 0, 0, 0.07) 0.4px,
+        transparent 0.5px
+      ),
+      radial-gradient(
+        circle at 75% 35%,
+        rgba(0, 0, 0, 0.05) 0.5px,
+        transparent 0.6px
+      );
+    background-size: 180px 180px;
+  }
+  .ambient-light {
+    @apply absolute inset-0 z-[2];
+    pointer-events: none;
+    background: radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.38) 0%,
+      rgba(255, 255, 255, 0.08) 40%,
+      transparent 75%
+    );
+  }
   .background-flower {
     @apply absolute
     left-0
     top-0
+    z-[3]
     h-full
-    w-[260px]
-    md:w-[520px]
     pointer-events-none
-    bg-cover
     bg-left
     bg-no-repeat;
-
+    width: 320px;
     background-image: url("/venue-flowers.png");
-    opacity: 0.76;
+    background-size: contain;
+    opacity: 0.22;
     mix-blend-mode: multiply;
-    -webkit-mask-image: linear-gradient(to right, black 42%, transparent 100%);
-    mask-image: linear-gradient(to right, black 42%, transparent 100%);
+    filter: blur(0.4px) saturate(0.92);
+    mask-image: linear-gradient(to right, black 40%, transparent 100%);
   }
-
+  @media (min-width: 768px) {
+    .background-flower {
+      width: 560px;
+    }
+  }
   .venue-grid {
     @apply relative
     z-10
     mx-auto
-    max-w-6xl
     grid
+    max-w-7xl
     grid-cols-1
-    lg:grid-cols-2
-    items-center
-    gap-14
-    lg:gap-20;
+    items-center;
+    gap: 5rem;
   }
-
+  @media (min-width: 1100px) {
+    .venue-grid {
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 7rem;
+    }
+  }
   .title-side {
     @apply flex
     justify-center
     lg:justify-start;
   }
-
   .title-decorator-box {
     @apply relative
     flex
-    flex-col
-    items-center
-    text-center
-    lg:items-start
-    lg:text-left
-    px-8
-    py-10
-    md:px-12
-    md:py-14;
+    flex-col;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
-
+  @media (min-width: 768px) {
+    .title-decorator-box {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
   .corner {
-    @apply absolute
-    w-16
-    h-16
-    md:w-24
-    md:h-24;
+    @apply absolute;
+    width: 68px;
+    height: 68px;
   }
-
   .top-left {
-    @apply top-0
-    left-0
-    border-t-[2px]
-    border-l-[2px];
-
-    border-color: rgba(20, 86, 170, 0.92);
+    top: 0;
+    left: 0;
+    border-top: 1.5px solid rgba(20, 86, 170, 0.92);
+    border-left: 1.5px solid rgba(20, 86, 170, 0.92);
   }
-
   .bottom-right {
-    @apply bottom-0
-    right-0
-    border-b-[2px]
-    border-r-[2px];
-
-    border-color: rgba(20, 86, 170, 0.92);
+    right: 0;
+    bottom: 0;
+    border-right: 1.5px solid rgba(20, 86, 170, 0.92);
+    border-bottom: 1.5px solid rgba(20, 86, 170, 0.92);
   }
-
+  @media (min-width: 768px) {
+    .corner {
+      width: 92px;
+      height: 92px;
+    }
+  }
   .section-title {
-    @apply font-serif
-    text-[3.5rem]
-    md:text-[4.6rem]
-    lg:text-[5rem]
-    leading-[1.02];
-
-    letter-spacing: -0.035em;
-
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(4rem, 8vw, 6.4rem);
+    font-weight: 300;
+    line-height: 0.94;
+    letter-spacing: -0.055em;
     color: #111111;
+    text-rendering: geometricPrecision;
   }
-
+  .title-line {
+    width: 86px;
+    height: 1px;
+    margin-top: 2.8rem;
+    background: linear-gradient(90deg, rgba(193, 21, 123, 0.95), transparent);
+  }
   .card-wrapper {
     @apply flex
-    justify-center
-    w-full;
+    w-full
+    justify-center;
   }
-
   .venue-card {
     @apply relative
-    w-full
-    max-w-[560px]
-    rounded-[30px]
-    border
-    border-white/70
-    p-4
-    md:p-5;
-
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.92),
-      rgba(255, 255, 255, 0.82)
-    );
-
-    backdrop-filter: blur(14px);
-    transition:
-      transform 600ms cubic-bezier(0.16, 1, 0.3, 1),
-      box-shadow 600ms cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-hidden;
+    width: 100%;
+    max-width: 640px;
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(18px);
     box-shadow:
-      0 45px 140px rgba(0, 0, 0, 0.1),
-      0 20px 50px rgba(0, 0, 0, 0.06),
-      0 2px 12px rgba(255, 255, 255, 0.72) inset;
-
+      0 45px 120px rgba(0, 0, 0, 0.08),
+      0 15px 40px rgba(0, 0, 0, 0.05);
+    transition:
+      transform 1000ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 1000ms cubic-bezier(0.16, 1, 0.3, 1);
     isolation: isolate;
   }
-
-  .venue-card::before {
-    content: "";
-
-    @apply absolute
-    inset-0
-    rounded-[30px]
-    pointer-events-none;
-
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0)
-    );
-    opacity: 0.9;
-  }
   .venue-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
     box-shadow:
-      0 60px 160px rgba(0, 0, 0, 0.14),
-      0 30px 70px rgba(0, 0, 0, 0.08),
-      0 2px 12px rgba(255, 255, 255, 0.78) inset;
+      0 60px 140px rgba(0, 0, 0, 0.1),
+      0 20px 55px rgba(0, 0, 0, 0.06);
   }
   .image-wrapper {
-    @apply relative
-    w-full
-    overflow-hidden
-    rounded-[24px]
-    h-[220px]
-    md:h-[240px];
+    @apply relative overflow-hidden;
+    height: 340px;
   }
-
-  .image-wrapper::after {
-    content: "";
-
-    @apply absolute
-    inset-0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.1), transparent 45%);
-  }
-
   .church-image {
-    @apply w-full
-    h-full
-    object-cover;
-    transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+    @apply h-full w-full object-cover;
+    transition: transform 1800ms cubic-bezier(0.16, 1, 0.3, 1);
+    filter: saturate(0.94) contrast(1.02) brightness(0.98);
   }
-
   .venue-card:hover .church-image {
-    transform: scale(1.04);
+    transform: scale(1.035);
   }
-
+  .image-overlay {
+    @apply absolute inset-0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.02) 40%,
+      transparent 70%
+    );
+  }
+  .floating-label {
+    @apply absolute;
+    left: 2rem;
+    bottom: 1.8rem;
+    font-family: "Inter", sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.92);
+  }
   .card-content {
-    @apply px-1
-    pt-8
-    pb-2;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
-
+  .mini-label {
+    font-family: "Inter", sans-serif;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: #c1157b;
+    margin-bottom: 1.4rem;
+  }
   .card-title {
-    @apply mb-7
-    font-serif
-    text-[2.15rem];
-
-    color: #111111;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2.7rem, 5vw, 4rem);
+    font-weight: 300;
+    line-height: 0.96;
+    letter-spacing: -0.045em;
+    color: #121212;
+    text-rendering: geometricPrecision;
   }
-
   .info-list {
-    @apply mb-8
-    flex
-    flex-col
-    gap-5;
+    margin-top: 2.8rem;
+    margin-bottom: 3rem;
   }
-
   .info-item {
     @apply flex
     items-start
-    gap-3
-    font-sans
-    text-[0.98rem]
-    leading-relaxed;
-
-    color: rgba(17, 17, 17, 0.72);
+    justify-between
+    gap-6;
   }
-
-  .icon-svg {
-    @apply w-5
-    h-5
-    shrink-0
-    mt-[2px];
-
-    color: #e6009a;
+  .info-key {
+    font-family: "Inter", sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.42);
   }
-  .map-wrapper {
+  .info-value {
+    font-family: "Inter", sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: rgba(0, 0, 0, 0.74);
+    text-align: right;
+  }
+  .info-divider {
+    width: 100%;
+    height: 1px;
+    margin-top: 1.3rem;
+    margin-bottom: 1.3rem;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.08), transparent);
+  }
+  .map-card {
     @apply relative
-    h-[170px]
-    w-full
-    overflow-hidden
-    rounded-[22px]
-    border;
-
-    border-color: rgba(0, 0, 0, 0.05);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
-  }
-
-  .map-overlay {
+    flex
+    items-center
+    justify-between
+    overflow-hidden;
+    min-height: 140px;
+    padding: 2rem;
+    text-decoration: none;
     background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.05),
-      rgba(255, 255, 255, 0)
+      135deg,
+      rgba(245, 242, 238, 0.96),
+      rgba(255, 255, 255, 0.84)
     );
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition:
+      transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 900ms cubic-bezier(0.16, 1, 0.3, 1);
   }
-
+  .map-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(193, 21, 123, 0.18);
+  }
+  .map-background {
+    @apply absolute inset-0;
+    opacity: 0.06;
+    background-image:
+      radial-gradient(circle at 20% 30%, #c1157b 1px, transparent 1px),
+      radial-gradient(circle at 70% 60%, #1456aa 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+  .map-content {
+    @apply relative z-10 flex w-full items-center justify-between;
+  }
+  .map-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    color: #111111;
+  }
+  .map-arrow {
+    font-size: 2rem;
+    color: #c1157b;
+    transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .map-card:hover .map-arrow {
+    transform: translateX(6px);
+  }
   @media (max-width: 768px) {
     .venue-section {
-      @apply py-20;
+      padding-top: 7rem;
+      padding-bottom: 7rem;
     }
-
     .section-title {
-      font-size: 3.7rem;
+      font-size: 4.3rem;
     }
-
-    .venue-card {
-      border-radius: 26px;
-      box-shadow:
-        0 35px 90px rgba(0, 0, 0, 0.1),
-        0 15px 35px rgba(0, 0, 0, 0.05),
-        0 2px 10px rgba(255, 255, 255, 0.65) inset;
-    }
-
     .image-wrapper {
-      height: 210px;
-      border-radius: 22px;
+      height: 280px;
     }
-
-    .card-title {
-      font-size: 2rem;
+    .card-content {
+      padding-top: 2.2rem;
+      padding-bottom: 2.2rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    .map-card {
+      min-height: 120px;
+      padding: 1.6rem;
+    }
+    .map-title {
+      font-size: 1.8rem;
     }
   }
 </style>

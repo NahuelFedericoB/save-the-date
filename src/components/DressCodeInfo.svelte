@@ -20,12 +20,11 @@
       <div class="divider"></div>
       <div class="subtitle-wrapper">
         <span class="mini-line"></span>
-        <p class="section-subtitle">Elegante · Elegante Sport</p>
+        <p class="section-subtitle">Elegante o Elegante Sport</p>
         <span class="mini-line"></span>
       </div>
       <p class="description">
-        Queremos que te sientas increíble para celebrar, disfrutar y compartir
-        con nosotros una noche inolvidable.
+      Si querés ponerte todas las lentejuelas, ¡podés! Y si querés venir más sencillo, ¡también! Queremos que te sientas cómodo.
       </p>
       <div class="soft-highlight"></div>
     </div>

@@ -8,7 +8,7 @@
   let minutes = $state(0);
   let seconds = $state(0);
 
-  const targetDate = new Date("November 28, 2026 16:00:00").getTime();
+  const targetDate = new Date("November 21, 2026 16:00:00").getTime();
 
   $effect(() => {
     const interval = setInterval(() => {

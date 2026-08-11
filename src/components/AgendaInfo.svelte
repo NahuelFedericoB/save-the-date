@@ -27,7 +27,7 @@
         <div class="event-content">
           <h3 class="event-title">CEREMONIA</h3>
           <span class="event-time">16:00 HS</span>
-          <p class="event-location">Nuestra Señora del Loreto<br/>Sarandí</p>
+          <p class="event-location">Nuestra Señora del Loreto</p>
         </div>
       </div>
       <div class="event-item">
@@ -44,7 +44,7 @@
         <div class="event-content">
           <h3 class="event-title">RECEPCIÓN</h3>
           <span class="event-time">A CONTINUACIÓN</span>
-          <p class="event-location">Rooftop La Maquinita<br/>Quilmes</p>
+          <p class="event-location">Club House Nuevo Quilmes</p>
           <a
             href="#fiesta-location"
             class="location-btn"
@@ -64,8 +64,8 @@
         </div>
         <div class="event-content">
           <h3 class="event-title">FIESTA</h3>
-          <span class="event-time">HASTA APROX 1:30 HS</span>
-          <p class="event-location">Rooftop La Maquinita<br/>Quilmes</p>
+          <span class="event-time">HASTA APROX 3:00 HS</span>
+          <p class="event-location">Club House Nuevo Quilmes</p>
         </div>
       </div>
     </div>

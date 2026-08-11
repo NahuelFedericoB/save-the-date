@@ -18,7 +18,7 @@
     <div class="meta-wrapper">
       <p class="subtitle">Save the Date</p>
       <div class="date-row">
-        <span>28 de Noviembre</span>
+        <span>21 de Noviembre</span>
         <span class="divider"></span>
         <span>2026</span>
       </div>

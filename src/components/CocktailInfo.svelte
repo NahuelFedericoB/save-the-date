@@ -2,7 +2,7 @@
   import { useReveal } from "../lib/utils/reveal.svelte.js";
 
   const reveal = useReveal();
-  const mapsUrl = "https://maps.google.com/?q=Av.+Caseros+1750+Don+Bosco";
+  const mapsUrl = "https://www.google.com/maps?vet=10CAAQoqAOahcKEwig_Z2n0JmWAxUAAAAAHQAAAAAQCg..i&cshid=1786487433924878&pvq=CgwvZy8xaGMydzRxajc&fvr=1&cs=0&um=1&ie=UTF-8&fb=1&gl=ar&sa=X&ftid=0x95a33219803b0c3f:0x7d4cef6aaa009018";
 </script>
 
 <section
@@ -19,8 +19,8 @@
       <article class="venue-card">
         <div class="image-wrapper">
           <img
-            src="https://diariolaciudadavellaneda.com.ar/wp-content/uploads/2026/03/MAQUINITA.quilmes.43-1.jpg"
-            alt="Rooftop La Maquinita"
+            src="/mykonos.jpg"
+            alt="Club House Nuevo Quilmes"
             class="venue-image"
           />
           <div class="image-overlay"></div>
@@ -30,9 +30,9 @@
           <div class="content-header">
             <p class="mini-label">Recepción & Fiesta</p>
             <h3 class="card-title">
-              Rooftop
+              Club House
               <br />
-              La Maquinita
+              Nuevo Quilmes
             </h3>
           </div>
           <div class="info-list">
@@ -59,7 +59,6 @@
         </div>
       </article>
     </div>
-
     <div class="title-side order-1 lg:order-2">
       <div class="title-decorator-box">
         <div class="corner top-right"></div>

@@ -24,7 +24,8 @@
         <span class="mini-line"></span>
       </div>
       <p class="description">
-      Si querés ponerte todas las lentejuelas, ¡podés! Y si querés venir más sencillo, ¡también! Queremos que te sientas cómodo.
+        Si querés ponerte todas las lentejuelas, ¡podés! Y si querés venir más
+        sencillo, ¡también! Queremos que te sientas cómodo.
       </p>
       <div class="soft-highlight"></div>
     </div>
@@ -33,12 +34,7 @@
 
 <style>
   .dresscode-section {
-    @apply relative
-     isolate
-     flex
-     items-center
-     justify-center
-     overflow-hidden;
+    @apply relative isolate flex items-center justify-center overflow-hidden;
     background: linear-gradient(to bottom, #fcfaf7 0%, #f8f5f2 100%);
     padding-top: 8rem;
     padding-bottom: 8rem;
@@ -67,9 +63,7 @@
   }
 
   .grain {
-    @apply absolute
-     inset-0
-     z-[1];
+    @apply absolute inset-0 z-[1];
     pointer-events: none;
     opacity: 0.04;
     mix-blend-mode: multiply;
@@ -88,9 +82,7 @@
   }
 
   .ambient-light {
-    @apply absolute
-     inset-0
-     z-[2];
+    @apply absolute inset-0 z-[2];
     pointer-events: none;
     background: radial-gradient(
       circle at center,
@@ -101,10 +93,7 @@
   }
 
   .background-texture {
-    @apply absolute
-     inset-0
-     z-[3]
-     pointer-events-none;
+    @apply pointer-events-none absolute inset-0 z-[3];
     background:
       radial-gradient(
         circle at top left,
@@ -120,23 +109,11 @@
   }
 
   .content-wrapper {
-    @apply relative
-     z-10
-     mx-auto
-     flex
-     w-full
-     max-w-5xl
-     justify-center;
+    @apply relative z-10 mx-auto flex w-full max-w-5xl justify-center;
   }
 
   .decorator-box {
-    @apply relative
-     flex
-     w-full
-     flex-col
-     items-center
-     text-center
-     overflow-hidden;
+    @apply relative flex w-full flex-col items-center overflow-hidden text-center;
     padding-top: 5.2rem;
     padding-bottom: 5.2rem;
     padding-left: 2.5rem;
@@ -233,9 +210,7 @@
   }
 
   .subtitle-wrapper {
-    @apply flex
-     items-center
-     justify-center;
+    @apply flex items-center justify-center;
     gap: 1rem;
     margin-bottom: 3.2rem;
   }

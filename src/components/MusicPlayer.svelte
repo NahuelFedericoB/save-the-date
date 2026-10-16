@@ -11,12 +11,11 @@
   function startParty(event) {
     if (hasInteracted) return;
 
-    if (event.type === 'scroll') {
+    if (event.type === "scroll") {
       if (window.scrollY > 5) {
         executePlay();
       }
     } else {
-
       executePlay();
     }
   }
@@ -25,13 +24,16 @@
     if (!audioRef || hasInteracted) return;
 
     audioRef.muted = false;
-    audioRef.play().then(() => {
-      isMuted = false;
-      hasInteracted = true;
-      cleanEvents();
-    }).catch(error => {
-      console.log("Autoplay pendiente de interacción directa:", error);
-    });
+    audioRef
+      .play()
+      .then(() => {
+        isMuted = false;
+        hasInteracted = true;
+        cleanEvents();
+      })
+      .catch((error) => {
+        console.log("Autoplay pendiente de interacción directa:", error);
+      });
   }
 
   function cleanEvents() {
@@ -58,7 +60,7 @@
     } else {
       audioRef.pause();
     }
-    
+
     isMuted = !isMuted;
     hasInteracted = true;
     cleanEvents();
@@ -66,13 +68,7 @@
 </script>
 
 <div class="music-wrapper">
-  <audio
-    bind:this={audioRef}
-    src={audioUrl}
-    loop
-    muted
-    class="hidden"
-  ></audio>
+  <audio bind:this={audioRef} src={audioUrl} loop muted class="hidden"></audio>
 
   <button
     class="music-btn"
@@ -90,28 +86,11 @@
 
 <style>
   .music-wrapper {
-    @apply fixed 
-    bottom-6 
-    right-6 
-    z-50;
+    @apply fixed bottom-6 right-6 z-50;
   }
 
   .music-btn {
-    @apply flex 
-    h-14 
-    w-14 
-    items-center 
-    justify-center 
-    rounded-full 
-    bg-bougainvillea 
-    text-xl 
-    text-white 
-    shadow-lg 
-    shadow-bougainvillea/40 
-    transition-all 
-    duration-300
-    hover:scale-110 
-    active:scale-95;
+    @apply flex h-14 w-14 items-center justify-center rounded-full bg-bougainvillea text-xl text-white shadow-lg shadow-bougainvillea/40 transition-all duration-300 hover:scale-110 active:scale-95;
   }
   .is-playing {
     animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;

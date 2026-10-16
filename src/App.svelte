@@ -29,35 +29,15 @@
 
 <style>
   main {
-    @apply min-h-screen 
-    bg-[#FAFAFA] 
-    font-sans 
-    text-zinc-800;
+    @apply min-h-screen bg-[#FAFAFA] font-sans text-zinc-800;
   }
 
   footer {
-    @apply w-full 
-    bg-aegean 
-    py-20 
-    md:py-24
-    px-6 
-    flex 
-    flex-col 
-    items-center 
-    justify-center 
-    text-center;
+    @apply flex w-full flex-col items-center justify-center bg-aegean px-6 py-20 text-center md:py-24;
   }
 
   .footer-title {
-    @apply font-serif 
-    text-2xl 
-    md:text-4xl 
-    text-white 
-    uppercase
-    font-bold
-    tracking-[0.3em] 
-    leading-tight;
-    /* Mantenemos la sombra sutil para el contraste */
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+    @apply font-serif text-2xl font-bold uppercase leading-tight tracking-[0.3em] text-white md:text-4xl;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
   }
 </style>

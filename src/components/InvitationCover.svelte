@@ -31,16 +31,7 @@
 
 <style>
   .hero-container {
-    @apply relative
-    flex
-    min-h-[100svh]
-    w-full
-    items-center
-    justify-center
-    overflow-hidden
-    px-7
-    py-32
-    text-center;
+    @apply relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden px-7 py-32 text-center;
 
     background-color: #f8f5f2;
     background-image: url("/hero-mobile.png");
@@ -112,11 +103,7 @@
   }
 
   .content-z {
-    @apply relative
-    z-10
-    flex
-    flex-col
-    items-center;
+    @apply relative z-10 flex flex-col items-center;
 
     opacity: 0;
     transform: translateY(34px) scale(0.985);
@@ -132,9 +119,7 @@
   }
 
   .intro-text {
-    @apply mb-12
-    max-w-[270px]
-    font-sans;
+    @apply mb-12 max-w-[270px] font-sans;
 
     font-size: 0.78rem;
     font-weight: 500;
@@ -157,9 +142,7 @@
     }
   }
   .main-title {
-    @apply flex
-    flex-col
-    items-center;
+    @apply flex flex-col items-center;
 
     line-height: 0.86;
     user-select: none;
@@ -168,7 +151,6 @@
   .name-primary,
   .name-secondary {
     font-family: "Cormorant Garamond", serif;
-
     font-weight: 300;
     letter-spacing: -0.06em;
     color: #121212;
@@ -204,9 +186,7 @@
   }
 
   .meta-wrapper {
-    @apply flex
-    flex-col
-    items-center;
+    @apply flex flex-col items-center;
 
     margin-top: 2.8rem;
     opacity: 0;
@@ -231,12 +211,7 @@
   }
 
   .date-row {
-    @apply mt-7
-    flex
-    items-center
-    justify-center
-    gap-5
-    font-sans;
+    @apply mt-7 flex items-center justify-center gap-5 font-sans;
 
     font-size: 0.92rem;
     font-weight: 500;

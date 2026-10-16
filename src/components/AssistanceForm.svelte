@@ -117,8 +117,9 @@
         >
           <div class="grid-container">
             <div class="input-group">
-              <label class="input-label"> Nombre </label>
+              <label for="guest-name" class="input-label"> Nombre </label>
               <input
+                id="guest-name"
                 type="text"
                 value={name}
                 oninput={handleInputName}
@@ -129,8 +130,11 @@
               />
             </div>
             <div class="input-group">
-              <label class="input-label"> Apellido </label>
+              <label for="guest-last-name" class="input-label">
+                Apellido
+              </label>
               <input
+                id="guest-last-name"
                 type="text"
                 value={lastName}
                 oninput={handleInputLastName}
@@ -142,8 +146,11 @@
             </div>
           </div>
           <div class="input-group">
-            <label class="input-label"> Correo Electrónico </label>
+            <label for="guest-email" class="input-label">
+              Correo Electrónico
+            </label>
             <input
+              id="guest-email"
               type="email"
               bind:value={mail}
               required
@@ -153,14 +160,22 @@
             />
           </div>
           <div class="attendance-group">
-            <label class="input-label text-center w-full mb-3 block">
+            <span
+              id="attendance-label"
+              class="input-label mb-3 block w-full text-center"
+            >
               ¿Vas a venir?
-            </label>
-            <div class="attendance-selector">
+            </span>
+            <div
+              class="attendance-selector"
+              role="group"
+              aria-labelledby="attendance-label"
+            >
               <button
                 type="button"
                 class="attendance-btn {attendance ? 'active-yes' : 'inactive'}"
                 onclick={() => (attendance = true)}
+                aria-pressed={attendance}
                 disabled={formState === "loading"}
               >
                 Sí voy
@@ -169,6 +184,7 @@
                 type="button"
                 class="attendance-btn {!attendance ? 'active-no' : 'inactive'}"
                 onclick={() => (attendance = false)}
+                aria-pressed={!attendance}
                 disabled={formState === "loading"}
               >
                 No puedo asistir
@@ -195,40 +211,18 @@
 
 <style>
   .rsvp-section {
-    @apply relative
-    w-full
-    bg-[#fdfbf8]
-    py-24
-    md:py-32
-    px-6
-    flex
-    justify-center
-    items-center
-    duration-1000
-    ease-in-out
-    opacity-0
-    translate-y-10
-    transition-[opacity,transform]
-    will-change-transform;
+    @apply relative flex w-full translate-y-10 items-center justify-center bg-[#fdfbf8] px-6 py-24 opacity-0 transition-[opacity,transform] duration-1000 ease-in-out will-change-transform md:py-32;
   }
 
   .is-visible {
-    @apply opacity-100
-    translate-y-0;
+    @apply translate-y-0 opacity-100;
   }
 
   .rsvp-wrapper {
-    @apply w-full
-    max-w-3xl
-    mx-auto;
+    @apply mx-auto w-full max-w-3xl;
   }
   .decorator-box {
-    @apply relative
-    rounded-[30px]
-    border
-    border-white/70
-    p-8
-    md:p-16;
+    @apply relative rounded-[30px] border border-white/70 p-8 md:p-16;
 
     background: linear-gradient(
       to bottom,
@@ -248,10 +242,7 @@
   }
   .decorator-box::before {
     content: "";
-    @apply absolute
-    inset-0
-    rounded-[30px]
-    pointer-events-none;
+    @apply pointer-events-none absolute inset-0 rounded-[30px];
     background: linear-gradient(
       180deg,
       rgba(255, 255, 255, 0.4),
@@ -269,8 +260,7 @@
   }
 
   .corner {
-    @apply absolute
-    pointer-events-none;
+    @apply pointer-events-none absolute;
 
     width: 52px;
     height: 52px;
@@ -289,108 +279,52 @@
     border-bottom: 2px solid rgba(20, 86, 170, 0.88);
     border-right: 2px solid rgba(20, 86, 170, 0.88);
   }
-
-  @media (max-width: 768px) {
-    .corner {
-      width: 44px;
-      height: 44px;
-    }
-
-    .top-left {
-      top: 16px;
-      left: 16px;
-    }
-
-    .bottom-right {
-      bottom: 16px;
-      right: 16px;
-    }
-  } 
   .header-container {
-    @apply flex
-    flex-col
-    items-center
-    text-center
-    mb-12;
+    @apply mb-12 flex flex-col items-center text-center;
   }
 
   .rsvp-title {
-    @apply font-serif
-    text-[2.5rem]
-    md:text-[3.5rem]
-    leading-none
-    tracking-tight
-    mb-6;
+    @apply mb-6 font-serif text-[2.5rem] leading-none tracking-tight md:text-[3.5rem];
 
     color: #111111;
   }
 
   .subtitle-wrapper {
-    @apply flex
-    items-center
-    justify-center
-    gap-4;
+    @apply flex items-center justify-center gap-4;
   }
 
   .mini-line {
-    @apply h-[1px]
-    w-6
-    md:w-10;
+    @apply h-[1px] w-6 md:w-10;
 
     background: rgba(225, 0, 149, 0.45);
   }
 
   .rsvp-subtitle {
-    @apply font-sans
-    text-[10px]
-    md:text-xs
-    font-bold
-    uppercase
-    tracking-[0.25em];
+    @apply font-sans text-[10px] font-bold uppercase tracking-[0.25em] md:text-xs;
 
     color: rgba(17, 17, 17, 0.72);
   }
 
   .form-container {
-    @apply flex
-    flex-col
-    gap-6;
+    @apply flex flex-col gap-6;
   }
 
   .grid-container {
-    @apply grid
-    md:grid-cols-2
-    gap-6;
+    @apply grid gap-6 md:grid-cols-2;
   }
 
   .input-group {
-    @apply flex
-    flex-col
-    gap-2;
+    @apply flex flex-col gap-2;
   }
 
   .input-label {
-    @apply font-sans
-    text-[10px]
-    font-bold
-    uppercase
-    tracking-[0.2em]
-    ml-1;
+    @apply ml-1 font-sans text-[10px] font-bold uppercase tracking-[0.2em];
 
     color: rgba(17, 17, 17, 0.72);
   }
-  
+
   .text-input {
-    @apply w-full
-    px-5
-    py-3.5
-    rounded-[16px]
-    border
-    font-sans
-    text-[0.95rem]
-    outline-none
-    transition-all
-    duration-300;
+    @apply w-full rounded-[16px] border px-5 py-3.5 font-sans text-[0.95rem] outline-none transition-all duration-300;
 
     background: rgba(255, 255, 255, 0.72);
     border-color: rgba(0, 0, 0, 0.06);
@@ -409,29 +343,15 @@
     box-shadow: 0 0 0 4px rgba(225, 0, 149, 0.06);
   }
   .attendance-group {
-    @apply mt-4
-    mb-2;
+    @apply mb-2 mt-4;
   }
 
   .attendance-selector {
-    @apply flex
-    flex-col
-    md:flex-row
-    gap-3;
+    @apply flex flex-col gap-3 md:flex-row;
   }
 
   .attendance-btn {
-    @apply flex-1
-    py-3.5
-    rounded-[16px]
-    font-sans
-    text-xs
-    font-bold
-    uppercase
-    tracking-[0.15em]
-    border
-    transition-all
-    duration-300;
+    @apply flex-1 rounded-[16px] border py-3.5 font-sans text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300;
   }
 
   .active-yes {
@@ -451,8 +371,7 @@
   }
 
   .inactive {
-    @apply bg-transparent
-    border-zinc-200;
+    @apply border-zinc-200 bg-transparent;
 
     color: rgba(17, 17, 17, 0.46);
   }
@@ -462,13 +381,7 @@
     color: rgba(17, 17, 17, 0.72);
   }
   .error-message {
-    @apply text-xs
-    font-bold
-    uppercase
-    tracking-widest
-    text-center
-    p-4
-    rounded-[16px];
+    @apply rounded-[16px] p-4 text-center text-xs font-bold uppercase tracking-widest;
 
     color: #e10095;
 
@@ -476,20 +389,7 @@
   }
 
   .submit-button {
-    @apply w-full
-    mt-4
-    py-4
-    rounded-[18px]
-    font-sans
-    text-xs
-    md:text-sm
-    font-bold
-    uppercase
-    tracking-[0.22em]
-    text-white
-    transition-all
-    duration-500
-    active:scale-[0.98];
+    @apply mt-4 w-full rounded-[18px] py-4 font-sans text-xs font-bold uppercase tracking-[0.22em] text-white transition-all duration-500 active:scale-[0.98] md:text-sm;
 
     background: linear-gradient(135deg, #111111, #1b1b1b);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.16);
@@ -500,11 +400,7 @@
     box-shadow: 0 28px 55px rgba(0, 0, 0, 0.2);
   }
   .success-container {
-    @apply flex
-    flex-col
-    items-center
-    text-center
-    py-10;
+    @apply flex flex-col items-center py-10 text-center;
   }
 
   .success-icon-wrapper {
@@ -514,23 +410,17 @@
   }
 
   .success-icon {
-    @apply w-16
-    h-16;
+    @apply h-16 w-16;
   }
 
   .success-title {
-    @apply font-serif
-    text-3xl
-    md:text-4xl
-    mb-3;
+    @apply mb-3 font-serif text-3xl md:text-4xl;
 
     color: #111111;
   }
 
   .success-text {
-    @apply font-sans
-    text-base
-    md:text-lg;
+    @apply font-sans text-base md:text-lg;
 
     color: rgba(17, 17, 17, 0.62);
   }

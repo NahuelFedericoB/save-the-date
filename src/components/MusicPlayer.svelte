@@ -68,7 +68,8 @@
 </script>
 
 <div class="music-wrapper">
-  <audio bind:this={audioRef} src={audioUrl} loop muted class="hidden"></audio>
+  <audio bind:this={audioRef} src={audioUrl} loop muted class="music-audio"
+  ></audio>
 
   <button
     class="music-btn"
@@ -85,6 +86,10 @@
 </div>
 
 <style>
+  .music-audio {
+    @apply hidden;
+  }
+
   .music-wrapper {
     @apply fixed bottom-6 right-6 z-50;
   }

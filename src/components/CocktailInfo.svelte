@@ -21,7 +21,7 @@
   <div class="ambient-light"></div>
   <div class="background-flower-right"></div>
   <div class="venue-grid">
-    <div class="card-wrapper order-2 lg:order-1">
+    <div class="card-wrapper">
       <VenueCard
         variant="reception"
         imageSrc="/mykonos.jpg"
@@ -33,7 +33,7 @@
         {mapsUrl}
       />
     </div>
-    <div class="title-side order-1 lg:order-2">
+    <div class="title-side">
       <div class="title-decorator-box">
         <div class="corner top-right"></div>
         <h2 class="section-title">
@@ -54,10 +54,7 @@
 
 <style>
   .grain {
-    @apply absolute inset-0 z-[1];
-    pointer-events: none;
-    opacity: 0.04;
-    mix-blend-mode: multiply;
+    @apply pointer-events-none absolute inset-0 z-[1] bg-[length:180px_180px] opacity-[0.04] mix-blend-multiply;
     background-image:
       radial-gradient(
         circle at 20% 20%,
@@ -69,12 +66,10 @@
         rgba(0, 0, 0, 0.05) 0.5px,
         transparent 0.6px
       );
-    background-size: 180px 180px;
   }
 
   .ambient-light {
-    @apply absolute inset-0 z-[2];
-    pointer-events: none;
+    @apply pointer-events-none absolute inset-0 z-[2];
     background: radial-gradient(
       circle at center,
       rgba(255, 255, 255, 0.34) 0%,
@@ -84,75 +79,54 @@
   }
 
   .background-flower-right {
-    @apply pointer-events-none absolute right-0 top-0 z-[3] h-full bg-right bg-no-repeat;
-    width: 360px;
-    background-image: url("/mesa.jpg");
-    background-size: cover;
-    opacity: 0.14;
-    mix-blend-mode: multiply;
-    filter: blur(0.4px) saturate(0.92);
+    @apply pointer-events-none absolute right-0 top-0 z-[3] h-full w-[360px] bg-[url('/mesa.jpg')] bg-cover bg-right bg-no-repeat opacity-[0.14] mix-blend-multiply blur-[0.4px] saturate-[0.92];
     mask-image: linear-gradient(to left, black 28%, transparent 100%);
   }
 
   @media (min-width: 768px) {
     .background-flower-right {
-      width: 620px;
+      @apply w-[620px];
     }
   }
 
   @media (min-width: 1100px) {
     .venue-grid {
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 7rem;
+      @apply grid-cols-[1.05fr_0.95fr] gap-28;
     }
   }
 
   .title-side {
-    @apply flex justify-center lg:justify-end;
+    @apply order-1 flex justify-center lg:order-2 lg:justify-end;
   }
 
   .top-right {
-    top: 0;
-    right: 0;
-    border-top: 1.5px solid rgba(193, 21, 123, 0.92);
-    border-right: 1.5px solid rgba(193, 21, 123, 0.92);
+    @apply right-0 top-0 border-r-[1.5px] border-t-[1.5px] border-solid border-r-[rgba(193,21,123,0.92)] border-t-[rgba(193,21,123,0.92)];
   }
 
   .bottom-left {
-    left: 0;
-    bottom: 0;
-    border-bottom: 1.5px solid rgba(20, 86, 170, 0.92);
-    border-left: 1.5px solid rgba(20, 86, 170, 0.92);
+    @apply bottom-0 left-0 border-b-[1.5px] border-l-[1.5px] border-solid border-b-[rgba(20,86,170,0.92)] border-l-[rgba(20,86,170,0.92)];
   }
 
   .section-title {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(3.8rem, 8vw, 5.8rem);
-    font-weight: 300;
-    line-height: 0.95;
-    letter-spacing: -0.055em;
-    color: #111111;
+    @apply font-cover text-[clamp(3.8rem,8vw,5.8rem)] font-light leading-[0.95] tracking-[-0.055em] text-[#111111];
   }
 
   .subtitle-wrapper {
-    @apply flex items-center;
-    gap: 1rem;
-    margin-top: 2.6rem;
+    @apply mt-[2.6rem] flex items-center gap-4;
   }
 
   .mini-line {
-    width: 34px;
-    height: 1px;
+    @apply h-px w-[34px];
     background: linear-gradient(90deg, rgba(193, 21, 123, 0.92), transparent);
   }
 
   .card-wrapper {
-    @apply flex w-full justify-center lg:justify-start;
+    @apply order-2 flex w-full justify-center lg:order-1 lg:justify-start;
   }
 
   @media (max-width: 768px) {
     .section-title {
-      font-size: 4.1rem;
+      @apply text-[4.1rem];
     }
   }
 </style>

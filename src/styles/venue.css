@@ -1,69 +1,44 @@
 [data-venue].venue-section {
-  @apply relative isolate overflow-hidden;
+  @apply relative isolate translate-y-[42px] scale-[0.99] overflow-hidden px-7 py-32 opacity-0 transition-[opacity,transform] duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)];
   background: linear-gradient(to bottom, #fcfaf7 0%, #f8f5f2 100%);
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-  padding-left: 1.75rem;
-  padding-right: 1.75rem;
-  opacity: 0;
-  transform: translateY(42px) scale(0.99);
-  transition:
-    opacity 1800ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1800ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [data-venue].is-visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
+  @apply translate-y-[0] scale-[1] opacity-100;
 }
 
 @media (min-width: 768px) {
   [data-venue].venue-section {
-    padding-top: 10rem;
-    padding-bottom: 10rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
+    @apply px-12 py-40;
   }
 }
 
 [data-venue] .venue-grid {
-  @apply relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center;
-  gap: 5rem;
+  @apply relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-20;
 }
 
 [data-venue] .title-decorator-box {
-  @apply relative flex flex-col;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  @apply relative flex flex-col px-8 py-12;
 }
 
 @media (min-width: 768px) {
   [data-venue] .title-decorator-box {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    padding-left: 4rem;
-    padding-right: 4rem;
+    @apply p-16;
   }
 }
 
 [data-venue] .corner {
-  @apply absolute;
-  width: 68px;
-  height: 68px;
+  @apply absolute h-[68px] w-[68px];
 }
 
 @media (min-width: 768px) {
   [data-venue] .corner {
-    width: 92px;
-    height: 92px;
+    @apply h-[92px] w-[92px];
   }
 }
 
 @media (max-width: 768px) {
   [data-venue].venue-section {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
+    @apply py-28;
   }
 }

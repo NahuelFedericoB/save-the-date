@@ -49,10 +49,7 @@
 
 <style>
   .grain {
-    @apply absolute inset-0 z-[1];
-    pointer-events: none;
-    opacity: 0.04;
-    mix-blend-mode: multiply;
+    @apply pointer-events-none absolute inset-0 z-[1] bg-[length:180px_180px] opacity-[0.04] mix-blend-multiply;
     background-image:
       radial-gradient(
         circle at 25% 20%,
@@ -64,11 +61,9 @@
         rgba(0, 0, 0, 0.05) 0.5px,
         transparent 0.6px
       );
-    background-size: 180px 180px;
   }
   .ambient-light {
-    @apply absolute inset-0 z-[2];
-    pointer-events: none;
+    @apply pointer-events-none absolute inset-0 z-[2];
     background: radial-gradient(
       circle at center,
       rgba(255, 255, 255, 0.38) 0%,
@@ -77,54 +72,34 @@
     );
   }
   .background-flower {
-    @apply pointer-events-none absolute left-0 top-0 z-[3] h-full bg-left bg-no-repeat;
-    width: 320px;
-    background-image: url("/venue-flowers.png");
-    background-size: contain;
-    opacity: 0.22;
-    mix-blend-mode: multiply;
-    filter: blur(0.4px) saturate(0.92);
+    @apply pointer-events-none absolute left-0 top-0 z-[3] h-full w-[320px] bg-[url('/venue-flowers.png')] bg-contain bg-left bg-no-repeat opacity-[0.22] mix-blend-multiply blur-[0.4px] saturate-[0.92];
     mask-image: linear-gradient(to right, black 40%, transparent 100%);
   }
   @media (min-width: 768px) {
     .background-flower {
-      width: 560px;
+      @apply w-[560px];
     }
   }
   @media (min-width: 1100px) {
     .venue-grid {
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 7rem;
+      @apply grid-cols-[0.95fr_1.05fr] gap-28;
     }
   }
   .title-side {
     @apply flex justify-center lg:justify-start;
   }
   .top-left {
-    top: 0;
-    left: 0;
-    border-top: 1.5px solid rgba(20, 86, 170, 0.92);
-    border-left: 1.5px solid rgba(20, 86, 170, 0.92);
+    @apply left-0 top-0 border-l-[1.5px] border-t-[1.5px] border-solid border-l-[rgba(20,86,170,0.92)] border-t-[rgba(20,86,170,0.92)];
   }
   .bottom-right {
-    right: 0;
-    bottom: 0;
-    border-right: 1.5px solid rgba(20, 86, 170, 0.92);
-    border-bottom: 1.5px solid rgba(20, 86, 170, 0.92);
+    @apply bottom-0 right-0 border-b-[1.5px] border-r-[1.5px] border-solid border-b-[rgba(20,86,170,0.92)] border-r-[rgba(20,86,170,0.92)];
   }
   .section-title {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(4rem, 8vw, 6.4rem);
-    font-weight: 300;
-    line-height: 0.94;
-    letter-spacing: -0.055em;
-    color: #111111;
+    @apply font-cover text-[clamp(4rem,8vw,6.4rem)] font-light leading-[0.94] tracking-[-0.055em] text-[#111111];
     text-rendering: geometricPrecision;
   }
   .title-line {
-    width: 86px;
-    height: 1px;
-    margin-top: 2.8rem;
+    @apply mt-[2.8rem] h-px w-[86px];
     background: linear-gradient(90deg, rgba(193, 21, 123, 0.95), transparent);
   }
   .card-wrapper {
@@ -132,7 +107,7 @@
   }
   @media (max-width: 768px) {
     .section-title {
-      font-size: 4.3rem;
+      @apply text-[4.3rem];
     }
   }
 </style>

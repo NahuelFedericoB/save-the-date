@@ -27,9 +27,7 @@
 
 <style>
   .invitation-section {
-    @apply translate-y-10 px-6 py-24 text-center opacity-0 transition-[opacity,transform] duration-1000 ease-in-out;
-
-    will-change: transform;
+    @apply translate-y-10 px-6 py-24 text-center opacity-0 transition-[opacity,transform] duration-1000 ease-in-out will-change-transform;
   }
 
   .is-visible {
@@ -40,45 +38,32 @@
     @apply relative mx-auto max-w-5xl px-8 py-14 md:px-14 md:py-16;
   }
   .message-container::before {
-    content: "";
-
-    @apply absolute right-0 top-0 h-14 w-14 md:h-20 md:w-20;
-    border-top: 2px solid rgba(20, 86, 170, 0.92);
-    border-right: 2px solid rgba(20, 86, 170, 0.92);
+    @apply absolute right-0 top-0 h-14 w-14 border-r-[2px] border-t-[2px] border-r-[rgba(20,86,170,0.92)] border-t-[rgba(20,86,170,0.92)] content-[''] md:h-20 md:w-20;
   }
 
   .message-container::after {
-    content: "";
-
-    @apply absolute bottom-0 left-0 h-14 w-14 md:h-20 md:w-20;
-    border-bottom: 2px solid rgba(20, 86, 170, 0.92);
-    border-left: 2px solid rgba(20, 86, 170, 0.92);
+    @apply absolute bottom-0 left-0 h-14 w-14 border-b-[2px] border-l-[2px] border-b-[rgba(20,86,170,0.92)] border-l-[rgba(20,86,170,0.92)] content-[''] md:h-20 md:w-20;
   }
   .divider-container {
     @apply my-7 flex justify-center;
   }
 
   .divider-line {
-    @apply h-[2px] w-16;
-    background: #d6008f;
+    @apply h-[2px] w-16 bg-[#d6008f];
   }
 
   .invitation-title {
-    @apply mb-8 font-serif text-[2.7rem] leading-[1.12] tracking-[-0.035em];
-    color: #181818;
+    @apply mb-8 font-serif text-[2.7rem] leading-[1.12] tracking-[-0.035em] text-[#181818];
   }
 
   @media (min-width: 768px) {
     .invitation-title {
-      font-size: 4.6rem;
-      line-height: 1.05;
+      @apply text-[4.6rem] leading-[1.05];
     }
   }
 
   .invitation-text {
-    @apply font-sans text-[1.25rem] font-medium italic tracking-[0.01em] md:text-[1.6rem];
-    color: rgba(30, 30, 30, 0.72);
-    line-height: 1.65;
+    @apply font-sans text-[1.25rem] font-medium italic leading-[1.65] tracking-[0.01em] text-[rgba(30,30,30,0.72)] md:text-[1.6rem];
   }
   .desktop-only {
     @apply hidden md:block;

@@ -160,10 +160,7 @@
             />
           </div>
           <div class="attendance-group">
-            <span
-              id="attendance-label"
-              class="input-label mb-3 block w-full text-center"
-            >
+            <span id="attendance-label" class="input-label attendance-label">
               ¿Vas a venir?
             </span>
             <div
@@ -222,7 +219,7 @@
     @apply mx-auto w-full max-w-3xl;
   }
   .decorator-box {
-    @apply relative rounded-[30px] border border-white/70 p-8 md:p-16;
+    @apply relative isolate rounded-[30px] border border-white/70 p-8 backdrop-blur-[14px] transition-[transform,box-shadow] duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] md:p-16;
 
     background: linear-gradient(
       to bottom,
@@ -230,29 +227,22 @@
       rgba(255, 255, 255, 0.82)
     );
 
-    backdrop-filter: blur(14px);
     box-shadow:
       0 45px 140px rgba(0, 0, 0, 0.1),
       0 20px 50px rgba(0, 0, 0, 0.06),
       0 2px 12px rgba(255, 255, 255, 0.72) inset;
-    isolation: isolate;
-    transition:
-      transform 600ms cubic-bezier(0.16, 1, 0.3, 1),
-      box-shadow 600ms cubic-bezier(0.16, 1, 0.3, 1);
   }
   .decorator-box::before {
-    content: "";
-    @apply pointer-events-none absolute inset-0 rounded-[30px];
+    @apply pointer-events-none absolute inset-0 rounded-[30px] opacity-90 content-[''];
     background: linear-gradient(
       180deg,
       rgba(255, 255, 255, 0.4),
       rgba(255, 255, 255, 0)
     );
-    opacity: 0.9;
   }
 
   .decorator-box:hover {
-    transform: translateY(-6px);
+    @apply translate-y-[-6px];
     box-shadow:
       0 60px 160px rgba(0, 0, 0, 0.14),
       0 30px 70px rgba(0, 0, 0, 0.08),
@@ -260,33 +250,22 @@
   }
 
   .corner {
-    @apply pointer-events-none absolute;
-
-    width: 52px;
-    height: 52px;
+    @apply pointer-events-none absolute h-[52px] w-[52px];
   }
 
   .top-left {
-    top: 18px;
-    left: 18px;
-    border-top: 2px solid rgba(225, 0, 149, 0.88);
-    border-left: 2px solid rgba(225, 0, 149, 0.88);
+    @apply left-[18px] top-[18px] border-l-2 border-t-2 border-l-[#e10095]/[0.88] border-t-[#e10095]/[0.88];
   }
 
   .bottom-right {
-    bottom: 18px;
-    right: 18px;
-    border-bottom: 2px solid rgba(20, 86, 170, 0.88);
-    border-right: 2px solid rgba(20, 86, 170, 0.88);
+    @apply bottom-[18px] right-[18px] border-b-2 border-r-2 border-b-[#1456aa]/[0.88] border-r-[#1456aa]/[0.88];
   }
   .header-container {
     @apply mb-12 flex flex-col items-center text-center;
   }
 
   .rsvp-title {
-    @apply mb-6 font-serif text-[2.5rem] leading-none tracking-tight md:text-[3.5rem];
-
-    color: #111111;
+    @apply mb-6 font-serif text-[2.5rem] leading-none tracking-tight text-[#111111] md:text-[3.5rem];
   }
 
   .subtitle-wrapper {
@@ -294,15 +273,11 @@
   }
 
   .mini-line {
-    @apply h-[1px] w-6 md:w-10;
-
-    background: rgba(225, 0, 149, 0.45);
+    @apply h-[1px] w-6 bg-[#e10095]/[0.45] md:w-10;
   }
 
   .rsvp-subtitle {
-    @apply font-sans text-[10px] font-bold uppercase tracking-[0.25em] md:text-xs;
-
-    color: rgba(17, 17, 17, 0.72);
+    @apply font-sans text-[10px] font-bold uppercase tracking-[0.25em] text-[#111111]/[0.72] md:text-xs;
   }
 
   .form-container {
@@ -318,29 +293,23 @@
   }
 
   .input-label {
-    @apply ml-1 font-sans text-[10px] font-bold uppercase tracking-[0.2em];
+    @apply ml-1 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-[#111111]/[0.72];
+  }
 
-    color: rgba(17, 17, 17, 0.72);
+  .attendance-label {
+    @apply mb-3 block w-full text-center;
   }
 
   .text-input {
-    @apply w-full rounded-[16px] border px-5 py-3.5 font-sans text-[0.95rem] outline-none transition-all duration-300;
-
-    background: rgba(255, 255, 255, 0.72);
-    border-color: rgba(0, 0, 0, 0.06);
-    color: rgba(17, 17, 17, 0.88);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+    @apply w-full rounded-[16px] border border-black/[0.06] bg-white/[0.72] px-5 py-3.5 font-sans text-[0.95rem] text-[#111111]/[0.88] shadow-[0_4px_14px_rgba(0,0,0,0.03)] outline-none backdrop-blur-[8px] transition-all duration-300;
   }
 
   .text-input::placeholder {
-    color: rgba(17, 17, 17, 0.34);
+    @apply text-[#111111]/[0.34];
   }
 
   .text-input:focus {
-    background: rgba(255, 255, 255, 0.92);
-    border-color: rgba(225, 0, 149, 0.26);
-    box-shadow: 0 0 0 4px rgba(225, 0, 149, 0.06);
+    @apply border-[#e10095]/[0.26] bg-white/[0.92] shadow-[0_0_0_4px_rgba(225,0,149,0.06)];
   }
   .attendance-group {
     @apply mb-2 mt-4;
@@ -355,58 +324,44 @@
   }
 
   .active-yes {
-    @apply text-white;
+    @apply border-[#e10095]/[0.2] text-white shadow-[0_14px_30px_rgba(225,0,149,0.22)];
 
     background: linear-gradient(135deg, #e10095, #ff4db5);
-    border-color: rgba(225, 0, 149, 0.2);
-    box-shadow: 0 14px 30px rgba(225, 0, 149, 0.22);
   }
 
   .active-no {
-    @apply text-white;
+    @apply border-[#111111]/[0.18] text-white shadow-[0_14px_30px_rgba(0,0,0,0.18)];
 
     background: linear-gradient(135deg, #111111, #1f1f1f);
-    border-color: rgba(17, 17, 17, 0.18);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
   }
 
   .inactive {
-    @apply border-zinc-200 bg-transparent;
-
-    color: rgba(17, 17, 17, 0.46);
+    @apply border-zinc-200 bg-transparent text-[#111111]/[0.46];
   }
 
   .inactive:hover {
-    border-color: rgba(17, 17, 17, 0.16);
-    color: rgba(17, 17, 17, 0.72);
+    @apply border-[#111111]/[0.16] text-[#111111]/[0.72];
   }
   .error-message {
-    @apply rounded-[16px] p-4 text-center text-xs font-bold uppercase tracking-widest;
-
-    color: #e10095;
-
-    background: rgba(225, 0, 149, 0.05);
+    @apply rounded-[16px] bg-[#e10095]/[0.05] p-4 text-center text-xs font-bold uppercase tracking-widest text-[#e10095];
   }
 
   .submit-button {
-    @apply mt-4 w-full rounded-[18px] py-4 font-sans text-xs font-bold uppercase tracking-[0.22em] text-white transition-all duration-500 active:scale-[0.98] md:text-sm;
+    @apply mt-4 w-full rounded-[18px] py-4 font-sans text-xs font-bold uppercase tracking-[0.22em] text-white shadow-[0_20px_40px_rgba(0,0,0,0.16)] transition-all duration-500 active:scale-[0.98] md:text-sm;
 
     background: linear-gradient(135deg, #111111, #1b1b1b);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.16);
   }
 
   .submit-button:hover {
+    @apply shadow-[0_28px_55px_rgba(0,0,0,0.2)];
     transform: translateY(-2px);
-    box-shadow: 0 28px 55px rgba(0, 0, 0, 0.2);
   }
   .success-container {
     @apply flex flex-col items-center py-10 text-center;
   }
 
   .success-icon-wrapper {
-    @apply mb-6;
-
-    color: #111111;
+    @apply mb-6 text-[#111111];
   }
 
   .success-icon {
@@ -414,15 +369,11 @@
   }
 
   .success-title {
-    @apply mb-3 font-serif text-3xl md:text-4xl;
-
-    color: #111111;
+    @apply mb-3 font-serif text-3xl text-[#111111] md:text-4xl;
   }
 
   .success-text {
-    @apply font-sans text-base md:text-lg;
-
-    color: rgba(17, 17, 17, 0.62);
+    @apply font-sans text-base text-[#111111]/[0.62] md:text-lg;
   }
 
   @media (max-width: 768px) {
@@ -431,7 +382,7 @@
     }
 
     .decorator-box {
-      border-radius: 26px;
+      @apply rounded-[26px];
       box-shadow:
         0 35px 90px rgba(0, 0, 0, 0.1),
         0 15px 35px rgba(0, 0, 0, 0.05),
@@ -439,26 +390,23 @@
     }
 
     .decorator-box::before {
-      border-radius: 26px;
+      @apply rounded-[26px];
     }
 
     .corner {
-      width: 44px;
-      height: 44px;
+      @apply h-[44px] w-[44px];
     }
 
     .top-left {
-      top: 16px;
-      left: 16px;
+      @apply left-[16px] top-[16px];
     }
 
     .bottom-right {
-      bottom: 16px;
-      right: 16px;
+      @apply bottom-[16px] right-[16px];
     }
 
     .rsvp-title {
-      font-size: 2.9rem;
+      @apply text-[2.9rem];
     }
   }
 </style>

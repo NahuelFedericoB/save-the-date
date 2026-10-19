@@ -102,17 +102,14 @@
   }
 
   .section-title {
-    @apply font-serif text-[3.5rem] leading-none md:text-[4.5rem];
-
-    letter-spacing: -0.04em;
-    color: #111111;
+    @apply font-serif text-[3.5rem] leading-none tracking-[-0.04em] text-[#111111] md:text-[4.5rem];
   }
 
   .timeline-container {
     @apply relative mx-auto max-w-5xl;
   }
   .connector-line {
-    @apply absolute z-0;
+    @apply absolute bottom-10 left-1/2 top-8 z-0 w-[1px] -translate-x-1/2 md:bottom-auto md:left-[10%] md:right-[10%] md:top-[26px] md:h-[1px] md:w-auto md:translate-x-0;
 
     background: linear-gradient(
       to bottom,
@@ -120,8 +117,6 @@
       rgba(225, 0, 149, 0.35),
       rgba(225, 0, 149, 0.1)
     );
-    @apply bottom-10 left-1/2 top-8 w-[1px] -translate-x-1/2;
-    @apply md:bottom-auto md:left-[10%] md:right-[10%] md:top-[26px] md:h-[1px] md:w-auto md:translate-x-0;
   }
 
   .events-wrapper {
@@ -133,77 +128,51 @@
   }
 
   .icon-box {
-    @apply relative z-10 shrink-0 px-4 py-2;
-
-    background: #fdfbf8;
+    @apply relative z-10 shrink-0 bg-[#fdfbf8] px-4 py-2;
   }
 
   .icon-svg {
-    @apply h-8 w-8 stroke-[1.45px] md:h-9 md:w-9;
-
-    color: #d6008d;
+    @apply h-8 w-8 stroke-[1.45px] text-[#d6008d] md:h-9 md:w-9;
   }
   .event-content {
-    @apply relative z-10 flex w-full flex-col items-center py-2;
-
-    background: #fdfbf8;
+    @apply relative z-10 flex w-full flex-col items-center bg-[#fdfbf8] py-2;
   }
 
   .event-title {
-    @apply mb-1 font-sans text-sm font-bold uppercase md:text-[15px];
-
-    letter-spacing: 0.26em;
-    color: #111111;
+    @apply mb-1 font-sans text-sm font-bold uppercase tracking-[0.26em] text-[#111111] md:text-[15px];
   }
 
   .event-time {
-    @apply mb-3 font-sans text-[11px] font-bold md:text-xs;
-
-    letter-spacing: 0.12em;
-
-    color: rgba(17, 17, 17, 0.46);
+    @apply mb-3 font-sans text-[11px] font-bold tracking-[0.12em] text-[#111111]/[0.46] md:text-xs;
   }
 
   .event-location {
-    @apply font-sans text-[11px] leading-relaxed md:text-xs;
-
-    color: rgba(17, 17, 17, 0.68);
+    @apply font-sans text-[11px] leading-relaxed text-[#111111]/[0.68] md:text-xs;
   }
 
   .location-btn {
-    @apply mt-5 inline-flex cursor-pointer items-center justify-center rounded-full px-6 py-2.5 font-sans text-[10px] font-bold uppercase transition-all duration-500;
-
-    letter-spacing: 0.18em;
-    color: #d6008d;
-    border: 1px solid rgba(214, 0, 141, 0.22);
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+    @apply mt-5 inline-flex cursor-pointer items-center justify-center rounded-full border border-solid border-[#d6008d]/[0.22] bg-white/[0.55] px-6 py-2.5 font-sans text-[10px] font-bold uppercase tracking-[0.18em] text-[#d6008d] shadow-[0_10px_24px_rgba(0,0,0,0.04)] backdrop-blur-[10px] transition-all duration-500;
   }
 
   .location-btn:hover {
-    transform: translateY(-2px);
-    background: #d6008d;
-    color: white;
-    border-color: #d6008d;
-    box-shadow: 0 18px 34px rgba(214, 0, 141, 0.2);
+    @apply translate-y-[-2px] border-[#d6008d] bg-[#d6008d] text-white shadow-[0_18px_34px_rgba(214,0,141,0.2)];
   }
 
   @media (max-width: 768px) {
     .section-title {
-      font-size: 3.6rem;
+      @apply text-[3.6rem];
     }
 
     .events-wrapper {
-      gap: 3.5rem;
+      @apply gap-14;
     }
 
     .event-item {
-      gap: 1.1rem;
+      @apply gap-[1.1rem];
     }
 
     .location-btn {
-      margin-top: 1.1rem;
+      @apply mt-[1.1rem];
     }
   }
 </style>

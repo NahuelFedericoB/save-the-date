@@ -37,7 +37,6 @@
   }
 
   .footer-title {
-    @apply font-serif text-2xl font-bold uppercase leading-tight tracking-[0.3em] text-white md:text-4xl;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+    @apply font-serif text-2xl font-bold uppercase leading-tight tracking-[0.3em] text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.15)] md:text-4xl;
   }
 </style>

@@ -43,28 +43,28 @@
     <p class="eyebrow" class:animate={reveal.visible}>Cada vez falta menos</p>
     <div class="decorator" class:animate={reveal.visible}></div>
     <div class="timer-grid">
-      <div class="time-block" class:animate={reveal.visible} style="--d:0ms">
+      <div class="time-block time-days" class:animate={reveal.visible}>
         <span class="number">{days}</span>
         <span class="label">Días</span>
       </div>
-      <span class="separator" class:animate={reveal.visible} style="--d:150ms"
+      <span class="separator separator-first" class:animate={reveal.visible}
         >•</span
       >
-      <div class="time-block" class:animate={reveal.visible} style="--d:300ms">
+      <div class="time-block time-hours" class:animate={reveal.visible}>
         <span class="number">{hours}</span>
         <span class="label">Horas</span>
       </div>
-      <span class="separator" class:animate={reveal.visible} style="--d:450ms"
+      <span class="separator separator-second" class:animate={reveal.visible}
         >•</span
       >
-      <div class="time-block" class:animate={reveal.visible} style="--d:600ms">
+      <div class="time-block time-minutes" class:animate={reveal.visible}>
         <span class="number">{minutes}</span>
         <span class="label">Minutos</span>
       </div>
-      <span class="separator" class:animate={reveal.visible} style="--d:750ms"
+      <span class="separator separator-third" class:animate={reveal.visible}
         >•</span
       >
-      <div class="time-block" class:animate={reveal.visible} style="--d:900ms">
+      <div class="time-block time-seconds" class:animate={reveal.visible}>
         <span class="number">{seconds}</span>
         <span class="label">Segundos</span>
       </div>
@@ -74,18 +74,11 @@
 
 <style>
   .countdown-container {
-    @apply relative isolate w-full overflow-hidden;
-    background-image: url("/mykonos.jpg");
-    background-size: cover;
-    background-position: center;
-    aspect-ratio: 16 / 4.4;
+    @apply relative isolate aspect-[16/4.4] w-full overflow-hidden bg-[url('/mykonos.jpg')] bg-cover bg-center;
   }
 
   .grain {
-    @apply absolute inset-0 z-[1];
-    pointer-events: none;
-    opacity: 0.05;
-    mix-blend-mode: soft-light;
+    @apply pointer-events-none absolute inset-0 z-[1] bg-[length:180px_180px] opacity-5 mix-blend-soft-light;
     background-image:
       radial-gradient(
         circle at 25% 20%,
@@ -102,7 +95,6 @@
         rgba(255, 255, 255, 0.07) 0.4px,
         transparent 0.5px
       );
-    background-size: 180px 180px;
   }
 
   .overlay {
@@ -116,8 +108,7 @@
   }
 
   .ambient-light {
-    @apply absolute inset-0 z-[3];
-    pointer-events: none;
+    @apply pointer-events-none absolute inset-0 z-[3];
     background: radial-gradient(
       circle at center,
       rgba(255, 255, 255, 0.14) 0%,
@@ -127,78 +118,74 @@
   }
 
   .content {
-    @apply absolute inset-0 z-10 flex flex-col items-center justify-center text-center;
-    padding-inline: 1.5rem;
+    @apply absolute inset-0 z-10 flex flex-col items-center justify-center pe-6 ps-6 text-center;
   }
 
   .eyebrow {
-    font-family: "Inter", sans-serif;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.42em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.84);
-    margin-bottom: 1.8rem;
-    opacity: 0;
-    transform: translateY(18px);
+    @apply mb-[1.8rem] translate-y-[18px] font-inter text-[0.72rem] font-semibold uppercase tracking-[0.42em] text-white/[0.84] opacity-0;
   }
 
   .decorator {
-    width: 84px;
-    height: 1px;
-    margin-bottom: 3.2rem;
+    @apply mb-[3.2rem] h-px w-[84px] scale-x-[0.4] opacity-0;
     background: linear-gradient(
       90deg,
       transparent,
       rgba(255, 255, 255, 0.75),
       transparent
     );
-    opacity: 0;
-    transform: scaleX(0.4);
   }
 
   .timer-grid {
-    @apply flex items-end justify-center;
-    gap: 4rem;
+    @apply flex items-end justify-center gap-16;
   }
 
   .time-block {
-    @apply flex flex-col items-center;
-    opacity: 0;
-    transform: translateY(26px) scale(0.98);
+    @apply flex translate-y-[26px] scale-[0.98] flex-col items-center opacity-0;
   }
 
   .number {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(4rem, 7vw, 7.5rem);
-    font-weight: 300;
-    line-height: 0.88;
-    letter-spacing: -0.055em;
-    color: rgba(255, 255, 255, 0.98);
+    @apply font-cover text-[clamp(4rem,7vw,7.5rem)] font-light leading-[0.88] tracking-[-0.055em] text-white/[0.98] transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)];
     text-shadow: 0 10px 35px rgba(0, 0, 0, 0.24);
-    transition: transform 1200ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .time-block:hover .number {
-    transform: translateY(-2px);
+    @apply -translate-y-[2px];
   }
 
   .label {
-    margin-top: 1.5rem;
-    font-family: "Inter", sans-serif;
-    font-size: 0.66rem;
-    font-weight: 600;
-    letter-spacing: 0.42em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.76);
+    @apply mt-6 font-inter text-[0.66rem] font-semibold uppercase tracking-[0.42em] text-white/[0.76];
   }
 
   .separator {
-    @apply self-center;
-    margin-top: -1.2rem;
-    font-size: 5rem;
-    color: rgba(255, 255, 255, 0.45);
-    opacity: 0;
+    @apply mt-[-1.2rem] self-center text-[5rem] text-white/[0.45] opacity-0;
+  }
+
+  .time-days {
+    --d: 0ms;
+  }
+
+  .separator-first {
+    --d: 150ms;
+  }
+
+  .time-hours {
+    --d: 300ms;
+  }
+
+  .separator-second {
+    --d: 450ms;
+  }
+
+  .time-minutes {
+    --d: 600ms;
+  }
+
+  .separator-third {
+    --d: 750ms;
+  }
+
+  .time-seconds {
+    --d: 900ms;
   }
 
   .animate.eyebrow {
@@ -256,25 +243,23 @@
 
   @media (max-width: 768px) {
     .countdown-container {
-      aspect-ratio: 4 / 5.4;
+      @apply aspect-[4/5.4];
     }
 
     .timer-grid {
-      @apply grid grid-cols-2;
-      gap: 3.6rem 2.2rem;
+      @apply grid grid-cols-2 gap-x-[2.2rem] gap-y-[3.6rem];
     }
 
     .separator {
-      display: none;
+      @apply hidden;
     }
 
     .number {
-      font-size: 4.2rem;
+      @apply text-[4.2rem];
     }
 
     .label {
-      font-size: 0.62rem;
-      letter-spacing: 0.34em;
+      @apply text-[0.62rem] tracking-[0.34em];
     }
   }
 </style>

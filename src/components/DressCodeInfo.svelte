@@ -34,39 +34,22 @@
 
 <style>
   .dresscode-section {
-    @apply relative isolate flex items-center justify-center overflow-hidden;
+    @apply relative isolate flex translate-y-[42px] scale-[0.99] items-center justify-center overflow-hidden px-6 py-32 opacity-0 transition-[opacity,transform] duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-[transform,opacity];
     background: linear-gradient(to bottom, #fcfaf7 0%, #f8f5f2 100%);
-    padding-top: 8rem;
-    padding-bottom: 8rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    opacity: 0;
-    transform: translateY(42px) scale(0.99);
-    transition:
-      opacity 1800ms cubic-bezier(0.16, 1, 0.3, 1),
-      transform 1800ms cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform, opacity;
   }
 
   .is-visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    @apply translate-y-[0] scale-[1] opacity-100;
   }
 
   @media (min-width: 768px) {
     .dresscode-section {
-      padding-top: 9rem;
-      padding-bottom: 9rem;
-      padding-left: 3rem;
-      padding-right: 3rem;
+      @apply px-12 py-36;
     }
   }
 
   .grain {
-    @apply absolute inset-0 z-[1];
-    pointer-events: none;
-    opacity: 0.04;
-    mix-blend-mode: multiply;
+    @apply pointer-events-none absolute inset-0 z-[1] bg-[length:180px_180px] opacity-[0.04] mix-blend-multiply;
     background-image:
       radial-gradient(
         circle at 20% 20%,
@@ -78,12 +61,10 @@
         rgba(0, 0, 0, 0.05) 0.5px,
         transparent 0.6px
       );
-    background-size: 180px 180px;
   }
 
   .ambient-light {
-    @apply absolute inset-0 z-[2];
-    pointer-events: none;
+    @apply pointer-events-none absolute inset-0 z-[2];
     background: radial-gradient(
       circle at center,
       rgba(255, 255, 255, 0.38) 0%,
@@ -93,7 +74,7 @@
   }
 
   .background-texture {
-    @apply pointer-events-none absolute inset-0 z-[3];
+    @apply pointer-events-none absolute inset-0 z-[3] opacity-[0.95];
     background:
       radial-gradient(
         circle at top left,
@@ -105,7 +86,6 @@
         rgba(15, 79, 168, 0.05),
         transparent 34%
       );
-    opacity: 0.95;
   }
 
   .content-wrapper {
@@ -113,94 +93,58 @@
   }
 
   .decorator-box {
-    @apply relative flex w-full flex-col items-center overflow-hidden text-center;
-    padding-top: 5.2rem;
-    padding-bottom: 5.2rem;
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-    background: rgba(255, 255, 255, 0.52);
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(18px);
+    @apply relative isolate flex w-full flex-col items-center overflow-hidden border-[1px] border-solid border-[rgba(255,255,255,0.7)] bg-[rgba(255,255,255,0.52)] px-10 py-[5.2rem] text-center backdrop-blur-[18px];
     box-shadow:
       0 40px 120px rgba(0, 0, 0, 0.06),
       0 15px 35px rgba(0, 0, 0, 0.04);
-    isolation: isolate;
   }
 
   @media (min-width: 768px) {
     .decorator-box {
-      padding-top: 5.2rem;
-      padding-bottom: 5.2rem;
-      padding-left: 6rem;
-      padding-right: 6rem;
+      @apply px-24 py-[5.2rem];
     }
   }
 
   .soft-highlight {
-    @apply absolute;
-    width: 420px;
-    height: 420px;
-    border-radius: 999px;
-    right: -180px;
-    top: -180px;
+    @apply pointer-events-none absolute right-[-180px] top-[-180px] h-[420px] w-[420px] rounded-[999px];
     background: radial-gradient(
       circle,
       rgba(255, 255, 255, 0.24),
       transparent 70%
     );
-    pointer-events: none;
   }
 
   .corner {
-    @apply absolute;
-    width: 72px;
-    height: 72px;
+    @apply absolute h-[72px] w-[72px];
   }
 
   .top-left {
-    top: 28px;
-    left: 28px;
-    border-top: 1.5px solid rgba(193, 21, 123, 0.92);
-    border-left: 1.5px solid rgba(193, 21, 123, 0.92);
+    @apply left-[28px] top-[28px] border-l-[1.5px] border-t-[1.5px] border-l-[rgba(193,21,123,0.92)] border-t-[rgba(193,21,123,0.92)];
   }
 
   .bottom-right {
-    right: 28px;
-    bottom: 28px;
-    border-right: 1.5px solid rgba(20, 86, 170, 0.92);
-    border-bottom: 1.5px solid rgba(20, 86, 170, 0.92);
+    @apply bottom-[28px] right-[28px] border-b-[1.5px] border-r-[1.5px] border-b-[rgba(20,86,170,0.92)] border-r-[rgba(20,86,170,0.92)];
   }
 
   @media (max-width: 768px) {
     .corner {
-      width: 52px;
-      height: 52px;
+      @apply h-[52px] w-[52px];
     }
     .top-left {
-      top: 20px;
-      left: 20px;
+      @apply left-[20px] top-[20px];
     }
     .bottom-right {
-      right: 20px;
-      bottom: 20px;
+      @apply bottom-[20px] right-[20px];
     }
   }
 
   .section-title {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(3.2rem, 6vw, 5rem);
-    font-weight: 250;
-    line-height: 0.92;
-    letter-spacing: -0.04em;
-    color: #111111;
+    @apply font-cover text-[clamp(3.2rem,6vw,5rem)] font-[250] leading-[0.92] tracking-[-0.04em] text-[#111111];
     text-rendering: geometricPrecision;
   }
 
   .divider {
-    width: 62px;
-    height: 1px;
-    margin-top: 2.2rem;
-    margin-bottom: 2.8rem;
+    @apply mb-[2.8rem] mt-[2.2rem] h-px w-[62px];
     background: linear-gradient(
       90deg,
       transparent,
@@ -210,14 +154,11 @@
   }
 
   .subtitle-wrapper {
-    @apply flex items-center justify-center;
-    gap: 1rem;
-    margin-bottom: 3.2rem;
+    @apply mb-[3.2rem] flex items-center justify-center gap-4;
   }
 
   .mini-line {
-    width: 34px;
-    height: 1px;
+    @apply h-px w-[34px];
     background: linear-gradient(
       90deg,
       transparent,
@@ -227,75 +168,55 @@
   }
 
   .section-subtitle {
-    font-family: "Inter", sans-serif;
-    font-size: 0.78rem;
-    font-weight: 650;
-    letter-spacing: 0.42em;
-    text-transform: uppercase;
-    color: #c1157b;
+    @apply font-inter text-[0.78rem] font-[650] uppercase tracking-[0.42em] text-[#c1157b];
   }
 
   @media (min-width: 768px) {
     .section-subtitle {
-      font-size: 0.82rem;
+      @apply text-[0.82rem];
     }
   }
 
   .description {
-    max-width: 560px;
-    font-family: "Inter", sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.95;
-    color: rgba(17, 17, 17, 0.66);
+    @apply max-w-[560px] font-inter text-[1rem] font-normal leading-[1.95] text-[rgba(17,17,17,0.66)];
   }
 
   @media (min-width: 768px) {
     .description {
-      font-size: 1.06rem;
-      line-height: 2;
+      @apply text-[1.06rem] leading-[2];
     }
   }
 
   @media (max-width: 768px) {
     .dresscode-section {
-      padding-top: 7rem;
-      padding-bottom: 7rem;
+      @apply pb-28 pt-28;
     }
     .decorator-box {
-      padding-top: 4.5rem;
-      padding-bottom: 4.5rem;
-      padding-left: 2rem;
-      padding-right: 2rem;
+      @apply pb-[4.5rem] pl-8 pr-8 pt-[4.5rem];
     }
     .section-title {
-      font-size: 3.6rem;
+      @apply text-[3.6rem];
     }
     .subtitle-wrapper {
-      gap: 0.8rem;
-      margin-bottom: 2.8rem;
+      @apply mb-[2.8rem] gap-[0.8rem];
     }
     .section-subtitle {
-      font-size: 0.68rem;
-      letter-spacing: 0.28em;
+      @apply text-[0.68rem] tracking-[0.28em];
     }
     .description {
-      font-size: 0.96rem;
-      line-height: 1.9;
+      @apply text-[0.96rem] leading-[1.9];
     }
     .divider {
-      width: 54px;
-      margin-top: 1.9rem;
-      margin-bottom: 2.2rem;
+      @apply mb-[2.2rem] mt-[1.9rem] w-[54px];
     }
   }
 
   @media (max-width: 380px) {
     .section-title {
-      font-size: 3.2rem;
+      @apply text-[3.2rem];
     }
     .section-subtitle {
-      font-size: 0.6rem;
+      @apply text-[0.6rem];
     }
   }
 </style>

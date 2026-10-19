@@ -57,94 +57,55 @@
 
 <style>
   .venue-card {
-    @apply relative overflow-hidden;
-    width: 100%;
-    max-width: 640px;
-    background: rgba(255, 255, 255, 0.62);
-    border: 1px solid rgba(255, 255, 255, 0.72);
-    backdrop-filter: blur(18px);
+    @apply relative isolate w-full max-w-[640px] overflow-hidden border border-solid border-[rgba(255,255,255,0.72)] bg-[rgba(255,255,255,0.62)] backdrop-blur-[18px] transition-[transform,box-shadow] duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)];
     box-shadow:
       0 45px 120px rgba(0, 0, 0, 0.08),
       0 15px 40px rgba(0, 0, 0, 0.05);
-    transition:
-      transform 1000ms cubic-bezier(0.16, 1, 0.3, 1),
-      box-shadow 1000ms cubic-bezier(0.16, 1, 0.3, 1);
-    isolation: isolate;
   }
 
   .venue-card:hover {
-    transform: translateY(-4px);
+    @apply translate-y-[-4px];
     box-shadow:
       0 60px 140px rgba(0, 0, 0, 0.1),
       0 20px 55px rgba(0, 0, 0, 0.06);
   }
 
   .image-wrapper {
-    @apply relative overflow-hidden;
-    height: 340px;
+    @apply relative h-[340px] overflow-hidden;
   }
 
   .floating-label {
-    @apply absolute;
-    left: 2rem;
-    bottom: 1.8rem;
-    font-family: "Inter", sans-serif;
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.38em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.92);
+    @apply absolute bottom-[1.8rem] left-8 font-inter text-[0.68rem] font-semibold uppercase tracking-[0.38em] text-[rgba(255,255,255,0.92)];
   }
 
   .card-content {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    @apply px-8 py-12;
   }
 
   .mini-label {
-    font-family: "Inter", sans-serif;
-    font-size: 0.66rem;
-    font-weight: 600;
-    letter-spacing: 0.38em;
-    text-transform: uppercase;
-    color: #c1157b;
-    margin-bottom: 1.4rem;
+    @apply mb-[1.4rem] font-inter text-[0.66rem] font-semibold uppercase tracking-[0.38em] text-[#c1157b];
   }
 
   .info-list {
-    margin-top: 2.8rem;
-    margin-bottom: 3rem;
+    @apply mb-12 mt-[2.8rem];
   }
 
   .info-divider {
-    width: 100%;
-    height: 1px;
-    margin-top: 1.3rem;
-    margin-bottom: 1.3rem;
+    @apply my-[1.3rem] h-px w-full;
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.08), transparent);
   }
 
   .map-card {
-    @apply relative flex items-center justify-between overflow-hidden;
-    min-height: 140px;
-    padding: 2rem;
-    text-decoration: none;
+    @apply relative flex min-h-[140px] items-center justify-between overflow-hidden border border-solid border-[rgba(0,0,0,0.05)] p-8 no-underline transition-[transform,border-color] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)];
     background: linear-gradient(
       135deg,
       rgba(245, 242, 238, 0.96),
       rgba(255, 255, 255, 0.84)
     );
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    transition:
-      transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
-      border-color 900ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .map-card:hover {
-    transform: translateY(-2px);
-    border-color: rgba(193, 21, 123, 0.18);
+    @apply translate-y-[-2px] border-[rgba(193,21,123,0.18)];
   }
 
   .map-content {
@@ -152,50 +113,39 @@
   }
 
   .map-title {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 2rem;
-    font-weight: 300;
-    letter-spacing: -0.04em;
-    color: #111111;
+    @apply font-cover text-[2rem] font-light tracking-[-0.04em] text-[#111111];
   }
 
   .map-arrow {
-    font-size: 2rem;
-    color: #c1157b;
-    transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    @apply text-[2rem] text-[#c1157b] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)];
   }
 
   .map-card:hover .map-arrow {
-    transform: translateX(6px);
+    @apply translate-x-[6px];
   }
 
   @media (max-width: 768px) {
     .image-wrapper {
-      height: 280px;
+      @apply h-[280px];
     }
     .card-content {
-      padding-top: 2.2rem;
-      padding-bottom: 2.2rem;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
+      @apply px-6 py-[2.2rem];
     }
     .map-card {
-      min-height: 120px;
-      padding: 1.6rem;
+      @apply min-h-[120px] p-[1.6rem];
     }
     .map-title {
-      font-size: 1.8rem;
+      @apply text-[1.8rem];
     }
   }
 
   .venue-image {
-    @apply h-full w-full object-cover;
-    transition: transform 1800ms cubic-bezier(0.16, 1, 0.3, 1);
+    @apply h-full w-full object-cover transition-transform duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)];
     filter: saturate(0.94) contrast(1.02) brightness(0.98);
   }
 
   .venue-card:hover .venue-image {
-    transform: scale(1.035);
+    @apply scale-[1.035];
   }
 
   .image-overlay {
@@ -218,12 +168,7 @@
   }
 
   .card-title {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(2.7rem, 5vw, 4rem);
-    font-weight: 300;
-    line-height: 0.96;
-    letter-spacing: -0.045em;
-    color: #121212;
+    @apply font-cover text-[clamp(2.7rem,5vw,4rem)] font-light leading-[0.96] tracking-[-0.045em] text-[#121212];
   }
 
   .ceremony .card-title {
@@ -235,48 +180,35 @@
   }
 
   .ceremony .info-item {
-    gap: normal;
+    @apply gap-[normal];
   }
 
   .ceremony .info-key,
   .ceremony .info-value {
-    display: flex;
-    align-items: center;
-    margin: 0;
+    @apply m-0 flex items-center;
   }
 
   .info-key {
-    font-family: "Inter", sans-serif;
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: rgba(0, 0, 0, 0.42);
+    @apply font-inter text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-[rgba(0,0,0,0.42)];
   }
 
   .ceremony .info-key {
-    line-height: 1;
+    @apply leading-none;
   }
 
   .info-value {
-    font-family: "Inter", sans-serif;
-    font-size: 0.92rem;
-    line-height: 1.8;
-    color: rgba(0, 0, 0, 0.74);
-    text-align: right;
+    @apply text-right font-inter text-[0.92rem] leading-[1.8] text-[rgba(0,0,0,0.74)];
   }
 
   .ceremony .info-value {
-    line-height: 1.4;
+    @apply leading-[1.4];
   }
 
   .map-background {
-    @apply absolute inset-0;
-    opacity: 0.06;
+    @apply absolute inset-0 bg-[length:34px_34px] opacity-[0.06];
     background-image:
       radial-gradient(circle at 25% 35%, #c1157b 1px, transparent 1px),
       radial-gradient(circle at 75% 65%, #1456aa 1px, transparent 1px);
-    background-size: 34px 34px;
   }
 
   .ceremony .map-background {

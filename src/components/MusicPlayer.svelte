@@ -1,7 +1,6 @@
 <script>
   import { onMount } from "svelte";
 
-  // Usamos $state para que la UI reaccione al cambio de mute/play
   let isMuted = $state(true);
   let audioRef = $state(null);
   let hasInteracted = $state(false);

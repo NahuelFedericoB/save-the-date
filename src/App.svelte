@@ -5,6 +5,7 @@
   import CocktailInfo from "./components/CocktailInfo.svelte";
   import AgendaInfo from "./components/AgendaInfo.svelte";
   import DressCodeInfo from "./components/DressCodeInfo.svelte";
+  import AccountInfo from "./components/AccountInfo.svelte";
   import AssistanceForm from "./components/AssistanceForm.svelte";
   import InvitationMessage from "./components/InvitationMessage.svelte";
   import MusicPlayer from "./components/MusicPlayer.svelte";
@@ -19,6 +20,7 @@
     <CocktailInfo />
     <DressCodeInfo />
     <AgendaInfo />
+    <AccountInfo />
     <AssistanceForm />
   </div>
   <footer>

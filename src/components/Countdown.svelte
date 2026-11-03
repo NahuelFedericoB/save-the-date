@@ -7,24 +7,30 @@
   let hours = $state(0);
   let minutes = $state(0);
   let seconds = $state(0);
+  let hasArrived = $state(false);
 
   const targetDate = new Date("November 21, 2026 16:00:00").getTime();
 
   $effect(() => {
-    const interval = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
+    function updateCountdown() {
+      const distance = targetDate - Date.now();
 
-      if (distance > 0) {
-        days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-        );
-        minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      } else {
-        clearInterval(interval);
+      if (distance <= 0) {
+        hasArrived = true;
+        return false;
       }
+
+      days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      return true;
+    }
+
+    if (!updateCountdown()) return;
+
+    const interval = setInterval(() => {
+      if (!updateCountdown()) clearInterval(interval);
     }, 1000);
 
     return () => clearInterval(interval);
@@ -40,35 +46,41 @@
   <div class="overlay"></div>
   <div class="ambient-light"></div>
   <div class="content">
-    <p class="eyebrow" class:animate={reveal.visible}>Cada vez falta menos</p>
-    <div class="decorator" class:animate={reveal.visible}></div>
-    <div class="timer-grid">
+    {#if hasArrived}
       <div class="time-block time-days" class:animate={reveal.visible}>
-        <span class="number">{days}</span>
-        <span class="label">Días</span>
+        <p class="number">¡ES HOY!</p>
       </div>
-      <span class="separator separator-first" class:animate={reveal.visible}
-        >•</span
-      >
-      <div class="time-block time-hours" class:animate={reveal.visible}>
-        <span class="number">{hours}</span>
-        <span class="label">Horas</span>
+    {:else}
+      <p class="eyebrow" class:animate={reveal.visible}>Cada vez falta menos</p>
+      <div class="decorator" class:animate={reveal.visible}></div>
+      <div class="timer-grid">
+        <div class="time-block time-days" class:animate={reveal.visible}>
+          <span class="number">{days}</span>
+          <span class="label">Días</span>
+        </div>
+        <span class="separator separator-first" class:animate={reveal.visible}
+          >•</span
+        >
+        <div class="time-block time-hours" class:animate={reveal.visible}>
+          <span class="number">{hours}</span>
+          <span class="label">Horas</span>
+        </div>
+        <span class="separator separator-second" class:animate={reveal.visible}
+          >•</span
+        >
+        <div class="time-block time-minutes" class:animate={reveal.visible}>
+          <span class="number">{minutes}</span>
+          <span class="label">Minutos</span>
+        </div>
+        <span class="separator separator-third" class:animate={reveal.visible}
+          >•</span
+        >
+        <div class="time-block time-seconds" class:animate={reveal.visible}>
+          <span class="number">{seconds}</span>
+          <span class="label">Segundos</span>
+        </div>
       </div>
-      <span class="separator separator-second" class:animate={reveal.visible}
-        >•</span
-      >
-      <div class="time-block time-minutes" class:animate={reveal.visible}>
-        <span class="number">{minutes}</span>
-        <span class="label">Minutos</span>
-      </div>
-      <span class="separator separator-third" class:animate={reveal.visible}
-        >•</span
-      >
-      <div class="time-block time-seconds" class:animate={reveal.visible}>
-        <span class="number">{seconds}</span>
-        <span class="label">Segundos</span>
-      </div>
-    </div>
+    {/if}
   </div>
 </section>
 

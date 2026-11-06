@@ -20,11 +20,15 @@
     <dl class="account-details">
       <div class="account-item">
         <dt class="account-label">CBU</dt>
-        <dd class="account-value">0000168300000009197671</dd>
+        <dd class="account-value">0000003100065998856297</dd>
       </div>
       <div class="account-item">
         <dt class="account-label">Alias</dt>
-        <dd class="account-value">funche.oste.LEMON</dd>
+        <dd class="account-value">joysidabramp</dd>
+      </div>
+      <div class="account-item">
+        <dt class="account-label">Nombre</dt>
+        <dd class="account-value">Johanna Elena Sidabra</dd>
       </div>
     </dl>
     <p class="thank-you">Estamos más que agradecidos.</p>
